@@ -53,29 +53,17 @@ export const useSearch = () => {
       dispatch(setSearchedLabel(e.target.value)),
     [dispatch]
   )
-  const searchLabels = useCallback(
-    () =>
-      !labels || searchedLabel === ''
-        ? []
-        : Array.from(
-            new Set(
-              labels
-                .filter((label) => label.name.includes(searchedLabel))
-                .map((label) => label.postId)
-            )
-          ),
-    [labels, searchedLabel]
-  )
 
   const filteredPosts = useCallback(
     (posts: Post[] | undefined) =>
-      posts?.map((post) =>
-        searchLabels().includes(post.id) || searchedLabel === ''
-          ? post
-          : undefined
+      posts?.filter(
+        (post) =>
+          post.labels.filter((label) => label.name.includes(searchedLabel))
+            .length > 0
       ),
-    [searchLabels, searchedLabel]
+    [searchedLabel]
   )
+
   const changeSearchPrefecture = useCallback(
     (e: ChangeEvent<{ value: unknown }>) =>
       dispatch(setSearchPrefecture(e.target.value as number)),

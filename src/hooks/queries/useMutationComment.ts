@@ -18,7 +18,12 @@ export const useCommentMutation = () => {
       onSuccess: (res) => {
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         if (previousPosts) {
-          queryClient.setQueryData<Post[]>('posts', [res.data, ...previousPosts])
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
+            )
+          )
         }
       },
     }

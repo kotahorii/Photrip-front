@@ -8,7 +8,6 @@ import { CustomModal } from 'components/organisms/modal/CustomModal'
 import { Layout } from 'components/templates/Layout'
 import { useApi } from 'hooks/useApi'
 import { useDetailPost } from 'hooks/useDetailPost'
-import { useLikes } from 'hooks/useLikes'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
 import { ShopModal } from 'components/organisms/modal/ShopModal'
@@ -29,7 +28,6 @@ import { TextArea } from 'components/atoms/form/TextArea'
 export const DetailPost = memo(() => {
   const { isLoadingUser, currentUser } = useMain()
   const {
-    id,
     commentChange,
     comment,
     detailPost,

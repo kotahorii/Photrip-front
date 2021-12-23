@@ -2,10 +2,8 @@ import { SelectModeButton } from 'components/atoms/button/SelectModeButton'
 import { LoadingCard } from 'components/organisms/card/LoadingCard'
 import { PostCard } from 'components/organisms/card/PostCard'
 import { Layout } from 'components/templates/Layout'
-import { useLikes } from 'hooks/useLikes'
 import { useMain } from 'hooks/useMain'
 import { useMyPage } from 'hooks/useMyPage'
-import { useRates } from 'hooks/useRate'
 import { memo } from 'react'
 
 export const MyPage = memo(() => {

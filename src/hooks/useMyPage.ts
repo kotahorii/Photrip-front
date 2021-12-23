@@ -35,7 +35,7 @@ export const useMyPage = () => {
           post.favorites.filter((fav) => fav.userId === currentUser?.id)
             .length > 0
       ),
-    [posts]
+    [currentUser?.id, posts]
   )
 
   const myPrefecturePosts = useCallback(

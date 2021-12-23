@@ -6,11 +6,9 @@ import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
 import { CustomSelector } from 'components/atoms/form/CustomSelector'
 import { prefectures } from 'data/prefecture'
-import { useLikes } from 'hooks/useLikes'
 import { RadioButton } from 'components/atoms/button/RadioButton'
 import { PostsList } from 'components/organisms/main/PostsList'
 import { RadioData } from 'data/radioData'
-import { useRates } from 'hooks/useRate'
 
 export const Main = memo(() => {
   const { isLoadingUser, isLoadingPosts, posts } = useMain()
