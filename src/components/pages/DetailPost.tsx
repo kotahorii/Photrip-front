@@ -28,7 +28,6 @@ import { TextArea } from 'components/atoms/form/TextArea'
 
 export const DetailPost = memo(() => {
   const { isLoadingUser, currentUser } = useMain()
-  const { isLoadingFavorites } = useLikes()
   const {
     id,
     commentChange,
@@ -37,7 +36,6 @@ export const DetailPost = memo(() => {
     isLoadingDetailPost,
     isRefechingDetailPost,
     submitComment,
-    postsComments,
     openDisclosure,
     toggleOpenDisclosure,
     isOpenImageModal,
@@ -54,25 +52,10 @@ export const DetailPost = memo(() => {
     closeHotelModal,
   } = useApi()
 
-  const { postsFavorites } = useLikes()
-  const { isLoadingRates, averageRate, postsRates } = useRates()
-  const {
-    labelName,
-    changeLabel,
-    createLabel,
-    postsLabels,
-    isLoadingLabels,
-    labelPostLoading,
-  } = useSearch()
+  const { averageRate } = useRates()
+  const { labelName, changeLabel, createLabel, labelPostLoading } = useSearch()
 
-  if (
-    isLoadingDetailPost ||
-    isLoadingUser ||
-    isLoadingRates ||
-    isRefechingDetailPost ||
-    isLoadingFavorites ||
-    isLoadingLabels
-  )
+  if (isLoadingDetailPost || isLoadingUser || isRefechingDetailPost)
     return (
       <Layout>
         <></>
@@ -106,7 +89,7 @@ export const DetailPost = memo(() => {
               <div className="flex flex-row justify-between">
                 <div className="h-7 w-12 flex flex-row items-center rounded-lg">
                   {detailPost?.city !== '' && <LikeButton post={detailPost!} />}
-                  <span>{postsFavorites(detailPost)?.length}</span>
+                  <span>{detailPost?.favorites.length}</span>
                 </div>
                 <div className=" flex flex-row items-center space-x-1 h-7 w-24 rounded-lg">
                   <StarIcon className="w-6 text-yellow-500" />
@@ -115,7 +98,7 @@ export const DetailPost = memo(() => {
                       ? averageRate(detailPost)?.toString()
                       : 0}
                     <span className="text-gray-400 ml-0.5">
-                      ({postsRates(detailPost)?.length}件)
+                      ({detailPost?.rates.length}件)
                     </span>
                   </p>
                 </div>
@@ -160,7 +143,7 @@ export const DetailPost = memo(() => {
                 タグ名が長すぎます
               </ValidationMessage>
               <div className="flex flex-row w-96 overflow-x-auto whitespace-nowrap space-x-2">
-                {postsLabels(detailPost)?.map((label) => (
+                {detailPost?.labels.map((label) => (
                   <CustomTag key={label.id} label={label} />
                 ))}
               </div>
@@ -170,7 +153,7 @@ export const DetailPost = memo(() => {
               className=" w-96 flex flex-col space-y-2 rounded-lg"
             >
               <div className="w-full md:h-104 h-80 p-2 space-y-3 overflow-auto bg-gradient-to-tr from-blue-200 via-indigo-100 to-indigo-200 rounded-md">
-                {postsComments(Number(id))?.map((comment) => (
+                {detailPost?.comments.map((comment) => (
                   <CommentCard key={comment.id} comment={comment} />
                 ))}
               </div>

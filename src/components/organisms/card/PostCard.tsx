@@ -14,8 +14,7 @@ type Props = {
 }
 
 export const PostCard: VFC<Props> = memo(({ post }) => {
-  const { postsFavorites } = useLikes()
-  const { averageRate, postsRates } = useRates()
+  const { averageRate } = useRates()
   const { formatDate } = useMain()
   const { openDeletePostModal, currentUser } = useMain()
   const { refetch: refetchDetailPost } = useQueryDetailPost(post.id)
@@ -68,7 +67,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
         <div className="flex flex-row relative mt-5 justify-between items-center px-2">
           <div className=" flex flex-row items-center w-10 h-8 mt-2 mr-2 rounded-full">
             <LikeButton post={post} />
-            <span>{postsFavorites(post)?.length}</span>
+            <span>{post.favorites.length}</span>
           </div>
           <div className="h-8 w-24 mt-2 flex flex-row justify-between items-center">
             <StarIcon className="w-6 text-yellow-500" />
@@ -77,7 +76,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
                 ? averageRate(post)?.toString()
                 : 0}
               <span className="text-gray-400 ml-0.5">
-                ({postsRates(post)?.length}件)
+                ({post.rates.length}件)
               </span>
             </p>
           </div>

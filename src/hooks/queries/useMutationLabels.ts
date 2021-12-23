@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie'
 import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
-import { CreateLabel, Label } from 'types/postType'
+import { CreateLabel, Post } from 'types/postType'
 
 export const useMutationLabels = () => {
   const queryClient = useQueryClient()
   const createLabelMutation = useMutation(
     (data: CreateLabel) =>
-      client.post<Label>('labels', data, {
+      client.post<Post>('labels', data, {
         headers: {
           'access-token': Cookies.get('_access_token') as string,
           client: Cookies.get('_client') as string,
@@ -16,25 +16,34 @@ export const useMutationLabels = () => {
       }),
     {
       onSuccess: (res) => {
-        const previousLabels = queryClient.getQueryData<Label[]>('labels')
-        if (previousLabels) {
-          queryClient.setQueryData<Label[]>('labels', [
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>('posts', [
             res.data,
-            ...previousLabels,
+            ...previousPosts,
           ])
         }
       },
     }
   )
   const deleteLabelMutation = useMutation(
-    (id: number) => client.delete(`labels/${id}`),
+    (id: number) =>
+      client.delete<Post>(`labels/${id}`, {
+        headers: {
+          'access-token': Cookies.get('_access_token') as string,
+          client: Cookies.get('_client') as string,
+          uid: Cookies.get('_uid') as string,
+        },
+      }),
     {
-      onSuccess: (res, variable) => {
-        const previousLabels = queryClient.getQueryData<Label[]>('labels')
-        if (previousLabels) {
-          queryClient.setQueryData<Label[]>(
-            'labels',
-            previousLabels.filter((label) => label.id !== variable)
+      onSuccess: (res) => {
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
+            )
           )
         }
       },

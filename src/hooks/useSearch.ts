@@ -4,7 +4,6 @@ import { useMutationLabels } from './queries/useMutationLabels'
 import { useQueryFavPosts } from './queries/useQueryFavPosts'
 import { useQueryRatePosts } from './queries/useQueryRatePosts'
 import { useQueryRateAve } from './queries/useQueryRateAve'
-import { useQueryLabels } from './queries/useQueryLabel'
 import { useDetailPost } from './useDetailPost'
 import { useMain } from './useMain'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
@@ -18,7 +17,6 @@ import {
 } from 'slices/postSlice'
 
 export const useSearch = () => {
-  const { data: labels, isLoading: isLoadingLabels } = useQueryLabels()
   const { id } = useDetailPost()
   const { createLabelMutation, deleteLabelMutation } = useMutationLabels()
   const { data: favPostsData, isLoading: isLoadingFavPosts } =
@@ -45,11 +43,7 @@ export const useSearch = () => {
     (label: Label) => () => deleteLabelMutation.mutate(label.id),
     [deleteLabelMutation]
   )
-  const postsLabels = useCallback(
-    (post: Post | undefined) =>
-      labels?.filter((label) => label.postId === post?.id),
-    [labels]
-  )
+
   const labelsPosts = useCallback(
     (label: Label) => posts?.filter((post) => post.id === label.postId),
     [posts]
@@ -101,15 +95,12 @@ export const useSearch = () => {
   return {
     selectedOption,
     handleOptionChange,
-    labels,
-    isLoadingLabels,
     changeLabel,
     labelName,
     createLabel,
     changeSearchedLabel,
     searchedLabel,
     deleteLabel,
-    postsLabels,
     labelsPosts,
     filteredPosts,
     searchPrefecture,

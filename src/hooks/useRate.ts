@@ -2,26 +2,18 @@ import { useCallback, useState } from 'react'
 import { Post } from 'types/postType'
 import { User } from 'types/userType'
 import { useRateMutate } from './queries/useMutationRate'
-import { useQueryRates } from './queries/useQueryRates'
 import { useDetailPost } from './useDetailPost'
 import { useMain } from './useMain'
 
 export const useRates = () => {
-  const { data: rates, isLoading: isLoadingRates } = useQueryRates()
   const { createRateMutation, updateRateMutation } = useRateMutate()
   const { currentUser, usersPost } = useMain()
   const { detailPost } = useDetailPost()
 
-  const postsRates = useCallback(
-    (post: Post | undefined) =>
-      rates?.filter((rate) => rate.postId === post?.id),
-    [rates]
-  )
-
   const myRate = useCallback(
     (post: Post | undefined) =>
-      postsRates(post)?.filter((rate) => rate.userId === currentUser?.id)[0],
-    [postsRates, currentUser?.id]
+      post?.rates.filter((rate) => rate.userId === currentUser?.id)[0],
+    [currentUser?.id]
   )
 
   const [rate, setRate] = useState<number | undefined>(myRate(detailPost)?.rate)
@@ -47,24 +39,21 @@ export const useRates = () => {
 
   const averageRate = useCallback(
     (post: Post | undefined) =>
-      postsRates(post) &&
       (
-        postsRates(post)!
+        post!.rates
           .map((rate) => rate.rate)
-          .reduce((acc, cur) => acc + cur, 0) / postsRates(post)!.length
+          .reduce((acc, cur) => acc + cur, 0) / post!.rates.length
       ).toFixed(1),
-    [postsRates]
+    []
   )
   const getAllRate = useCallback(
     (user: User | undefined) =>
       usersPost(user) === []
         ? 0
         : usersPost(user)
-            ?.map(
-              (post) => rates?.filter((rate) => rate.postId === post.id).length
-            )
-            .reduce((sum, cur) => sum! + cur!, 0),
-    [usersPost, rates]
+            ?.map((post) => post.rates.length)
+            .reduce((sum, cur) => sum + cur, 0),
+    [usersPost]
   )
   return {
     rate,
@@ -72,8 +61,6 @@ export const useRates = () => {
     rateUpdate,
     myRate,
     averageRate,
-    postsRates,
-    isLoadingRates,
     getAllRate,
   }
 }

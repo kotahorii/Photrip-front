@@ -10,12 +10,11 @@ import { memo } from 'react'
 
 export const MyPage = memo(() => {
   const { isLoadingUser, isLoadingPosts } = useMain()
-  const { isLoadingFavorites } = useLikes()
-  const { isLoadingRates } = useRates()
+
   const { changePostsMode, postsMode, likedPost, myPost, myPrefecturePosts } =
     useMyPage()
 
-  if (isLoadingPosts || isLoadingUser || isLoadingFavorites || isLoadingRates)
+  if (isLoadingPosts || isLoadingUser)
     return (
       <Layout>
         <div className="flex flex-col w-full items-center justify-center">

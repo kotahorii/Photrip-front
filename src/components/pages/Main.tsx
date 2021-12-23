@@ -14,12 +14,9 @@ import { useRates } from 'hooks/useRate'
 
 export const Main = memo(() => {
   const { isLoadingUser, isLoadingPosts, posts } = useMain()
-  const { isLoadingFavorites } = useLikes()
-  const { isLoadingRates } = useRates()
   const {
     searchedLabel,
     changeSearchedLabel,
-    isLoadingLabels,
     filteredPosts,
     searchPrefecture,
     changeSearchPrefecture,
@@ -29,13 +26,7 @@ export const Main = memo(() => {
     ratePostsData,
   } = useSearch()
 
-  if (
-    isLoadingPosts ||
-    isLoadingUser ||
-    isLoadingLabels ||
-    isLoadingFavorites ||
-    isLoadingRates
-  )
+  if (isLoadingPosts || isLoadingUser)
     return (
       <Layout>
         <div className="flex flex-col w-full items-center justify-center">

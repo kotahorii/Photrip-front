@@ -10,12 +10,10 @@ import {
 } from 'slices/postSlice'
 import { Post } from 'types/postType'
 import { useMutationPosts } from './queries/useMutationPosts'
-import { useQueryFavorites } from './queries/useQueryFavorites'
 export type ModeType = 'myPosts' | 'likedPosts' | 'myPrefecturePosts'
 
 export const useMyPage = () => {
   const { currentUser, posts } = useMain()
-  const { data: favorites } = useQueryFavorites()
   const { deletePostMutation } = useMutationPosts()
   const dispatch = useAppDispatch()
   const isOpenDeletePostModal = useAppSelector(selectIsOpenDeletePostModal)
@@ -30,17 +28,14 @@ export const useMyPage = () => {
     [currentUser, posts]
   )
 
-  const myFavorites = useCallback(
-    () =>
-      favorites
-        ?.filter((fav) => fav.userId === currentUser?.id)
-        .map((fav) => fav.postId),
-    [currentUser, favorites]
-  )
-
   const likedPost = useCallback(
-    () => posts?.filter((post) => myFavorites()?.includes(post.id)),
-    [posts, myFavorites]
+    () =>
+      posts?.filter(
+        (post) =>
+          post.favorites.filter((fav) => fav.userId === currentUser?.id)
+            .length > 0
+      ),
+    [posts]
   )
 
   const myPrefecturePosts = useCallback(
