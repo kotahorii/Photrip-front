@@ -19,9 +19,9 @@ export const Main = memo(() => {
     searchPrefecture,
     changeSearchPrefecture,
     selectedOption,
-    favPostsData,
-    rateAveData,
-    ratePostsData,
+    favPosts,
+    ratePosts,
+    rateAvePosts,
   } = useSearch()
 
   if (isLoadingPosts || isLoadingUser)
@@ -77,11 +77,11 @@ export const Main = memo(() => {
         {selectedOption === '1' ? (
           <PostsList posts={posts} />
         ) : selectedOption === '2' ? (
-          <PostsList posts={favPostsData} />
+          <PostsList posts={favPosts(posts)} />
         ) : selectedOption === '3' ? (
-          <PostsList posts={rateAveData} />
+          <PostsList posts={rateAvePosts(posts)} />
         ) : (
-          <PostsList posts={ratePostsData} />
+          <PostsList posts={ratePosts(posts)} />
         )}
       </div>
     </Layout>

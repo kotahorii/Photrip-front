@@ -1,9 +1,6 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import { Label, Post } from 'types/postType'
 import { useMutationLabels } from './queries/useMutationLabels'
-import { useQueryFavPosts } from './queries/useQueryFavPosts'
-import { useQueryRatePosts } from './queries/useQueryRatePosts'
-import { useQueryRateAve } from './queries/useQueryRateAve'
 import { useDetailPost } from './useDetailPost'
 import { useMain } from './useMain'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
@@ -15,21 +12,18 @@ import {
   setSearchPrefecture,
   setSelectedOption,
 } from 'slices/postSlice'
+import { useRates } from './useRate'
 
 export const useSearch = () => {
   const { id } = useDetailPost()
   const { createLabelMutation, deleteLabelMutation } = useMutationLabels()
-  const { data: favPostsData, isLoading: isLoadingFavPosts } =
-    useQueryFavPosts()
-  const { data: ratePostsData, isLoading: isLoadingRatePosts } =
-    useQueryRatePosts()
-  const { data: rateAveData, isLoading: isLoadingRateAve } = useQueryRateAve()
   const dispatch = useAppDispatch()
   const searchedLabel = useAppSelector(selectSearchedLabel)
   const searchPrefecture = useAppSelector(selectSearchPrefecture)
   const selectedOption = useAppSelector(selectSelectedOption)
 
   const { posts } = useMain()
+  const { averageRate } = useRates()
   const [labelName, setLabelName] = useState('')
   const changeLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabelName(e.target.value),
@@ -82,6 +76,30 @@ export const useSearch = () => {
     [createLabelMutation]
   )
 
+  const favPosts = useCallback(
+    (posts: Post[] | undefined) =>
+      posts
+        ?.slice()
+        .sort((a, b) => (a.favorites.length > b.favorites.length ? -1 : 1)),
+    []
+  )
+
+  const ratePosts = useCallback(
+    (posts: Post[] | undefined) =>
+      posts?.slice().sort((a, b) => (a.rates.length > b.rates.length ? -1 : 1)),
+    []
+  )
+
+  const rateAve = (post: Post) =>
+    post.rates.map((rate) => rate.rate).reduce((acc, cur) => acc + cur, 0) /
+    post.rates.length
+
+  const rateAvePosts = useCallback(
+    (posts: Post[] | undefined) =>
+      posts?.slice().sort((a, b) => (rateAve(a) > rateAve(b) ? -1 : 1)),
+    []
+  )
+
   return {
     selectedOption,
     handleOptionChange,
@@ -95,12 +113,9 @@ export const useSearch = () => {
     filteredPosts,
     searchPrefecture,
     changeSearchPrefecture,
-    isLoadingFavPosts,
-    isLoadingRatePosts,
-    isLoadingRateAve,
-    favPostsData,
-    rateAveData,
-    ratePostsData,
     labelPostLoading,
+    favPosts,
+    ratePosts,
+    rateAvePosts,
   }
 }
