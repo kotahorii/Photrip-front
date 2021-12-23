@@ -56,11 +56,13 @@ export const useSearch = () => {
 
   const filteredPosts = useCallback(
     (posts: Post[] | undefined) =>
-      posts?.filter(
-        (post) =>
-          post.labels.filter((label) => label.name.includes(searchedLabel))
-            .length > 0
-      ),
+      searchedLabel.length > 0
+        ? posts?.filter(
+            (post) =>
+              post.labels.filter((label) => label.name.includes(searchedLabel))
+                .length > 0
+          )
+        : posts,
     [searchedLabel]
   )
 
