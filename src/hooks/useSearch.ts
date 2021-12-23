@@ -12,7 +12,6 @@ import {
   setSearchPrefecture,
   setSelectedOption,
 } from 'slices/postSlice'
-import { useRates } from './useRate'
 
 export const useSearch = () => {
   const { id } = useDetailPost()
@@ -23,7 +22,6 @@ export const useSearch = () => {
   const selectedOption = useAppSelector(selectSelectedOption)
 
   const { posts } = useMain()
-  const { averageRate } = useRates()
   const [labelName, setLabelName] = useState('')
   const changeLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabelName(e.target.value),
