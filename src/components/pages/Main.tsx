@@ -22,8 +22,9 @@ export const Main = memo(() => {
     favPosts,
     ratePosts,
     rateAvePosts,
+    rateAve,
   } = useSearch()
-
+  console.log(posts?.map((post) => rateAve(post)))
   if (isLoadingPosts || isLoadingUser)
     return (
       <Layout>

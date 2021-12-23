@@ -76,15 +76,13 @@ export const useSearch = () => {
 
   const favPosts = useCallback(
     (posts: Post[] | undefined) =>
-      posts
-        ?.slice()
-        .sort((a, b) => (a.favorites.length > b.favorites.length ? -1 : 1)),
+      posts?.slice().sort((a, b) => b.favorites.length - a.favorites.length),
     []
   )
 
   const ratePosts = useCallback(
     (posts: Post[] | undefined) =>
-      posts?.slice().sort((a, b) => (a.rates.length > b.rates.length ? -1 : 1)),
+      posts?.slice().sort((a, b) => b.rates.length - a.rates.length),
     []
   )
 
@@ -94,7 +92,11 @@ export const useSearch = () => {
 
   const rateAvePosts = useCallback(
     (posts: Post[] | undefined) =>
-      posts?.slice().sort((a, b) => (rateAve(a) > rateAve(b) ? -1 : 1)),
+      posts
+        ?.slice()
+        .sort((a, b) =>
+          rateAve(a) > rateAve(b) || rateAve(b).toString() === 'NaN' ? -1 : 1
+        ),
     []
   )
 
@@ -115,5 +117,6 @@ export const useSearch = () => {
     favPosts,
     ratePosts,
     rateAvePosts,
+    rateAve,
   }
 }
