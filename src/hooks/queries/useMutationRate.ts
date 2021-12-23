@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie'
 import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
-import { CreateRate, Rate, UpdateRate } from 'types/postType'
+import { CreateRate, Post, UpdateRate } from 'types/postType'
 
 export const useRateMutate = () => {
   const queryClient = useQueryClient()
   const createRateMutation = useMutation(
     (data: CreateRate) =>
-      client.post<Rate>('rates', data, {
+      client.post<Post>('rates', data, {
         headers: {
           'access-token': Cookies.get('_access_token') as string,
           client: Cookies.get('_client') as string,
@@ -16,19 +16,25 @@ export const useRateMutate = () => {
       }),
     {
       onSuccess: (res) => {
-        const previousRates = queryClient.getQueryData<Rate[]>('rates')
-        if (previousRates) {
-          queryClient.setQueryData<Rate[]>('rates', [
-            res.data,
-            ...previousRates,
-          ])
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        const previousDetailPost = queryClient.getQueryData<Post>('post')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
+            )
+          )
+        }
+        if (previousDetailPost) {
+          queryClient.setQueryData<Post>('post', res.data)
         }
       },
     }
   )
   const updateRateMutation = useMutation(
     (data: UpdateRate) =>
-      client.put<Rate>(`rates/${data.id}`, data, {
+      client.put<Post>(`rates/${data.id}`, data, {
         headers: {
           'access-token': Cookies.get('_access_token') as string,
           client: Cookies.get('_client') as string,
@@ -36,15 +42,19 @@ export const useRateMutate = () => {
         },
       }),
     {
-      onSuccess: (res, variable) => {
-        const previousRates = queryClient.getQueryData<Rate[]>('rates')
-        if (previousRates) {
-          queryClient.setQueryData<Rate[]>(
-            'rates',
-            previousRates.map((rate) =>
-              rate.id === variable.id ? res.data : rate
+      onSuccess: (res) => {
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        const previousDetailPost = queryClient.getQueryData<Post>('post')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
             )
           )
+        }
+        if (previousDetailPost) {
+          queryClient.setQueryData<Post>('post', res.data)
         }
       },
     }

@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie'
 import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
-import { Comment, CreateComment } from 'types/postType'
+import { CreateComment, Post } from 'types/postType'
 
 export const useCommentMutation = () => {
   const queryClient = useQueryClient()
   const createCommentMutation = useMutation(
     (data: CreateComment) =>
-      client.post<Comment>('comments', data, {
+      client.post<Post>('comments', data, {
         headers: {
           'access-token': Cookies.get('_access_token') as string,
           client: Cookies.get('_client') as string,
@@ -16,12 +16,18 @@ export const useCommentMutation = () => {
       }),
     {
       onSuccess: (res) => {
-        const previousComments = queryClient.getQueryData<Comment[]>('comments')
-        if (previousComments) {
-          queryClient.setQueryData<Comment[]>('comments', [
-            res.data,
-            ...previousComments,
-          ])
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        const previousDetailPost = queryClient.getQueryData<Post>('post')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
+            )
+          )
+        }
+        if (previousDetailPost) {
+          queryClient.setQueryData<Post>('post', res.data)
         }
       },
     }

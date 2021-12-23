@@ -9,9 +9,8 @@ type Props = {
 }
 
 export const CommentCard: VFC<Props> = memo(({ comment }) => {
-  const { commentsUser, isLoadingComment } = useDetailPost()
+  const { commentsUser } = useDetailPost()
   const { formatDate } = useMain()
-  if (isLoadingComment) return null
   return (
     <div className="w-full p-2 flex flex-col space-y-2 shadow-sm rounded-lg bg-gray-50">
       <div className="flex flex-row items-center space-x-3">

@@ -1,14 +1,13 @@
-import axios from 'axios'
 import Cookies from 'js-cookie'
 import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
-import { Favorite, CreateFavorite, DeleteFavorite } from 'types/postType'
+import { CreateFavorite, Post } from 'types/postType'
 
 export const useLikeMutation = () => {
   const queryClient = useQueryClient()
   const createLikeMutation = useMutation(
     (data: CreateFavorite) =>
-      client.post<Favorite>('favorites', data, {
+      client.post<Post>('favorites', data, {
         headers: {
           'access-token': Cookies.get('_access_token') as string,
           client: Cookies.get('_client') as string,
@@ -17,23 +16,25 @@ export const useLikeMutation = () => {
       }),
     {
       onSuccess: (res) => {
-        const previousFavorites =
-          queryClient.getQueryData<Favorite[]>('favorites')
-        if (previousFavorites) {
-          queryClient.setQueryData<Favorite[]>('favorites', [
-            res.data,
-            ...previousFavorites,
-          ])
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        const previousDetailPost = queryClient.getQueryData<Post>('post')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
+            )
+          )
+        }
+        if (previousDetailPost) {
+          queryClient.setQueryData<Post>('post', res.data)
         }
       },
     }
   )
   const deleteLikeMutation = useMutation(
-    (data: DeleteFavorite) =>
-      axios.request({
-        method: 'delete',
-        url: `http://localhost:8000/api/v1/favorites/${data.id}`,
-        data: { post_id: data.postId },
+    (id: number | undefined) =>
+      client.delete<Post>(`favorites/${id}`, {
         headers: {
           'access-token': Cookies.get('_access_token') as string,
           client: Cookies.get('_client') as string,
@@ -41,14 +42,19 @@ export const useLikeMutation = () => {
         },
       }),
     {
-      onSuccess: (res, variable) => {
-        const previousFavorites =
-          queryClient.getQueryData<Favorite[]>('favorites')
-        if (previousFavorites) {
-          queryClient.setQueryData<Favorite[]>(
-            'favorites',
-            previousFavorites.filter((fav) => fav.id !== variable.id)
+      onSuccess: (res) => {
+        const previousPosts = queryClient.getQueryData<Post[]>('posts')
+        const previousDetailPost = queryClient.getQueryData<Post>('post')
+        if (previousPosts) {
+          queryClient.setQueryData<Post[]>(
+            'posts',
+            previousPosts.map((post) =>
+              post.id === res.data.id ? res.data : post
+            )
           )
+        }
+        if (previousDetailPost) {
+          queryClient.setQueryData<Post>('post', res.data)
         }
       },
     }

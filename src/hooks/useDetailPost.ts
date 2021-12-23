@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
-import { useQueryComments } from './queries/useQueryComments'
 import { toast } from 'react-toastify'
 import { useCommentMutation } from './queries/useMutationComment'
 import { useParams } from 'react-router'
@@ -20,7 +19,6 @@ import { User } from 'types/userType'
 export const useDetailPost = () => {
   const dispatch = useAppDispatch()
   const isOpenImageModal = useAppSelector(selectIsOpenImageModal)
-  const { data: comments, isLoading: isLoadingComment } = useQueryComments()
   const { users } = useUsers()
   const { createCommentMutation } = useCommentMutation()
   const { id } = useParams()
@@ -51,12 +49,6 @@ export const useDetailPost = () => {
       setComment('')
     },
     [comment, createCommentMutation, id]
-  )
-
-  const postsComments = useCallback(
-    (id: number | undefined) =>
-      comments?.filter((comment) => comment.postId === Number(id)),
-    [comments]
   )
 
   const commentsUser = useCallback(
@@ -105,10 +97,8 @@ export const useDetailPost = () => {
     detailPost,
     isRefechingDetailPost,
     isLoadingDetailPost,
-    isLoadingComment,
     commentsUser,
     submitComment,
-    postsComments,
     createCommentMutation,
     id,
     openImageModal,

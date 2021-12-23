@@ -9,8 +9,8 @@ type Props = {
   user?: User
 }
 export const CustomBadge: VFC<Props> = ({ user }) => {
-  const { getAllRate, isLoadingRates } = useRates()
-  const { getAllFav, isLoadingFavorites } = useLikes()
+  const { getAllRate } = useRates()
+  const { getAllFav } = useLikes()
   const { isLoadingDetailPost } = useDetailPost()
 
   const color = () =>
@@ -24,7 +24,7 @@ export const CustomBadge: VFC<Props> = ({ user }) => {
       ? 'text-yellow-400 bg-yellow-100'
       : 'hidden'
 
-  if (isLoadingFavorites || isLoadingRates || isLoadingDetailPost) return null
+  if (isLoadingDetailPost) return null
 
   return (
     <CheckCircleIcon

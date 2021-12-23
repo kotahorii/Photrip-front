@@ -1,10 +1,4 @@
-import {
-  commentRes,
-  favoriteRes,
-  labelRes,
-  postRes,
-  rateRes,
-} from 'data/response'
+import { comment, favorite, label, postRes, rate } from 'data/response'
 
 export type Post = typeof postRes
 export type CreatePost = {
@@ -29,7 +23,7 @@ export type UpdatePostFormData = FormData & {
   append(name: keyof UpdatePost, value: String | Blob, fileName?: string): any
 }
 
-export type Comment = typeof commentRes
+export type Comment = typeof comment
 export type CreateComment = {
   postId: number | undefined
   comment: string
@@ -39,20 +33,20 @@ export type DeleteComment = {
   postId: string
 }
 
-export type Favorite = typeof favoriteRes
+export type Favorite = typeof favorite
 export type CreateFavorite = {
   postId: number | undefined
 }
 export type DeleteFavorite = CreateFavorite & { id: number | undefined }
 
-export type Rate = typeof rateRes
+export type Rate = typeof rate
 export type CreateRate = {
   postId: number | undefined
   rate: number
 }
 export type UpdateRate = CreateRate & { id: number | undefined }
 
-export type Label = typeof labelRes
+export type Label = typeof label
 export type CreateLabel = {
   postId: number | undefined
   name: string

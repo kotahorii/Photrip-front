@@ -1,6 +1,5 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import { useQueryAddress } from 'hooks/queries/useQueryAddress'
-// import { useMutateHotPepper } from './queries/useMutationHotPepper'
 import { Post } from 'types/postType'
 import { useDetailPost } from './useDetailPost'
 import { useQueryRakutenData } from './queries/useQueryRakuten'
@@ -133,7 +132,6 @@ export const useApi = () => {
     rakutenData,
     setAddressData,
     addressData,
-    // postHotPepperParams,
     hotPepperKeyword,
   }
 }

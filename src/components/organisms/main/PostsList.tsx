@@ -1,4 +1,5 @@
 import { prefectures } from 'data/prefecture'
+import { useMain } from 'hooks/useMain'
 import { useSearch } from 'hooks/useSearch'
 import { memo, VFC } from 'react'
 import { Post } from 'types/postType'
@@ -10,14 +11,9 @@ type Props = {
 }
 
 export const PostsList: VFC<Props> = memo(({ posts }) => {
-  const {
-    filteredPosts,
-    searchPrefecture,
-    isLoadingFavPosts,
-    isLoadingRateAve,
-    isLoadingRatePosts,
-  } = useSearch()
-  if (isLoadingFavPosts || isLoadingRatePosts || isLoadingRateAve)
+  const { filteredPosts, searchPrefecture } = useSearch()
+  const { isLoadingPosts } = useMain()
+  if (isLoadingPosts)
     return (
       <>
         {[...Array(5)]

@@ -6,36 +6,26 @@ import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
 import { CustomSelector } from 'components/atoms/form/CustomSelector'
 import { prefectures } from 'data/prefecture'
-import { useLikes } from 'hooks/useLikes'
 import { RadioButton } from 'components/atoms/button/RadioButton'
 import { PostsList } from 'components/organisms/main/PostsList'
 import { RadioData } from 'data/radioData'
-import { useRates } from 'hooks/useRate'
 
 export const Main = memo(() => {
   const { isLoadingUser, isLoadingPosts, posts } = useMain()
-  const { isLoadingFavorites } = useLikes()
-  const { isLoadingRates } = useRates()
   const {
     searchedLabel,
     changeSearchedLabel,
-    isLoadingLabels,
     filteredPosts,
     searchPrefecture,
     changeSearchPrefecture,
     selectedOption,
-    favPostsData,
-    rateAveData,
-    ratePostsData,
+    favPosts,
+    ratePosts,
+    rateAvePosts,
+    rateAve,
   } = useSearch()
-
-  if (
-    isLoadingPosts ||
-    isLoadingUser ||
-    isLoadingLabels ||
-    isLoadingFavorites ||
-    isLoadingRates
-  )
+  console.log(posts?.map((post) => rateAve(post)))
+  if (isLoadingPosts || isLoadingUser)
     return (
       <Layout>
         <div className="flex flex-col w-full items-center justify-center">
@@ -88,11 +78,11 @@ export const Main = memo(() => {
         {selectedOption === '1' ? (
           <PostsList posts={posts} />
         ) : selectedOption === '2' ? (
-          <PostsList posts={favPostsData} />
+          <PostsList posts={favPosts(posts)} />
         ) : selectedOption === '3' ? (
-          <PostsList posts={rateAveData} />
+          <PostsList posts={rateAvePosts(posts)} />
         ) : (
-          <PostsList posts={ratePostsData} />
+          <PostsList posts={ratePosts(posts)} />
         )}
       </div>
     </Layout>
