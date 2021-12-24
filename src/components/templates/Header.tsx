@@ -7,7 +7,7 @@ import { CustomUserIcon } from 'components/molecules/userIcon/CustomUserIcon'
 export const Header = memo(() => {
   const { currentUser } = useMain()
   return (
-    <nav className=" flex flex-row z-10 fixed justify-between items-center bg-gray-50 shadow-md px-3 w-screen h-20 text-gray-500 bg-gray-20">
+    <nav className=" flex flex-row z-10 fixed justify-between items-center bg-gray-50 shadow-md px-10 w-screen h-20 text-gray-500 bg-gray-20">
       <Menu.Button>
         <CustomUserIcon user={currentUser} />
       </Menu.Button>
@@ -18,9 +18,12 @@ export const Header = memo(() => {
             behavior: 'smooth',
           })
         }}
-        className="text-3xl p-2 transition duration-500 hover:text-indigo-500 hover:font-semibold border-indigo-500 cursor-pointer"
+        className="text-2xl flex flex-row items-center space-x-3 p-2 transition duration-500 hover:text-indigo-500 border-indigo-500 cursor-pointer"
       >
-        旅行アプリ（仮）
+        <div className="h-16 w-16">
+          <img className="h-full w-full" src={`${process.env.PUBLIC_URL}/application_icon.png`} alt="application-icon" />
+        </div>
+        <p>application name</p>
       </div>
       <div className="md:flex hidden flex-row space-x-3">
         <Link
