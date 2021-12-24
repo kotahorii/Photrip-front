@@ -13,14 +13,14 @@ export const DeletePostModal = memo(() => {
         <div className="flex flex-row">
           <div
             onClick={closeDeletePostModal}
-            className="flex flex-row hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+            className="flex flex-row items-center hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
           >
             <XIcon className="w-5" />
             <p>キャンセル</p>
           </div>
           <div
             onClick={deletePost(detailUserPost.id)}
-            className="flex flex-row hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+            className="flex flex-row items-center hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
           >
             <TrashIcon className="w-5" />
             <p>削除</p>

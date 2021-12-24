@@ -10,8 +10,10 @@ export const useLikes = () => {
 
   const isLiked = useCallback(
     (post: Post | undefined) =>
-      post!.favorites.filter((fav) => fav.userId === currentUser?.id).length >
-      0,
+      !post
+        ? 0
+        : post.favorites.filter((fav) => fav.userId === currentUser?.id)
+            .length > 0,
     [currentUser]
   )
   const toggleLike = useCallback(
