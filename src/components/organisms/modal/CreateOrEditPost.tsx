@@ -27,45 +27,20 @@ export const CreateOrEditPost = memo(() => {
   return (
     <>
       <form onSubmit={submitPost} className="md:p-3">
-        <div className=" flex flex-col space-y-1 mt-2">
+        <div className=" flex flex-col space-y-2 mt-2">
           <div className="flex md:flex-row md:items-center flex-col w-full md:space-x-2">
             <div className="w-full">
               <CustomLabel title="タイトル" />
-              <div className="md:w-96 w-full">
-                <CustomInput
-                  name="title"
-                  value={editedPost.title}
-                  placeholder="タイトルを30文字以内で入力してください"
-                  onChange={changePost}
-                  isError={editedPost.title.length > 30}
-                />
-              </div>
+              <CustomInput
+                name="title"
+                value={editedPost.title}
+                placeholder="タイトルを30文字以内で入力してください"
+                onChange={changePost}
+                isError={editedPost.title.length > 30}
+              />
               <ValidationMessage isError={editedPost.title.length > 30}>
                 {editedPost.title.length > 30 && '30文字以内で入力してください'}
               </ValidationMessage>
-            </div>
-            <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
-              <div>
-                <CustomLabel title="郵便番号" />
-              </div>
-              <div className="flex flex-row items-center">
-                <div className="md:w-56 w-full">
-                  <CustomInput
-                    name="address"
-                    value={address}
-                    onChange={changeAddress}
-                    placeholder="例：739-0016"
-                  />
-                </div>
-                <div className="md:w-24 w-32">
-                  <CustomButton
-                    text="自動入力"
-                    disabled={isNotValidData()}
-                    loading={isLoadingAddress || isRefetchingAddress}
-                    onClick={setAddressData}
-                  />
-                </div>
-              </div>
             </div>
           </div>
           <div className="flex flex-row items-end w-full md:space-x-2">
@@ -93,33 +68,38 @@ export const CreateOrEditPost = memo(() => {
           >
             140字以内で入力してください
           </ValidationMessage>
-          <div className="flex md:flex-row flex-col w-full md:space-x-2">
-            <div>
-              <CustomLabel title="都道府県" />
+          <div className="flex md:flex-row flex-col">
+            <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
+              <div>
+                <CustomLabel title="郵便番号" />
+              </div>
+              <div className="flex flex-row items-center">
+                <div className="md:w-56 w-full">
+                  <CustomInput
+                    name="address"
+                    value={address}
+                    onChange={changeAddress}
+                    placeholder="例：7793116"
+                  />
+                </div>
+                <div className="md:w-24 w-32">
+                  <CustomButton
+                    text="自動入力"
+                    disabled={isNotValidData()}
+                    loading={isLoadingAddress || isRefetchingAddress}
+                    onClick={setAddressData}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="w-full">
+              <CustomLabel title="旅行先住所" />
               <CustomInput
                 name="prefecture"
-                value={editedPost.prefecture}
-                placeholder="〇〇県"
-                onChange={changePost}
-                disabled={true}
-              />
-            </div>
-            <div>
-              <CustomLabel title="市、区" />
-              <CustomInput
-                name="city"
-                value={editedPost.city}
-                placeholder="〇〇市"
-                onChange={changePost}
-                disabled={true}
-              />
-            </div>
-            <div>
-              <CustomLabel title="町" />
-              <CustomInput
-                name="town"
-                value={editedPost.town}
-                placeholder="〇〇町"
+                value={
+                  editedPost.prefecture + editedPost.city + editedPost.town
+                }
+                placeholder="郵便番号から自動入力されます"
                 onChange={changePost}
                 disabled={true}
               />
