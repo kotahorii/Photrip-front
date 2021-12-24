@@ -26,10 +26,10 @@ export const CreateOrEditPost = memo(() => {
   } = useApi()
   return (
     <>
-      <form onSubmit={submitPost} className="p-3">
-        <div className=" flex flex-col space-y-3 mt-2">
+      <form onSubmit={submitPost} className="md:p-3">
+        <div className=" flex flex-col space-y-1 mt-2">
           <div className="flex md:flex-row md:items-center flex-col w-full md:space-x-2">
-            <div className="space-y-1 w-full">
+            <div className="w-full">
               <CustomLabel title="タイトル" />
               <div className="md:w-96 w-full">
                 <CustomInput
@@ -44,7 +44,7 @@ export const CreateOrEditPost = memo(() => {
                 {editedPost.title.length > 30 && '30文字以内で入力してください'}
               </ValidationMessage>
             </div>
-            <div className="md:w-80 h-17 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-5 mb-2">
+            <div className="md:w-80 h-17 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
               <div>
                 <CustomLabel title="郵便番号" />
               </div>
@@ -126,7 +126,7 @@ export const CreateOrEditPost = memo(() => {
             </div>
           </div>
         </div>
-        <div className="w-full h-64 flex flex-col space-y-4 mt-3 items-center">
+        <div className="w-full h-64 flex flex-col md:space-y-4 space-y-2 md:mt-3 mt-2 items-center">
           <PostImageInput />
           <CustomButton
             disabled={validationCreatePost()}
