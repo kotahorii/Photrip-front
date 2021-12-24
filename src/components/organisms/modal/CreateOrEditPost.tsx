@@ -44,7 +44,7 @@ export const CreateOrEditPost = memo(() => {
                 {editedPost.title.length > 30 && '30文字以内で入力してください'}
               </ValidationMessage>
             </div>
-            <div className="md:w-80 h-17 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
+            <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
               <div>
                 <CustomLabel title="郵便番号" />
               </div>
