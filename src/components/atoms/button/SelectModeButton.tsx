@@ -19,7 +19,7 @@ export const SelectModeButton: VFC<Props> = memo(
       >
         {children}
         {postsMode === mode && (
-          <div className="bg-indigo-400 absolute left-0 bottom-0 mt-1 rounded-full w-full h-0.5"></div>
+          <div className="bg-blue-400 absolute left-0 bottom-0 mt-1 rounded-full w-full h-0.5"></div>
         )}
       </button>
     )

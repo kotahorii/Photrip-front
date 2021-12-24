@@ -14,13 +14,13 @@ export const CustomTag: VFC<Props> = memo(({ label }) => {
   return (
     <div
       key={label.id}
-      className=" flex flex-row justify-between items-center min-w-1/2 truncate overflow-ellipsis mt-2 px-3 py-1 shadow-sm text-indigo-800 bg-indigo-200 rounded-full"
+      className=" flex flex-row justify-between items-center min-w-1/2 truncate overflow-ellipsis mt-2 px-3 py-1 shadow-sm text-blue-800 bg-blue-200 rounded-full"
     >
       <p className="text-center w-full">{label.name}</p>
       {label.userId === currentUser?.id && (
         <XCircleIcon
           onClick={deleteLabel(label)}
-          className="cursor-pointer text-indigo-500 w-5"
+          className="cursor-pointer text-blue-500 w-5"
         />
       )}
     </div>

@@ -26,7 +26,7 @@ export const MyPage = memo(() => {
     )
   return (
     <Layout>
-      <div className="flex flex-row border-b border-indigo-600 space-x-1">
+      <div className="flex flex-row border-b border-blue-600 space-x-1">
         <SelectModeButton
           postsMode={postsMode}
           onClick={changePostsMode('myPosts')}

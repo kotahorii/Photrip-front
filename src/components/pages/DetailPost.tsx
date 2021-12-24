@@ -150,7 +150,7 @@ export const DetailPost = memo(() => {
               onSubmit={submitComment}
               className=" w-96 flex flex-col space-y-2 rounded-lg"
             >
-              <div className="w-full md:h-104 h-80 p-2 space-y-3 overflow-auto bg-gradient-to-tr from-blue-200 via-indigo-100 to-indigo-200 rounded-md">
+              <div className="w-full md:h-104 h-80 p-2 space-y-3 overflow-auto bg-gray-100 rounded-md">
                 {detailPost?.comments.map((comment) => (
                   <CommentCard key={comment.id} comment={comment} />
                 ))}
@@ -192,7 +192,7 @@ export const DetailPost = memo(() => {
               </div>
             </form>
           </div>
-          <Disclosure.Button className=" text-indigo-600 bg-indigo-100 hover:bg-indigo-200 md:w-1/2 w-8/12 rounded-lg border-indigo-400 border-2 shadow-md">
+          <Disclosure.Button className=" text-blue-600 bg-blue-100 hover:bg-blue-200 md:w-1/2 w-8/12 rounded-lg border-blue-400 border-2 shadow-sm">
             <div
               onClick={toggleOpenDisclosure}
               className="flex flex-row justify-center space-x-2 py-2"
@@ -209,7 +209,7 @@ export const DetailPost = memo(() => {
             <DisclosureText />
           </div>
           {/* <GoogleMapComponent post={detailPost} /> */}
-          <div className="h-96 w-screen bg-gradient-to-tr from-blue-300 via-indigo-200 to-indigo-300 "></div>
+          <div className="h-96 w-full bg-blue-200 "></div>
         </div>
         <CustomModal
           width="w-full"

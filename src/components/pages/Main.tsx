@@ -59,7 +59,7 @@ export const Main = memo(() => {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-5 items-center justify-center  md:w-11/12 lg:space-y-0 space-y-1">
           <RadioButton radioData={RadioData} />
-          <p className=" w-28 border-2 border-indigo-800 text-indigo-800 rounded-lg text-center py-1">
+          <p className=" w-28 border-2 border-blue-800 text-blue-800 rounded-lg text-center py-1">
             {
               filteredPosts(posts)
                 ?.map((post) =>

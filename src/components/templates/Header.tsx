@@ -18,23 +18,27 @@ export const Header = memo(() => {
             behavior: 'smooth',
           })
         }}
-        className="text-2xl flex flex-row items-center space-x-3 p-2 transition duration-500 hover:text-indigo-500 border-indigo-500 cursor-pointer"
+        className="text-2xl flex flex-row items-center space-x-2 p-2 transition duration-500 hover:text-blue-500 border-blue-500 cursor-pointer"
       >
-        <div className="h-16 w-16">
-          <img className="h-full w-full" src={`${process.env.PUBLIC_URL}/application_icon.png`} alt="application-icon" />
+        <div className="h-14 w-14">
+          <img
+            className="h-full w-full"
+            src={`${process.env.PUBLIC_URL}/application_icon.png`}
+            alt="application-icon"
+          />
         </div>
-        <p>application name</p>
+        <p>PhotoGo</p>
       </div>
       <div className="md:flex hidden flex-row space-x-3">
         <Link
           to="/main"
-          className="text-lg transition duration-300 hover:bg-gray-100 hover:text-indigo-500 rounded-md px-2 py-2"
+          className="text-lg transition duration-300 hover:bg-gray-100 hover:text-blue-500 rounded-md px-2 py-2"
         >
           投稿一覧
         </Link>
         <Link
           to="/myPage"
-          className="text-lg transition duration-300 hover:bg-gray-100 hover:text-indigo-500 rounded-md px-2 py-2"
+          className="text-lg transition duration-300 hover:bg-gray-100 hover:text-blue-500 rounded-md px-2 py-2"
         >
           マイページ
         </Link>

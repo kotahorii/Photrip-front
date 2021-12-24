@@ -28,32 +28,38 @@ export const CreateOrEditPost = memo(() => {
     <>
       <form onSubmit={submitPost} className="p-3">
         <div className=" flex flex-col space-y-3 mt-2">
-          <div className="flex md:flex-row flex-col w-full md:space-x-2">
-            <div className="flex-1 space-y-1">
+          <div className="flex md:flex-row md:items-center flex-col w-full md:space-x-2">
+            <div className="space-y-1 w-full">
               <CustomLabel title="タイトル" />
-              <CustomInput
-                name="title"
-                value={editedPost.title}
-                placeholder="タイトルを30文字以内で入力してください"
-                onChange={changePost}
-                isError={editedPost.title.length > 30}
-              />
+              <div className="md:w-96 w-full">
+                <CustomInput
+                  name="title"
+                  value={editedPost.title}
+                  placeholder="タイトルを30文字以内で入力してください"
+                  onChange={changePost}
+                  isError={editedPost.title.length > 30}
+                />
+              </div>
               <ValidationMessage isError={editedPost.title.length > 30}>
                 {editedPost.title.length > 30 && '30文字以内で入力してください'}
               </ValidationMessage>
             </div>
-            <div className="space-y-1">
-              <CustomLabel title="郵便番号" />
-              <div className="flex flex-row">
-                <CustomInput
-                  name="address"
-                  value={address}
-                  onChange={changeAddress}
-                  placeholder="例：739-0016"
-                />
-                <div>
+            <div className="md:w-80 h-17 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-5 mb-2">
+              <div>
+                <CustomLabel title="郵便番号" />
+              </div>
+              <div className="flex flex-row items-center">
+                <div className="md:w-56 w-full">
+                  <CustomInput
+                    name="address"
+                    value={address}
+                    onChange={changeAddress}
+                    placeholder="例：739-0016"
+                  />
+                </div>
+                <div className="md:w-24 w-32">
                   <CustomButton
-                    text="set"
+                    text="自動入力"
                     disabled={isNotValidData()}
                     loading={isLoadingAddress || isRefetchingAddress}
                     onClick={setAddressData}
