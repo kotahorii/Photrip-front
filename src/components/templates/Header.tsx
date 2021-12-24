@@ -18,7 +18,7 @@ export const Header = memo(() => {
             behavior: 'smooth',
           })
         }}
-        className="text-3xl p-2 transition duration-500 hover:border-b-3 hover:text-indigo-500 border-indigo-500 cursor-pointer"
+        className="text-3xl p-2 transition duration-500 hover:text-indigo-500 hover:font-semibold border-indigo-500 cursor-pointer"
       >
         旅行アプリ（仮）
       </div>
