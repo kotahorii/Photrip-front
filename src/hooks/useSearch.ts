@@ -52,7 +52,7 @@ export const useSearch = () => {
         ? posts?.filter(
             (post) =>
               post.labels.filter((label) => label.name.includes(searchedLabel))
-                .length > 0
+                .length > 0 || post.title.includes(searchedLabel)
           )
         : posts,
     [searchedLabel]

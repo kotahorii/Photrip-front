@@ -44,7 +44,7 @@ export const Main = memo(() => {
           <div className="md:w-96 w-full">
             <CustomInput
               name="search"
-              placeholder="タグで絞り込み"
+              placeholder="ラベルとタイトルで絞り込み"
               value={searchedLabel}
               onChange={changeSearchedLabel}
             />
