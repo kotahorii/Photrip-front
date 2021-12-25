@@ -10,10 +10,10 @@ export const Auth = memo(() => {
   const { isLogin, toggleIsLogin, authUser, isValidAuth, isLoadingAuth } =
     useAuth()
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-100 min-h-screen w-screen">
+    <div className="flex flex-col justify-center items-center bg-gray-100  min-h-screen w-screen">
       <form
         onSubmit={authUser}
-        className="flex flex-col space-y-3 md:w-96 w-96 shadow-xl bg-gray-50 rounded-md px-7 py-5 items-center text-gray-600"
+        className="flex flex-col space-y-3 md:w-96 w-96 shadow-md bg-gray-50 rounded-md px-7 py-5 items-center text-gray-600"
       >
         {isLogin ? <LoginForm /> : <SignUpForm />}
         <div className="flex flex-row w-full mt-5 space-x-3 items-center justify-center">

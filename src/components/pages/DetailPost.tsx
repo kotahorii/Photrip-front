@@ -66,8 +66,8 @@ export const DetailPost = memo(() => {
           <p className="w-full text-3xl text-center font-semibold">
             {detailPost?.title}
           </p>
-          <div className="flex md:flex-row flex-col justify-center items-center md:space-x-3 md:space-y-0 space-y-3 w-full">
-            <div className="flex flex-col justify-between space-y-4 ">
+          <div className="flex md:flex-row flex-col justify-center items-center md:space-x-3 md:space-y-0 space-y-3 md:w-full w-11/12">
+            <div className="flex flex-col justify-between items-center space-y-4 ">
               {detailPost?.image.url === null ? (
                 <div className="w-96 h-64 relative rounded-md bg-gray-200">
                   <p className=" absolute text-xl font-semibold text-gray-400 transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -75,7 +75,10 @@ export const DetailPost = memo(() => {
                   </p>
                 </div>
               ) : (
-                <div onClick={openImageModal} className=" relative w-96 h-64">
+                <div
+                  onClick={openImageModal}
+                  className=" relative md:w-96 md:h-64 w-80 h-60"
+                >
                   <div className="absolute w-full h-full rounded-md cursor-pointer transition duration-300 bg-black opacity-0 hover:opacity-20"></div>
                   <img
                     className="rounded-md object-cover w-full h-full"
@@ -84,7 +87,7 @@ export const DetailPost = memo(() => {
                   />
                 </div>
               )}
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row w-full justify-center items-center">
                 <div className="h-7 w-12 flex flex-row items-center rounded-lg">
                   {detailPost?.city !== '' && <LikeButton post={detailPost!} />}
                   <span>{detailPost?.favorites.length}</span>
@@ -100,10 +103,8 @@ export const DetailPost = memo(() => {
                     </span>
                   </p>
                 </div>
-                <div className="flex flex-row truncate overflow-ellipsis h-7 w-64 rounded-lg items-center">
-                  {detailPost?.prefecture}
-                  <span className="mx-1">{detailPost?.city}</span>
-                  {detailPost?.town}
+                <div className="flex flex-row truncate overflow-ellipsis h-7 w-56 rounded-lg items-center">
+                  {`${detailPost?.prefecture} ${detailPost?.city} ${detailPost?.town}`}
                 </div>
               </div>
               <ShopSearchButton
