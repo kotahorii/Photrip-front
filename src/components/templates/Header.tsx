@@ -8,9 +8,6 @@ export const Header = memo(() => {
   const { currentUser } = useMain()
   return (
     <nav className=" flex flex-row z-10 fixed justify-between items-center bg-gray-50 shadow-md px-10 w-screen h-20 text-gray-500 bg-gray-20">
-      <Menu.Button>
-        <CustomUserIcon user={currentUser} />
-      </Menu.Button>
       <div
         onClick={() => {
           window.scrollTo({
@@ -29,6 +26,7 @@ export const Header = memo(() => {
         </div>
         <p>PhotoGo</p>
       </div>
+
       <div className="md:flex hidden flex-row space-x-3">
         <Link
           to="/main"
@@ -43,7 +41,11 @@ export const Header = memo(() => {
           マイページ
         </Link>
       </div>
-      <div className="md:hidden block"></div>
+
+      <Menu.Button>
+        <CustomUserIcon user={currentUser} />
+      </Menu.Button>
+
     </nav>
   )
 })

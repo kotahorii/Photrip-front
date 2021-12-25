@@ -20,7 +20,6 @@ export const Layout: VFC<Props> = memo(({ children }) => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
     })
   }, [])
 
