@@ -36,7 +36,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
     <Menu>
       <div className="flex flex-col relative items-center text-gray-500 text-sm font-mono">
         <Header />
-        <main className="flex flex-1 flex-col bg-gray-50 min-h-screen absolute top-20 justify-start items-center py-5 w-screen">
+        <main className="flex flex-1 flex-col font-notoSans bg-gray-50 min-h-screen absolute top-20 justify-start items-center py-5 w-screen">
           {children}
           <CustomMenu />
         </main>

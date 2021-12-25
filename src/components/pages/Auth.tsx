@@ -10,7 +10,7 @@ export const Auth = memo(() => {
   const { isLogin, toggleIsLogin, authUser, isValidAuth, isLoadingAuth } =
     useAuth()
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex font-notoSans">
       <div className="relative md:flex hidden md:w-1/2 w-screen justify-around items-center">
         <div className="z-20 flex flex-col items-center">
           <div className="flex flex-row items-center">
@@ -21,7 +21,7 @@ export const Auth = memo(() => {
                 alt="application-icon"
               />
             </div>
-            <h1 className="text-white font-bold text-4xl font-sans">
+            <h1 className="text-white font-merriweather font-bold text-4xl font-sans">
               GoFinance
             </h1>
           </div>

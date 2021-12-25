@@ -16,7 +16,7 @@ export const RadioButton: VFC<Props> = memo(({ radioData }) => {
       {radioData.map((data) => (
         <label
           key={data.value}
-          className="w-32 transition duration-300 hover:bg-gray-200 py-1 pl-2 rounded-lg cursor-pointer"
+          className="w-32 flex flex-row items-center transition duration-300 hover:bg-gray-200 py-1 pl-2 rounded-lg cursor-pointer"
         >
           <input
             type="radio"
@@ -28,8 +28,8 @@ export const RadioButton: VFC<Props> = memo(({ radioData }) => {
             onChange={handleOptionChange}
           />
           <span
-            className={`ml-2 ${
-              Number(selectedOption) === data.value && 'font-bold'
+            className={`ml-1 ${
+              Number(selectedOption) === data.value && 'font-bold text-blue-500'
             }`}
           >
             {data.name}
