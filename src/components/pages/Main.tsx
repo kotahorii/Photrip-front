@@ -1,4 +1,3 @@
-import { CustomInput } from 'components/atoms/form/CustomInput'
 import { LoadingCard } from 'components/organisms/card/LoadingCard'
 import { Layout } from 'components/templates/Layout'
 import { useSearch } from 'hooks/useSearch'
@@ -9,6 +8,7 @@ import { prefectures } from 'data/prefecture'
 import { RadioButton } from 'components/atoms/button/RadioButton'
 import { PostsList } from 'components/organisms/main/PostsList'
 import { RadioData } from 'data/radioData'
+import { SearchIcon } from '@heroicons/react/outline'
 
 export const Main = memo(() => {
   const { isLoadingUser, isLoadingPosts, posts } = useMain()
@@ -41,12 +41,18 @@ export const Main = memo(() => {
     <Layout>
       <div className=" flex flex-col items-center md:w-7/12 w-11/12 space-y-5">
         <div className=" flex flex-row space-x-1 justify-center items-center">
-          <div className="md:w-96 w-full">
-            <CustomInput
+          <div className="md:w-96 w-full relative">
+            {/* <CustomInput
               name="search"
               placeholder="ラベルとタイトルで絞り込み"
               value={searchedLabel}
               onChange={changeSearchedLabel}
+            /> */}
+            <SearchIcon className="absolute w-6 h-6 text-gray-500 ml-2 top-1/4" />
+            <input
+              type="search"
+              className=" bg-gray-200 py-3 pl-10 rounded-md w-full ring-blue-500 focus:ring-2 focus:outline-none focus:bg-transparent"
+              placeholder="キーワードで検索"
             />
           </div>
           <div className=" w-56">
