@@ -118,14 +118,16 @@ export const DetailPost = memo(() => {
               <div className="flex flex-row space-x-1">
                 {detailPost?.userId === currentUser?.id && (
                   <>
-                    <CustomInput
-                      name="label"
-                      value={labelName}
-                      placeholder="１５文字以内で入力してください"
-                      onChange={changeLabel}
-                      isError={labelName.length > 15}
-                    />
-                    <div className="w-24">
+                    <div className="w-64">
+                      <CustomInput
+                        name="label"
+                        value={labelName}
+                        placeholder="１５文字以内で入力してください"
+                        onChange={changeLabel}
+                        isError={labelName.length > 15}
+                      />
+                    </div>
+                    <div className="w-28">
                       <CustomButton
                         text="ラベル"
                         onClick={createLabel}
