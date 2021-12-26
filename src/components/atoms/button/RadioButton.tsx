@@ -16,8 +16,8 @@ export const RadioButton: VFC<Props> = memo(({ data }) => {
       <label
         key={data.value}
         className={`flex items-center justify-center p-3 border-2 md:mr-0 mr-1 ${
-          Number(selectedOption) === data.value &&
-          'font-bold text-white bg-blue-400'
+          Number(selectedOption) === data.value ?
+          'font-bold text-white bg-blue-400':'text-blue-500'
         } border-blue-400 items-center hover:bg-blue-400 hover:text-white transition duration-300 rounded-lg cursor-pointer`}
       >
         <input

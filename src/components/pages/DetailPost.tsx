@@ -15,14 +15,14 @@ import { HotelModal } from 'components/organisms/modal/HotelModal'
 import { CustomRateInput } from 'components/molecules/rate/CustomRateInput'
 import { useRates } from 'hooks/useRate'
 import { Disclosure } from '@headlessui/react'
-import { DisclosureText } from 'components/molecules/DisclosureText'
+import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
 import { useSearch } from 'hooks/useSearch'
 import { CustomTag } from 'components/atoms/button/CustomTag'
 import { PaperAirplaneIcon } from '@heroicons/react/solid'
-import { ChevronDownIcon } from '@heroicons/react/outline'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
 import { TextArea } from 'components/atoms/form/TextArea'
+import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -195,21 +195,16 @@ export const DetailPost = memo(() => {
               </div>
             </form>
           </div>
-          <Disclosure.Button className=" text-blue-600 bg-blue-100 hover:bg-blue-200 md:w-1/2 w-8/12 rounded-lg border-blue-400 border-2 shadow-sm">
-            <div
-              onClick={toggleOpenDisclosure}
-              className="flex flex-row justify-center space-x-2 py-2"
+          <div className="md:w-1/2 w-8/12">
+            <DisclosureButton
+              isOpen={openDisclosure}
+              toggleOpen={toggleOpenDisclosure}
             >
-              <span>詳細を見る</span>
-              <ChevronDownIcon
-                className={`${
-                  openDisclosure ? '' : 'transform rotate-180'
-                } w-5 h-5 text-purple-500`}
-              />
-            </div>
-          </Disclosure.Button>
+              詳細を見る
+            </DisclosureButton>
+          </div>
           <div className="md:w-6/12 w-8/12">
-            <DisclosureText />
+            <PostDetailDisclosure />
           </div>
           {/* <GoogleMapComponent post={detailPost} /> */}
           <div className="h-96 w-full bg-blue-200 "></div>

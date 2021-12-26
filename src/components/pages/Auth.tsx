@@ -5,6 +5,7 @@ import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
 import { CustomButton } from 'components/atoms/button/CustomButton'
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Auth = memo(() => {
   const {
@@ -58,20 +59,28 @@ export const Auth = memo(() => {
               loading={isLoadingAuth()}
             />
           </div>
-          <div className="flex flex-row space-x-5 justify-center items-center w-full">
-            <CustomButton
-              onClick={guestUserLogin}
-              text="ゲストユーザーでログイン"
-              loading={isLoadingGuestUser()}
-            />
-          </div>
+          {isLogin && (
+            <div className="flex flex-row space-x-5 justify-center items-center w-full">
+              <CustomButton
+                onClick={guestUserLogin}
+                text="ゲストユーザーでログイン"
+                loading={isLoadingGuestUser()}
+              />
+            </div>
+          )}
           <div
             onClick={toggleIsLogin}
             className="flex flex-row space-x-3 w-full text-blue-500 hover:text-blue-600 cursor-pointer"
           >
             <SwitchVerticalIcon className="w-6 " />
-            <p>{isLogin ? '新規登録はこちら' : 'ログインフォームはこちら'}</p>
+            <p>{isLogin ? '新規登録はこちら' : 'ログインはこちら'}</p>
           </div>
+          <Link
+            to="/help"
+            className="cursor-pointer w-full text-blue-500 hover:text-blue-600"
+          >
+            使い方を確認する
+          </Link>
         </form>
         <SuccessToast />
       </div>

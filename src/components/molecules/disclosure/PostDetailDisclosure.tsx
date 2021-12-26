@@ -3,9 +3,9 @@ import { UserInfo } from 'components/atoms/UserInfo'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useUsers } from 'hooks/useUsers'
 import { memo } from 'react'
-import { CustomUserIcon } from './userIcon/CustomUserIcon'
+import { CustomUserIcon } from '../userIcon/CustomUserIcon'
 
-export const DisclosureText = memo(() => {
+export const PostDetailDisclosure = memo(() => {
   const { detailPost, postUser, isLoadingDetailPost } = useDetailPost()
   const { isLoadingUsers, users } = useUsers()
 
