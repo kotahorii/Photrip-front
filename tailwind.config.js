@@ -2,6 +2,10 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false,
   theme: {
+    fontFamily: {
+      notoSans: ['Noto Sans JP'],
+      merriweather: ['Merriweather'],
+    },
     minWidth: {
       0: '0',
       '1/4': '25%',
@@ -20,6 +24,8 @@ module.exports = {
     },
     extend: {
       spacing: {
+        17: '4.25rem',
+        18: '4.5rem',
         160: '40rem',
         116: '29rem',
         104: '26rem',

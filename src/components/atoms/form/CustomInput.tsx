@@ -26,8 +26,8 @@ export const CustomInput: VFC<Props> = memo(
         placeholder={placeholder}
         disabled={disabled}
         className={`px-3 py-2 w-full disabled:cursor-not-allowed ${
-          isError ? 'border-pink-500' : 'border-indigo-500'
-        } focus:outline-none bg-transparent border-b placeholder-indigo-400 text-gray-600 focus:border-b-2`}
+          isError ? 'border-pink-500' : 'border-blue-500'
+        } focus:outline-none bg-transparent border-b-2 placeholder-blue-400 text-gray-600 focus:border-b-3`}
         name={name}
         value={value}
         onChange={onChange}

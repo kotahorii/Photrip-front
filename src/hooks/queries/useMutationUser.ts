@@ -11,7 +11,7 @@ export const useMutationUser = () => {
   const queryClient = useQueryClient()
 
   const updateUserMutation = useMutation(
-    (data: Data) => client.put(`users/${data.id}`, data.formData),
+    (data: Data) => client.put<User>(`users/${data.id}`, data.formData),
     {
       onSuccess: (res, variable) => {
         const previousUsers = queryClient.getQueryData<User[]>('users')

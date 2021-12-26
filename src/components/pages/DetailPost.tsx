@@ -15,14 +15,14 @@ import { HotelModal } from 'components/organisms/modal/HotelModal'
 import { CustomRateInput } from 'components/molecules/rate/CustomRateInput'
 import { useRates } from 'hooks/useRate'
 import { Disclosure } from '@headlessui/react'
-import { DisclosureText } from 'components/molecules/DisclosureText'
+import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
 import { useSearch } from 'hooks/useSearch'
 import { CustomTag } from 'components/atoms/button/CustomTag'
 import { PaperAirplaneIcon } from '@heroicons/react/solid'
-import { ChevronDownIcon } from '@heroicons/react/outline'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
 import { TextArea } from 'components/atoms/form/TextArea'
+import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -66,8 +66,8 @@ export const DetailPost = memo(() => {
           <p className="w-full text-3xl text-center font-semibold">
             {detailPost?.title}
           </p>
-          <div className="flex md:flex-row flex-col justify-center items-center md:space-x-3 md:space-y-0 space-y-3 w-full">
-            <div className="flex flex-col justify-between space-y-4 ">
+          <div className="flex md:flex-row flex-col justify-center items-center md:space-x-3 md:space-y-0 space-y-3 md:w-full w-11/12">
+            <div className="flex flex-col justify-between items-center space-y-4 ">
               {detailPost?.image.url === null ? (
                 <div className="w-96 h-64 relative rounded-md bg-gray-200">
                   <p className=" absolute text-xl font-semibold text-gray-400 transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -75,7 +75,10 @@ export const DetailPost = memo(() => {
                   </p>
                 </div>
               ) : (
-                <div onClick={openImageModal} className=" relative w-96 h-64">
+                <div
+                  onClick={openImageModal}
+                  className=" relative md:w-96 md:h-64 w-80 h-60"
+                >
                   <div className="absolute w-full h-full rounded-md cursor-pointer transition duration-300 bg-black opacity-0 hover:opacity-20"></div>
                   <img
                     className="rounded-md object-cover w-full h-full"
@@ -84,7 +87,7 @@ export const DetailPost = memo(() => {
                   />
                 </div>
               )}
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row w-full justify-center items-center">
                 <div className="h-7 w-12 flex flex-row items-center rounded-lg">
                   {detailPost?.city !== '' && <LikeButton post={detailPost!} />}
                   <span>{detailPost?.favorites.length}</span>
@@ -100,10 +103,8 @@ export const DetailPost = memo(() => {
                     </span>
                   </p>
                 </div>
-                <div className="flex flex-row truncate overflow-ellipsis h-7 w-64 rounded-lg items-center">
-                  {detailPost?.prefecture}
-                  <span className="mx-1">{detailPost?.city}</span>
-                  {detailPost?.town}
+                <div className="flex flex-row truncate overflow-ellipsis h-7 w-56 rounded-lg items-center">
+                  {`${detailPost?.prefecture} ${detailPost?.city} ${detailPost?.town}`}
                 </div>
               </div>
               <ShopSearchButton
@@ -117,14 +118,16 @@ export const DetailPost = memo(() => {
               <div className="flex flex-row space-x-1">
                 {detailPost?.userId === currentUser?.id && (
                   <>
-                    <CustomInput
-                      name="label"
-                      value={labelName}
-                      placeholder="１５文字以内で入力してください"
-                      onChange={changeLabel}
-                      isError={labelName.length > 15}
-                    />
-                    <div className="w-24">
+                    <div className="w-64">
+                      <CustomInput
+                        name="label"
+                        value={labelName}
+                        placeholder="１５文字以内で入力してください"
+                        onChange={changeLabel}
+                        isError={labelName.length > 15}
+                      />
+                    </div>
+                    <div className="w-28">
                       <CustomButton
                         text="ラベル"
                         onClick={createLabel}
@@ -150,7 +153,7 @@ export const DetailPost = memo(() => {
               onSubmit={submitComment}
               className=" w-96 flex flex-col space-y-2 rounded-lg"
             >
-              <div className="w-full md:h-104 h-80 p-2 space-y-3 overflow-auto bg-gradient-to-tr from-blue-200 via-indigo-100 to-indigo-200 rounded-md">
+              <div className="w-full md:h-104 h-80 p-2 space-y-3 overflow-auto bg-gray-100 rounded-md">
                 {detailPost?.comments.map((comment) => (
                   <CommentCard key={comment.id} comment={comment} />
                 ))}
@@ -192,24 +195,19 @@ export const DetailPost = memo(() => {
               </div>
             </form>
           </div>
-          <Disclosure.Button className=" text-indigo-600 bg-indigo-100 hover:bg-indigo-200 md:w-1/2 w-8/12 rounded-lg border-indigo-400 border-2 shadow-md">
-            <div
-              onClick={toggleOpenDisclosure}
-              className="flex flex-row justify-center space-x-2 py-2"
+          <div className="md:w-1/2 w-8/12">
+            <DisclosureButton
+              isOpen={openDisclosure}
+              toggleOpen={toggleOpenDisclosure}
             >
-              <span>詳細を見る</span>
-              <ChevronDownIcon
-                className={`${
-                  openDisclosure ? '' : 'transform rotate-180'
-                } w-5 h-5 text-purple-500`}
-              />
-            </div>
-          </Disclosure.Button>
+              詳細を見る
+            </DisclosureButton>
+          </div>
           <div className="md:w-6/12 w-8/12">
-            <DisclosureText />
+            <PostDetailDisclosure />
           </div>
           {/* <GoogleMapComponent post={detailPost} /> */}
-          <div className="h-96 w-screen bg-gradient-to-tr from-blue-300 via-indigo-200 to-indigo-300 "></div>
+          <div className="h-96 w-full bg-blue-200 "></div>
         </div>
         <CustomModal
           width="w-full"

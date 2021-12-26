@@ -31,7 +31,7 @@ export const EditUserText = memo(() => {
           ? '名前が長すぎます'
           : null}
       </ValidationMessage>
-      <div className="flex flex-row">
+      <div className="flex flex-row w-full justify-center">
         <CustomLabel title="自己紹介" />
         <span className="ml-3">
           {userData.introduction !== null ? userData.introduction.length : 0}

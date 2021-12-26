@@ -1,4 +1,3 @@
-import { CustomInput } from 'components/atoms/form/CustomInput'
 import { LoadingCard } from 'components/organisms/card/LoadingCard'
 import { Layout } from 'components/templates/Layout'
 import { useSearch } from 'hooks/useSearch'
@@ -9,6 +8,7 @@ import { prefectures } from 'data/prefecture'
 import { RadioButton } from 'components/atoms/button/RadioButton'
 import { PostsList } from 'components/organisms/main/PostsList'
 import { RadioData } from 'data/radioData'
+import { SearchInput } from 'components/atoms/form/SearchInput'
 
 export const Main = memo(() => {
   const { isLoadingUser, isLoadingPosts, posts } = useMain()
@@ -39,15 +39,10 @@ export const Main = memo(() => {
     )
   return (
     <Layout>
-      <div className=" flex flex-col items-center md:w-7/12 w-11/12 space-y-5">
+      <div className=" flex flex-col items-center md:w-9/12 w-11/12 space-y-5">
         <div className=" flex flex-row space-x-1 justify-center items-center">
-          <div className="md:w-96 w-full">
-            <CustomInput
-              name="search"
-              placeholder="タグで絞り込み"
-              value={searchedLabel}
-              onChange={changeSearchedLabel}
-            />
+          <div className="md:w-96 w-full relative">
+            <SearchInput value={searchedLabel} onChange={changeSearchedLabel} />
           </div>
           <div className=" w-56">
             <CustomSelector
@@ -57,9 +52,13 @@ export const Main = memo(() => {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-5 items-center justify-center  md:w-11/12 lg:space-y-0 space-y-1">
-          <RadioButton radioData={RadioData} />
-          <p className=" w-28 border-2 border-indigo-800 text-indigo-800 rounded-lg text-center py-1">
+        <div className="flex md:flex-row flex-col items-center justify-center md:space-x-2 md:space-y-0 space-y-5">
+          <div className=" grid md:grid-cols-4 grid-cols-2 md:space-x-2 items-center justify-center lg:space-y-0 space-y-1">
+            {RadioData.map((data) => (
+              <RadioButton key={data.name} data={data} />
+            ))}
+          </div>
+          <p className=" w-28 bg-blue-500 text-white rounded-sm text-center py-3">
             {
               filteredPosts(posts)
                 ?.map((post) =>

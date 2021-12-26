@@ -5,18 +5,52 @@ import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
 import { CustomButton } from 'components/atoms/button/CustomButton'
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Auth = memo(() => {
-  const { isLogin, toggleIsLogin, authUser, isValidAuth, isLoadingAuth } =
-    useAuth()
+  const {
+    isLogin,
+    toggleIsLogin,
+    authUser,
+    isValidAuth,
+    isLoadingAuth,
+    guestUserLogin,
+    isLoadingGuestUser,
+  } = useAuth()
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-100 min-h-screen w-screen">
-      <form
-        onSubmit={authUser}
-        className="flex flex-col space-y-3 md:w-96 w-96 shadow-xl bg-gray-50 rounded-md px-7 py-5 items-center text-gray-600"
-      >
-        {isLogin ? <LoginForm /> : <SignUpForm />}
-        <div className="flex flex-row w-full mt-5 space-x-3 items-center justify-center">
+    <div className="h-screen flex font-notoSans">
+      <div className="relative md:flex hidden md:w-1/2 w-screen justify-around items-center">
+        <div className="z-20 flex flex-col items-center">
+          <div className="flex flex-row items-center">
+            <div className="h-12 w-12">
+              <img
+                className="h-full w-full"
+                src={`${process.env.PUBLIC_URL}/application_icon.png`}
+                alt="application-icon"
+              />
+            </div>
+            <h1 className="text-white font-merriweather font-bold text-4xl font-sans">
+              Photrip
+            </h1>
+          </div>
+          <p className="text-white mt-1 text-center">
+            ログインしてお気に入りの場所を見つけましょう
+          </p>
+        </div>
+        <div className="h-full w-full bg-black opacity-20 z-10 absolute"></div>
+        <img
+          className="h-full w-full object-cover absolute"
+          alt="auth_page_photo"
+          src={`${process.env.PUBLIC_URL}/portfolio_image.jpeg`}
+        />
+      </div>
+
+      <div className="flex flex-col md:w-1/2 w-screen justify-center items-center bg-gray-100  min-h-screen">
+        <form
+          onSubmit={authUser}
+          className="flex flex-col space-y-3 w-96 px-7 py-5 items-center text-gray-600"
+        >
+          {isLogin ? <LoginForm /> : <SignUpForm />}
           <div className="flex flex-row space-x-5 justify-center items-center w-full">
             <CustomButton
               disabled={isValidAuth}
@@ -24,14 +58,32 @@ export const Auth = memo(() => {
               text={isLogin ? 'ログイン' : '新規登録'}
               loading={isLoadingAuth()}
             />
-            <SwitchVerticalIcon
-              className="w-6 text-blue-500 hover:text-blue-600 cursor-pointer"
-              onClick={toggleIsLogin}
-            />
           </div>
-        </div>
-      </form>
-      <SuccessToast />
+          {isLogin && (
+            <div className="flex flex-row space-x-5 justify-center items-center w-full">
+              <CustomButton
+                onClick={guestUserLogin}
+                text="ゲストユーザーでログイン"
+                loading={isLoadingGuestUser()}
+              />
+            </div>
+          )}
+          <div
+            onClick={toggleIsLogin}
+            className="flex flex-row space-x-3 w-full text-blue-500 hover:text-blue-600 cursor-pointer"
+          >
+            <SwitchVerticalIcon className="w-6 " />
+            <p>{isLogin ? '新規登録はこちら' : 'ログインはこちら'}</p>
+          </div>
+          <Link
+            to="/help"
+            className="cursor-pointer w-full text-blue-500 hover:text-blue-600"
+          >
+            使い方を確認する
+          </Link>
+        </form>
+        <SuccessToast />
+      </div>
     </div>
   )
 })
