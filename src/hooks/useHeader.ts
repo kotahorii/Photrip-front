@@ -89,6 +89,8 @@ export const useHeader = () => {
     },
   ]
 
+  const onClickHelpPage = () => navigate('/help')
+
   return {
     isOpenCreatePostModal,
     isOpenEditUserModal,
@@ -99,5 +101,6 @@ export const useHeader = () => {
     myPageNavigate,
     menuItems,
     responsiveItems,
+    onClickHelpPage,
   }
 }

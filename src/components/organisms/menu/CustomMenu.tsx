@@ -1,12 +1,12 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, memo } from 'react'
-import { LogoutIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon, LogoutIcon } from '@heroicons/react/outline'
 import { useAuth } from 'hooks/useAuth'
 import { useHeader } from 'hooks/useHeader'
 
 export const CustomMenu = memo(() => {
   const { signOut } = useAuth()
-  const { menuItems, responsiveItems } = useHeader()
+  const { menuItems, responsiveItems, onClickHelpPage } = useHeader()
   return (
     <Transition
       as={Fragment}
@@ -47,10 +47,19 @@ export const CustomMenu = memo(() => {
         <div className="p-1">
           <Menu.Item>
             <button
+              onClick={onClickHelpPage}
+              className="text-gray-500 transition duration-300 hover:bg-blue-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
+            >
+              <InformationCircleIcon className="w-6 mr-2" />
+              ヘルプページ
+            </button>
+          </Menu.Item>
+          <Menu.Item>
+            <button
               onClick={signOut}
               className="text-gray-500 transition duration-300 hover:bg-blue-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
             >
-              <LogoutIcon className="w-6 mr-2" />
+              <LogoutIcon className="w-6 mr-1 ml-1" />
               ログアウト
             </button>
           </Menu.Item>

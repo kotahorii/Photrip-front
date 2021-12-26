@@ -1,5 +1,6 @@
 import { Auth } from 'components/pages/Auth'
 import { DetailPost } from 'components/pages/DetailPost'
+import { Help } from 'components/pages/Help'
 import { MyPage } from 'components/pages/MyPage'
 import { PrivateRoute } from 'components/templates/route/PrivateRoute'
 import { PublicRoute } from 'components/templates/route/PublicRoute'
@@ -41,6 +42,7 @@ function App() {
           </PrivateRoute>
         }
       />
+      <Route path="/help" element={<Help />} />
       <Route path="*" element={<Navigate to="/main" replace />} />
     </Routes>
   )

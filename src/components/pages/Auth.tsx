@@ -25,7 +25,7 @@ export const Auth = memo(() => {
               GoFinance
             </h1>
           </div>
-          <p className="text-white mt-1">
+          <p className="text-white mt-1 text-center">
             The most popular peer to peer lending at SEA
           </p>
         </div>
