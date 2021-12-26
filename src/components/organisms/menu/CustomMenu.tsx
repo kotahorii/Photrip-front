@@ -23,7 +23,7 @@ export const CustomMenu = memo(() => {
             <Menu.Item key={item.name}>
               <button
                 onClick={item.onClick}
-                className="text-gray-500 transition duration-300 hover:bg-gray-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
+                className="text-gray-500 transition duration-300 hover:bg-blue-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
               >
                 <item.icon className="w-6 mr-2" />
                 {item.name}
@@ -36,7 +36,7 @@ export const CustomMenu = memo(() => {
             <Menu.Item key={item.name}>
               <button
                 onClick={item.onClick}
-                className="text-gray-500 transition duration-300 hover:bg-gray-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
+                className="text-gray-500 transition duration-300 hover:bg-blue-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
               >
                 <item.icon className="w-6 mr-2" />
                 {item.name}
@@ -48,7 +48,7 @@ export const CustomMenu = memo(() => {
           <Menu.Item>
             <button
               onClick={signOut}
-              className="text-gray-500 transition duration-300 hover:bg-gray-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
+              className="text-gray-500 transition duration-300 hover:bg-blue-100 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm"
             >
               <LogoutIcon className="w-6 mr-2" />
               ログアウト

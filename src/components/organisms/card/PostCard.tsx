@@ -52,7 +52,9 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
             <p className="text-xl truncate overflow-ellipsis">{post.title}</p>
           </div>
           <div className="h-16 md:block hidden rounded-md max-w-xs">
-            <p className="text-lg truncate overflow-ellipsis">{post.body}</p>
+            <p className="text-lg text-gray-400 truncate overflow-ellipsis">
+              {post.body}
+            </p>
           </div>
           <div className="h-6 flex flex-col space-y-1 rounded-md max-w-xs">
             <p>
@@ -60,7 +62,9 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
               <span className="mx-2">{post.city}</span>
               {post.town}
             </p>
-            <p className="text-xs">{formatDate(post.createdAt)}</p>
+            <p className="text-xs text-gray-400">
+              {formatDate(post.createdAt)}
+            </p>
           </div>
         </Link>
         <div className="flex flex-row relative mt-5 justify-between items-center px-2">

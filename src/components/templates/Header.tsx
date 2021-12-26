@@ -30,13 +30,13 @@ export const Header = memo(() => {
       <div className="md:flex font-notoSans font-semibold hidden flex-row space-x-3">
         <Link
           to="/main"
-          className="text-lg transition duration-300 hover:bg-gray-100 hover:text-blue-500 rounded-md px-2 py-2"
+          className="text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded-md px-2 py-2"
         >
           投稿一覧
         </Link>
         <Link
           to="/myPage"
-          className="text-lg transition duration-300 hover:bg-gray-100 hover:text-blue-500 rounded-md px-2 py-2"
+          className="text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded-md px-2 py-2"
         >
           マイページ
         </Link>
