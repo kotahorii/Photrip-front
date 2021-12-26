@@ -39,7 +39,7 @@ export const Main = memo(() => {
     )
   return (
     <Layout>
-      <div className=" flex flex-col items-center md:w-7/12 w-11/12 space-y-5">
+      <div className=" flex flex-col items-center md:w-9/12 w-11/12 space-y-5">
         <div className=" flex flex-row space-x-1 justify-center items-center">
           <div className="md:w-96 w-full relative">
             <SearchInput value={searchedLabel} onChange={changeSearchedLabel} />
@@ -52,24 +52,26 @@ export const Main = memo(() => {
             />
           </div>
         </div>
-        <div className=" grid md:grid-cols-4 grid-cols-2 md:space-x-2 items-center justify-center  md:w-18/12 lg:space-y-0 space-y-1">
-          {RadioData.map((data) => (
-            <RadioButton key={data.name} data={data} />
-          ))}
+        <div className="flex md:flex-row flex-col items-center justify-center md:space-x-2 md:space-y-0 space-y-5">
+          <div className=" grid md:grid-cols-4 grid-cols-2 md:space-x-2 items-center justify-center lg:space-y-0 space-y-1">
+            {RadioData.map((data) => (
+              <RadioButton key={data.name} data={data} />
+            ))}
+          </div>
+          <p className=" w-28 bg-blue-500 text-white rounded-sm text-center py-3">
+            {
+              filteredPosts(posts)
+                ?.map((post) =>
+                  post?.prefecture === prefectures[searchPrefecture - 1] ||
+                  prefectures[searchPrefecture - 1] === '都道府県を選択'
+                    ? post
+                    : undefined
+                )
+                .filter((data) => data !== undefined).length
+            }
+            件の結果
+          </p>
         </div>
-        <p className=" w-28 border-2 border-blue-800 text-blue-800 rounded-lg text-center py-1">
-          {
-            filteredPosts(posts)
-              ?.map((post) =>
-                post?.prefecture === prefectures[searchPrefecture - 1] ||
-                prefectures[searchPrefecture - 1] === '都道府県を選択'
-                  ? post
-                  : undefined
-              )
-              .filter((data) => data !== undefined).length
-          }
-          件の結果
-        </p>
       </div>
       <div className="flex flex-col w-full items-center justify-center">
         {selectedOption === '1' ? (
