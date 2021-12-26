@@ -12,7 +12,6 @@ export const Header = memo(() => {
         onClick={() => {
           window.scrollTo({
             top: 0,
-            behavior: 'smooth',
           })
         }}
         className="text-2xl flex flex-row items-center space-x-2 p-2 transition duration-500 hover:text-blue-500 border-blue-500 cursor-pointer"
@@ -24,7 +23,7 @@ export const Header = memo(() => {
             alt="application-icon"
           />
         </div>
-        <p className="font-semibold">PhotoGo</p>
+        <p className="font-semibold">Photrip</p>
       </div>
 
       <div className="md:flex font-notoSans font-semibold hidden flex-row space-x-3">

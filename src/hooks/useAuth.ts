@@ -96,6 +96,20 @@ export const useAuth = () => {
     [isLogin, createFormData, signInMutation, signUpMutation, userData]
   )
 
+  const guestUserLogin = useCallback(
+    () =>
+      signInMutation.mutate({
+        email: 'test@test.com',
+        password: 'aaaaaa',
+      }),
+    [signInMutation]
+  )
+
+  const isLoadingGuestUser = useCallback(
+    () => signInMutation.isLoading,
+    [signInMutation]
+  )
+
   const signOut = useCallback(() => signOutMutation.mutate(), [signOutMutation])
 
   const isValidAuth = isLogin
@@ -127,5 +141,7 @@ export const useAuth = () => {
     signOut,
     isValidAuth,
     isLoadingAuth,
+    guestUserLogin,
+    isLoadingGuestUser,
   }
 }

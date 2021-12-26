@@ -7,8 +7,15 @@ import { CustomButton } from 'components/atoms/button/CustomButton'
 import { memo } from 'react'
 
 export const Auth = memo(() => {
-  const { isLogin, toggleIsLogin, authUser, isValidAuth, isLoadingAuth } =
-    useAuth()
+  const {
+    isLogin,
+    toggleIsLogin,
+    authUser,
+    isValidAuth,
+    isLoadingAuth,
+    guestUserLogin,
+    isLoadingGuestUser,
+  } = useAuth()
   return (
     <div className="h-screen flex font-notoSans">
       <div className="relative md:flex hidden md:w-1/2 w-screen justify-around items-center">
@@ -22,11 +29,11 @@ export const Auth = memo(() => {
               />
             </div>
             <h1 className="text-white font-merriweather font-bold text-4xl font-sans">
-              GoFinance
+              Photrip
             </h1>
           </div>
           <p className="text-white mt-1 text-center">
-            The most popular peer to peer lending at SEA
+            ログインしてお気に入りの場所を見つけましょう
           </p>
         </div>
         <div className="h-full w-full bg-black opacity-20 z-10 absolute"></div>
@@ -49,6 +56,13 @@ export const Auth = memo(() => {
               type="submit"
               text={isLogin ? 'ログイン' : '新規登録'}
               loading={isLoadingAuth()}
+            />
+          </div>
+          <div className="flex flex-row space-x-5 justify-center items-center w-full">
+            <CustomButton
+              onClick={guestUserLogin}
+              text="ゲストユーザーでログイン"
+              loading={isLoadingGuestUser()}
             />
           </div>
           <div
