@@ -30,7 +30,9 @@ export const CreateOrEditPost = memo(() => {
         <div className=" flex flex-col space-y-2 mt-2">
           <div className="flex md:flex-row md:items-center flex-col w-full md:space-x-2">
             <div className="w-full">
-              <CustomLabel title="タイトル" />
+              <div className="ml-3">
+                <CustomLabel title="タイトル" />
+              </div>
               <CustomInput
                 name="title"
                 value={editedPost.title}
@@ -46,7 +48,7 @@ export const CreateOrEditPost = memo(() => {
           <div className="flex flex-row items-end w-full md:space-x-2">
             <div className="flex flex-row space-x-2 items-center w-full">
               <div className="flex-1">
-                <div className="flex flex-row">
+                <div className="flex flex-row ml-3 my-2">
                   <CustomLabel title="本文" />
                   <p className="ml-3">
                     {editedPost.body !== null ? editedPost.body.length : 0}/140
@@ -70,7 +72,7 @@ export const CreateOrEditPost = memo(() => {
           </ValidationMessage>
           <div className="flex md:flex-row flex-col">
             <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
-              <div>
+              <div className="ml-3">
                 <CustomLabel title="郵便番号" />
               </div>
               <div className="flex flex-row items-center">
@@ -93,7 +95,9 @@ export const CreateOrEditPost = memo(() => {
               </div>
             </div>
             <div className="w-full">
-              <CustomLabel title="旅行先住所" />
+              <div className="ml-3">
+                <CustomLabel title="旅行先住所" />
+              </div>
               <CustomInput
                 name="prefecture"
                 value={
