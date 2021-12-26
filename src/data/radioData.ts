@@ -1,18 +1,18 @@
 export const RadioData = [
   {
-    name: '投稿が新しい順',
+    name: '新着順',
     value: 1,
   },
   {
-    name: 'いいねが多い順',
+    name: 'いいね数順',
     value: 2,
   },
   {
-    name: '評価が高い順',
+    name: '高評価順',
     value: 3,
   },
   {
-    name: '評価数が多い順',
+    name: '評価数順',
     value: 4,
   },
 ]
