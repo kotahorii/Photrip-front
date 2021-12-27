@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/outline'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { useCallback } from 'react'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import {
   resetEditPost,
   selectIsOpenCreatePostModal,
@@ -29,6 +29,7 @@ export const useHeader = () => {
   const isOpenCreatePostModal = useAppSelector(selectIsOpenCreatePostModal)
   const isOpenEditUserModal = useAppSelector(selectIsOpenEditUserModal)
   const navigate = useNavigate()
+  const location = useLocation()
 
   const openEditUserModal = useCallback(() => {
     if (currentUser) {
@@ -90,6 +91,11 @@ export const useHeader = () => {
   ]
 
   const onClickHelpPage = () => navigate('/help')
+  const goToPageTop = () => {
+    window.scrollTo({
+      top: 0,
+    })
+  }
 
   return {
     isOpenCreatePostModal,
@@ -102,5 +108,8 @@ export const useHeader = () => {
     menuItems,
     responsiveItems,
     onClickHelpPage,
+    location,
+    navigate,
+    goToPageTop,
   }
 }

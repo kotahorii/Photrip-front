@@ -129,7 +129,7 @@ export const DetailPost = memo(() => {
                     </div>
                     <div className="w-28">
                       <CustomButton
-                        text="ラベル"
+                        text="タグ追加"
                         onClick={createLabel}
                         disabled={
                           labelName.length > 15 || labelName.length === 0

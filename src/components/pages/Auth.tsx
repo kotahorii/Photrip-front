@@ -1,5 +1,8 @@
 import { useAuth } from 'hooks/useAuth'
-import { SwitchVerticalIcon } from '@heroicons/react/outline'
+import {
+  InformationCircleIcon,
+  SwitchVerticalIcon,
+} from '@heroicons/react/outline'
 import { SuccessToast } from 'components/molecules/SuccessToast'
 import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
@@ -33,8 +36,8 @@ export const Auth = memo(() => {
               Photrip
             </h1>
           </div>
-          <p className="text-white mt-1 text-center">
-            ログインしてお気に入りの場所を見つけましょう
+          <p className="text-white mt-2 text-center text-lg">
+            ログインして素晴らしい体験を共有しましょう
           </p>
         </div>
         <div className="h-full w-full bg-black opacity-20 z-10 absolute"></div>
@@ -72,15 +75,15 @@ export const Auth = memo(() => {
             onClick={toggleIsLogin}
             className="flex flex-row space-x-3 w-full text-blue-500 hover:text-blue-600 cursor-pointer"
           >
-            <SwitchVerticalIcon className="w-6 " />
+            <SwitchVerticalIcon className="w-6 h-6 " />
             <p>{isLogin ? '新規登録はこちら' : 'ログインはこちら'}</p>
           </div>
-          <Link
-            to="/help"
-            className="cursor-pointer w-full text-blue-500 hover:text-blue-600"
-          >
-            使い方を確認する
-          </Link>
+          <div className="flex flex-row space-x-2 justify-center items-center w-full cursor-pointer text-blue-500 hover:text-blue-600">
+            <InformationCircleIcon className="w-8 h-8" />
+            <Link to="/help" className=" w-full">
+              使い方を確認する
+            </Link>
+          </div>
         </form>
         <SuccessToast />
       </div>
