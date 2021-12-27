@@ -1,6 +1,7 @@
 import { Disclosure } from '@headlessui/react'
 import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 import { DisclosurePanel } from 'components/molecules/disclosure/DisclosurePanel'
+import { HelpPageText } from 'components/molecules/disclosure/HelpPageText'
 import { useHelp } from 'hooks/useHelp'
 
 export const Help = () => {
@@ -8,9 +9,13 @@ export const Help = () => {
     isOpenHeaderDisclosure,
     isOpenMainDisclosure,
     isOpenMyPageDisclosure,
+    isOpenModalDisclosure,
+    isOpenDetailDisclosure,
     toggleHeaderDisclosure,
     toggleMainDisclosure,
     toggleMyPageDisclosure,
+    toggleModalDisclosure,
+    toggleDetailDisclosure,
   } = useHelp()
   return (
     <div className="w-full min-h-screen font-notoSans flex flex-col text-gray-500 items-center bg-gray-50">
@@ -35,27 +40,122 @@ export const Help = () => {
               isOpen={isOpenHeaderDisclosure}
               toggleOpen={toggleHeaderDisclosure}
             >
-              ヘッダーの使い方
+              ヘッダーの説明
             </DisclosureButton>
-            <DisclosurePanel />
+            <DisclosurePanel>
+              <HelpPageText title="アイコン">
+                ヘッダーのアイコンを押すことで、ページのトップにスクロールすることができます。
+              </HelpPageText>
+              <HelpPageText title="投稿一覧">
+                投稿一覧ページに遷移します。
+                <br />
+                ※スマホサイズの場合はメニューに表示されます。
+              </HelpPageText>
+              <HelpPageText title="マイページ">
+                マイページに遷移します。
+                <br />
+                ※スマホサイズの場合はメニューに表示されます。
+              </HelpPageText>
+              <HelpPageText title="ユーザーアイコン">
+                自分の投稿に対するいいね数、評価数に応じてバッジの色が変化します。
+                アイコンをクリックすることで、メニューが開きます。
+              </HelpPageText>
+              <HelpPageText title="メニュー">
+                プロフィール編集を押すとユーザー情報編集モーダルが表示されます。
+                <br />
+                新規投稿を押すと投稿用モーダルが表示されます。
+              </HelpPageText>
+            </DisclosurePanel>
           </Disclosure>
           <Disclosure>
             <DisclosureButton
               isOpen={isOpenMainDisclosure}
               toggleOpen={toggleMainDisclosure}
             >
-              メインページの使い方
+              メインページの説明
             </DisclosureButton>
-            <DisclosurePanel />
+            <DisclosurePanel>
+              <HelpPageText title="検索フォーム">
+                キーワードを入力すると、タグまたはタイトルが一致する投稿だけを表示することができます。
+                ×ボタンを押すことで入力をクリアすることができます。
+              </HelpPageText>
+              <HelpPageText title="都道府県セレクト">
+                選択した都道府県の投稿だけを表示することができます。
+              </HelpPageText>
+              <HelpPageText title="投稿カード">
+                カードをクリックすることで、投稿詳細ページに遷移することができます。
+                ハートボタンを押すことでいいねすることができます。
+                自分の投稿の×ボタンを押すことで確認モーダルが表示されます。
+              </HelpPageText>
+            </DisclosurePanel>
           </Disclosure>
           <Disclosure>
             <DisclosureButton
               isOpen={isOpenMyPageDisclosure}
               toggleOpen={toggleMyPageDisclosure}
             >
-              マイページの使い方
+              マイページの説明
             </DisclosureButton>
-            <DisclosurePanel />
+            <DisclosurePanel>
+              <HelpPageText title="タブメニュー">
+                選択中のものは文字の色が変化して、アンダーラインが表示されます。
+              </HelpPageText>
+            </DisclosurePanel>
+          </Disclosure>
+          <Disclosure>
+            <DisclosureButton
+              isOpen={isOpenDetailDisclosure}
+              toggleOpen={toggleDetailDisclosure}
+            >
+              詳細ページの説明
+            </DisclosureButton>
+            <DisclosurePanel>
+              <HelpPageText title="表示画像">
+                クリックすることで拡大表示することができます。
+              </HelpPageText>
+              <HelpPageText title="レストラン / ホテル検索ボタン">
+                クリックすると周辺の店舗の自動検索結果が表示されます。
+                <br />
+                ※検索結果が多すぎる場合や、周辺に店舗がない場合は表示されないことがあります。
+                <br />
+                店名、「レビューを確認する」を押すと、外部サイトのタブが開きます。
+              </HelpPageText>
+              <HelpPageText title="タグフォーム">
+                自身の投稿にタグを追加することができます。
+                追加したタグは×ボタンで削除することができます。
+              </HelpPageText>
+              <HelpPageText title="コメントフォーム">
+                旅行に行った後に、感想をコメントで伝えることができます。
+                フォームを入力後、紙飛行機アイコンで送信できます。
+                また、評価を5段階でつけることができます。
+              </HelpPageText>
+              <HelpPageText title="「詳細を見る」ボタン">
+                投稿の詳細と、投稿したユーザーが表示されます。
+                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+              </HelpPageText>
+            </DisclosurePanel>
+          </Disclosure>
+          <Disclosure>
+            <DisclosureButton
+              isOpen={isOpenModalDisclosure}
+              toggleOpen={toggleModalDisclosure}
+            >
+              モーダルの説明
+            </DisclosureButton>
+            <DisclosurePanel>
+              <HelpPageText title="新規投稿/投稿編集モーダル">
+                投稿の詳細と、投稿したユーザーが表示されます。
+                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+              </HelpPageText>
+              <HelpPageText title="ユーザー編集モーダル">
+                投稿の詳細と、投稿したユーザーが表示されます。
+                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+              </HelpPageText>
+              <HelpPageText title="投稿削除モーダル">
+                投稿の詳細と、投稿したユーザーが表示されます。
+                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+              </HelpPageText>
+            </DisclosurePanel>
           </Disclosure>
         </div>
       </div>

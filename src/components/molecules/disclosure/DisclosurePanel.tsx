@@ -1,6 +1,11 @@
 import { Disclosure, Transition } from '@headlessui/react'
+import { ReactNode, VFC } from 'react'
 
-export const DisclosurePanel = () => {
+type Props = {
+  children: ReactNode
+}
+
+export const DisclosurePanel: VFC<Props> = ({ children }) => {
   return (
     <Transition
       enter="transition duration-100 ease-out"
@@ -10,8 +15,8 @@ export const DisclosurePanel = () => {
       leaveFrom="transform scale-100 opacity-100"
       leaveTo="transform scale-95 opacity-0"
     >
-      <Disclosure.Panel className=" flex flex-col shadow-sm space-y-2 text-blue-800 break-words bg-white rounded-sm p-3">
-        aaa
+      <Disclosure.Panel className=" flex flex-col shadow-sm space-y-2 text-gray-500 break-words bg-white rounded-sm p-3">
+        {children}
       </Disclosure.Panel>
     </Transition>
   )
