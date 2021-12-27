@@ -34,9 +34,13 @@ export const Header = memo(() => {
       </div>
 
       <div className="md:flex font-notoSans font-semibold hidden flex-row">
-        <Link
-          to="/main"
-          className={`flex flex-row space-x-1 items-center text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded-md px-2 py-2 ${
+        <div
+          onClick={
+            location.pathname === '/main'
+              ? goToPageTop
+              : () => navigate('/main')
+          }
+          className={`flex flex-row cursor-pointer space-x-1 items-center text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded-md px-2 py-2 ${
             location.pathname === '/main' ? 'text-blue-500' : 'text-gray-500'
           }`}
         >
@@ -47,10 +51,14 @@ export const Header = memo(() => {
           )}
 
           <span>投稿一覧</span>
-        </Link>
-        <Link
-          to="/myPage"
-          className={`flex flex-row space-x-1 items-center text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded-md px-2 py-2 ${
+        </div>
+        <div
+          onClick={
+            location.pathname === '/myPage'
+              ? goToPageTop
+              : () => navigate('/myPage')
+          }
+          className={`flex flex-row cursor-pointer space-x-1 items-center text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded-md px-2 py-2 ${
             location.pathname === '/myPage' ? 'text-blue-500' : 'text-gray-500'
           }`}
         >
@@ -60,7 +68,7 @@ export const Header = memo(() => {
             <UserOutLineIcon className="w-6 h-6" />
           )}
           <span>マイページ</span>
-        </Link>
+        </div>
       </div>
 
       <Menu.Button>
