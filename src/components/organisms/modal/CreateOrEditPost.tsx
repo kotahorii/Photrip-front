@@ -36,7 +36,7 @@ export const CreateOrEditPost = memo(() => {
               <CustomInput
                 name="title"
                 value={editedPost.title}
-                placeholder="タイトルを30文字以内で入力してください"
+                placeholder="タイトル"
                 onChange={changePost}
                 isError={editedPost.title.length > 30}
               />
@@ -50,13 +50,13 @@ export const CreateOrEditPost = memo(() => {
               <div className="flex-1">
                 <div className="flex flex-row ml-3 my-2">
                   <CustomLabel title="本文" />
-                  <p className="ml-3">
+                  <p className="ml-3 text-sm">
                     {editedPost.body !== null ? editedPost.body.length : 0}/140
                   </p>
                 </div>
                 <TextArea
                   value={editedPost.body}
-                  placeholder="本文を入力"
+                  placeholder="本文"
                   onChange={changeBody}
                   isError={
                     editedPost.body !== null && editedPost.body.length > 140
@@ -70,18 +70,18 @@ export const CreateOrEditPost = memo(() => {
           >
             140字以内で入力してください
           </ValidationMessage>
-          <div className="flex md:flex-row flex-col">
+          <div className="flex md:flex-row md:space-x-3 flex-col">
             <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
               <div className="ml-3">
                 <CustomLabel title="郵便番号" />
               </div>
-              <div className="flex flex-row items-center">
-                <div className="md:w-56 w-full">
+              <div className="flex flex-row space-x-1 items-center">
+                <div className="md:w-48 w-full">
                   <CustomInput
                     name="address"
                     value={address}
                     onChange={changeAddress}
-                    placeholder="例：7793116"
+                    placeholder="郵便番号"
                   />
                 </div>
                 <div className="md:w-24 w-32">

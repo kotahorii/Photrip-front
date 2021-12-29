@@ -18,7 +18,7 @@ export const TextArea: VFC<Props> = ({
       onChange={onChange}
       className={`focus:outline-none w-full shadow bg-transparent focus:ring-2 ${
         isError ? 'ring-pink-400' : 'ring-blue-400'
-      } rounded-md resize-none px-2 py-1`}
+      } rounded-md resize-none px-3 py-1`}
       placeholder={placeholder}
     ></textarea>
   )

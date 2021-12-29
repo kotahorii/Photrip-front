@@ -12,7 +12,7 @@ export const CommentCard: VFC<Props> = memo(({ comment }) => {
   const { commentsUser } = useDetailPost()
   const { formatDate } = useMain()
   return (
-    <div className="w-full p-2 flex flex-col space-y-2 shadow-sm rounded-lg bg-gray-50">
+    <div className="w-full p-2 flex flex-col space-y-2 shadow bg-gray-50 rounded">
       <div className="flex flex-row items-center space-x-3">
         <CustomUserIcon user={commentsUser(comment)} />
         <div className="flex flex-col space-y-1">

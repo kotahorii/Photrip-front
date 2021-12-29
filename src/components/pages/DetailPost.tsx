@@ -69,7 +69,7 @@ export const DetailPost = memo(() => {
           <div className="flex md:flex-row flex-col justify-center items-center md:space-x-3 md:space-y-0 space-y-3 md:w-full w-11/12">
             <div className="flex flex-col justify-between items-center space-y-4 ">
               {detailPost?.image.url === null ? (
-                <div className="w-96 h-64 relative rounded-md bg-gray-200">
+                <div className="w-96 h-64 relative rounded bg-gray-200">
                   <p className=" absolute text-xl font-semibold text-gray-400 transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     No image
                   </p>
@@ -79,20 +79,20 @@ export const DetailPost = memo(() => {
                   onClick={openImageModal}
                   className=" relative md:w-96 md:h-64 w-80 h-60"
                 >
-                  <div className="absolute w-full h-full rounded-md cursor-pointer transition duration-300 bg-black opacity-0 hover:opacity-20"></div>
+                  <div className="absolute w-full h-full rounded cursor-pointer transition duration-300 bg-black opacity-0 hover:opacity-20"></div>
                   <img
-                    className="rounded-md object-cover w-full h-full"
+                    className="rounded object-cover w-full h-full"
                     alt="post detail"
                     src={detailPost?.image.url}
                   />
                 </div>
               )}
               <div className="flex flex-row w-full justify-center items-center">
-                <div className="h-7 w-12 flex flex-row items-center rounded-lg">
+                <div className="h-7 w-12 flex flex-row items-center rounded">
                   {detailPost?.city !== '' && <LikeButton post={detailPost!} />}
                   <span>{detailPost?.favorites.length}</span>
                 </div>
-                <div className=" flex flex-row items-center space-x-1 h-7 w-24 rounded-lg">
+                <div className=" flex flex-row items-center space-x-1 h-7 w-24 rounded">
                   <StarIcon className="w-6 text-yellow-500" />
                   <p className="flex flex-row">
                     {averageRate(detailPost)?.toString() !== 'NaN'
@@ -103,7 +103,7 @@ export const DetailPost = memo(() => {
                     </span>
                   </p>
                 </div>
-                <div className="flex flex-row truncate overflow-ellipsis h-7 w-56 rounded-lg items-center">
+                <div className="flex flex-row truncate overflow-ellipsis h-7 w-56 rounded items-center">
                   {`${detailPost?.prefecture} ${detailPost?.city} ${detailPost?.town}`}
                 </div>
               </div>
@@ -122,7 +122,7 @@ export const DetailPost = memo(() => {
                       <CustomInput
                         name="label"
                         value={labelName}
-                        placeholder="１５文字以内で入力してください"
+                        placeholder="タグ"
                         onChange={changeLabel}
                         isError={labelName.length > 15}
                       />
@@ -141,7 +141,7 @@ export const DetailPost = memo(() => {
                 )}
               </div>
               <ValidationMessage isError={labelName.length > 15}>
-                タグ名が長すぎます
+                15文字以内で入力してください
               </ValidationMessage>
               <div className="flex flex-row w-96 overflow-x-auto whitespace-nowrap space-x-2">
                 {detailPost?.labels.map((label) => (
@@ -151,16 +151,16 @@ export const DetailPost = memo(() => {
             </div>
             <form
               onSubmit={submitComment}
-              className=" w-96 flex flex-col space-y-2 rounded-lg"
+              className=" w-96 flex flex-col space-y-2 rounded"
             >
-              <div className="w-full md:h-104 h-80 p-2 space-y-3 overflow-auto bg-gray-100 rounded-md">
+              <div className="w-full md:h-104 h-80 p-2 space-y-3 bg-blue-50 overflow-auto rounded shadow">
                 {detailPost?.comments.map((comment) => (
                   <CommentCard key={comment.id} comment={comment} />
                 ))}
               </div>
               <TextArea
                 value={comment}
-                placeholder="コメントを140文字以内で入力してください"
+                placeholder="コメント"
                 onChange={commentChange}
                 isError={comment.length > 140}
               />

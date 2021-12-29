@@ -18,14 +18,14 @@ export const PostImagePreview: VFC<Props> = memo(({ onClick }) => {
         <img
           src={postPreview}
           alt="preview img"
-          className=" object-cover w-full h-full rounded-lg cursor-pointer shadow-md"
+          className=" object-cover w-full h-full rounded cursor-pointer shadow"
         />
       </div>
     </div>
   ) : (
     <div
       onClick={onClick}
-      className="cursor-pointer relative w-80 h-80 bg-gray-200 transition duration-300 hover:bg-gray-300 rounded-lg"
+      className="cursor-pointer relative w-80 h-80 bg-gray-200 transition duration-300 hover:bg-gray-300 rounded"
     >
       <PhotographIcon className="absolute w-7 text-gray-400 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
     </div>

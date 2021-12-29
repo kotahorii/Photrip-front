@@ -33,7 +33,7 @@ export const EditUserText = memo(() => {
       </ValidationMessage>
       <div className="flex flex-row w-full justify-center">
         <CustomLabel title="自己紹介" />
-        <span className="ml-3">
+        <span className="ml-3 text-sm">
           {userData.introduction !== null ? userData.introduction.length : 0}
           /140
         </span>

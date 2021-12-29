@@ -16,7 +16,7 @@ export const SignUpForm = memo(() => {
         <CustomInput
           name="name"
           value={userData.name}
-          placeholder="名前を入力"
+          placeholder="名前"
           onChange={changeAuthData}
           isError={userData.name.length > 20}
         />
@@ -29,7 +29,7 @@ export const SignUpForm = memo(() => {
         <CustomInput
           name="email"
           value={userData.email}
-          placeholder="xxx@xxxx.com"
+          placeholder="example@test.com"
           onChange={changeAuthData}
         />
       </div>
@@ -38,7 +38,7 @@ export const SignUpForm = memo(() => {
         <CustomInput
           name="password"
           value={userData.password}
-          placeholder="６文字以上入力してください"
+          placeholder="••••••"
           type="password"
           onChange={changeAuthData}
         />
@@ -48,7 +48,7 @@ export const SignUpForm = memo(() => {
         <CustomInput
           name="passwordConfirmation"
           value={userData.passwordConfirmation}
-          placeholder="６文字以上入力して下さい"
+          placeholder="••••••"
           type="password"
           onChange={changeAuthData}
           isError={
