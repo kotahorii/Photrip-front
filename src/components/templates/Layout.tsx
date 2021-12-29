@@ -42,7 +42,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
         </main>
 
         <CustomModal
-          title="プロフィールを編集"
+          title={<>プロフィールを編集</>}
           isOpen={isOpenEditUserModal}
           closeModal={closeEditedUserModal}
         >
@@ -51,7 +51,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
         <CustomModal
           width="w-full"
           mdWidth="md:w-192"
-          title={`${editedPost.id === 0 ? '新規投稿' : '投稿を編集'}`}
+          title={editedPost.id === 0 ? <>新規投稿</> : <>投稿を編集</>}
           isOpen={isOpenCreatePostModal}
           closeModal={closeCreatePostModal}
         >
@@ -60,7 +60,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
         <CustomModal
           isOpen={isOpenDeletePostModal}
           closeModal={closeDeletePostModal}
-          title={detailUserPost.title}
+          title={<>{detailUserPost.title}</>}
           border={false}
         >
           <DeletePostModal />

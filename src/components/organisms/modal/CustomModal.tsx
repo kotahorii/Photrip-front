@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, memo, ReactNode, VFC } from 'react'
 
 type Props = {
-  title: string
+  title: JSX.Element
   children: ReactNode
   isOpen: boolean
   closeModal: () => void
