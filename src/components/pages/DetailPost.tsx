@@ -24,10 +24,12 @@ import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
 import { TextArea } from 'components/atoms/form/TextArea'
 import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 import { InputButton } from 'components/atoms/button/InputButton'
+import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
   const { isLoadingUser, currentUser } = useMain()
+  const { hotpepperData, rakutenData } = useApi()
   const {
     commentChange,
     comment,
@@ -63,7 +65,7 @@ export const DetailPost = memo(() => {
   return (
     <Layout>
       <Disclosure>
-        <div className="flex flex-col space-y-5 items-center px-2 w-full min-h-screen">
+        <div className="flex flex-col space-y-5 items-center w-full min-h-screen">
           <p className="w-full text-3xl text-center font-semibold">
             {detailPost?.title}
           </p>
@@ -215,7 +217,12 @@ export const DetailPost = memo(() => {
         <CustomModal
           width="w-full"
           mdWidth="md:w-192"
-          title="レストラン"
+          title={
+            <HotelOrRestrauntTitle
+              title="レストラン"
+              length={hotpepperData?.length}
+            />
+          }
           isOpen={isOpenShopModal}
           closeModal={closeShopModal}
         >
@@ -224,7 +231,12 @@ export const DetailPost = memo(() => {
         <CustomModal
           width="w-full"
           mdWidth="md:w-192"
-          title="ホテル"
+          title={
+            <HotelOrRestrauntTitle
+              title="ホテル"
+              length={rakutenData?.length}
+            />
+          }
           isOpen={isOpenHotelModal}
           closeModal={closeHotelModal}
         >
