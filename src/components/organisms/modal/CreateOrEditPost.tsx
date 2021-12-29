@@ -1,4 +1,5 @@
 import { CustomButton } from 'components/atoms/button/CustomButton'
+import { InputButton } from 'components/atoms/button/InputButton'
 import { CustomInput } from 'components/atoms/form/CustomInput'
 import { CustomLabel } from 'components/atoms/form/CustomLabel'
 import { TextArea } from 'components/atoms/form/TextArea'
@@ -60,11 +61,11 @@ export const CreateOrEditPost = memo(() => {
           >
             140字以内で入力してください
           </ValidationMessage>
-          <div className="flex md:flex-row md:space-x-3 flex-col">
+          <div className="flex md:flex-row md:space-x-7 flex-col">
             <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
               <CustomLabel title="郵便番号" />
-              <div className="flex flex-row space-x-1 items-center">
-                <div className="md:w-48 w-full">
+              <div className="flex flex-row items-center">
+                <div className="md:w-40 w-full">
                   <CustomInput
                     name="address"
                     value={address}
@@ -73,7 +74,7 @@ export const CreateOrEditPost = memo(() => {
                   />
                 </div>
                 <div className="md:w-24 w-32">
-                  <CustomButton
+                  <InputButton
                     text="自動入力"
                     disabled={isNotValidData()}
                     loading={isLoadingAddress || isRefetchingAddress}

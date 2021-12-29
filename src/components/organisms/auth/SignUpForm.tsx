@@ -21,7 +21,7 @@ export const SignUpForm = memo(() => {
           isError={userData.name.length > 20}
         />
         <ValidationMessage isError={userData.name.length > 20}>
-          名前が長すぎます
+          20文字以内で入力してください
         </ValidationMessage>
       </div>
       <div className=" flex flex-col space-y-1 w-full">

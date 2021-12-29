@@ -14,7 +14,7 @@ export const DisclosureButton: VFC<Props> = ({
   children,
 }) => {
   return (
-    <Disclosure.Button className=" text-white bg-blue-500 hover:bg-blue-600 w-full rounded shadow">
+    <Disclosure.Button className=" text-white bg-blue-500 transition duration-300 hover:bg-blue-600 w-full rounded shadow">
       <div
         onClick={toggleOpen}
         className="flex flex-row justify-center items-center space-x-2 py-2"

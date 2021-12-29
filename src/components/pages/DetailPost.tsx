@@ -23,6 +23,7 @@ import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
 import { TextArea } from 'components/atoms/form/TextArea'
 import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
+import { InputButton } from 'components/atoms/button/InputButton'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -115,7 +116,7 @@ export const DetailPost = memo(() => {
                 title="周辺のホテルを検索"
                 onClick={openHotelModal}
               />
-              <div className="flex flex-row space-x-1">
+              <div className="flex flex-row">
                 {detailPost?.userId === currentUser?.id && (
                   <>
                     <div className="w-64">
@@ -128,7 +129,7 @@ export const DetailPost = memo(() => {
                       />
                     </div>
                     <div className="w-28">
-                      <CustomButton
+                      <InputButton
                         text="タグ追加"
                         onClick={createLabel}
                         disabled={
