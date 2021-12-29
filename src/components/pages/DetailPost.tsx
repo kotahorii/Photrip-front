@@ -63,7 +63,7 @@ export const DetailPost = memo(() => {
   return (
     <Layout>
       <Disclosure>
-        <div className="flex flex-col space-y-2 items-center px-2 w-full min-h-screen">
+        <div className="flex flex-col space-y-5 items-center px-2 w-full min-h-screen">
           <p className="w-full text-3xl text-center font-semibold">
             {detailPost?.title}
           </p>
@@ -116,34 +116,36 @@ export const DetailPost = memo(() => {
                 title="周辺のホテルを検索"
                 onClick={openHotelModal}
               />
-              <div className="flex flex-row">
-                {detailPost?.userId === currentUser?.id && (
-                  <>
-                    <div className="w-64">
-                      <CustomInput
-                        name="label"
-                        value={labelName}
-                        placeholder="タグ"
-                        onChange={changeLabel}
-                        isError={labelName.length > 15}
-                      />
-                    </div>
-                    <div className="w-28">
-                      <InputButton
-                        text="タグ追加"
-                        onClick={createLabel}
-                        disabled={
-                          labelName.length > 15 || labelName.length === 0
-                        }
-                        loading={labelPostLoading()}
-                      />
-                    </div>
-                  </>
-                )}
+              <div className="flex flex-col space-y-2">
+                <div className="flex flex-row">
+                  {detailPost?.userId === currentUser?.id && (
+                    <>
+                      <div className=" w-68">
+                        <CustomInput
+                          name="label"
+                          value={labelName}
+                          placeholder="タグ"
+                          onChange={changeLabel}
+                          isError={labelName.length > 15}
+                        />
+                      </div>
+                      <div className="w-28">
+                        <InputButton
+                          text="タグ追加"
+                          onClick={createLabel}
+                          disabled={
+                            labelName.length > 15 || labelName.length === 0
+                          }
+                          loading={labelPostLoading()}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+                <ValidationMessage isError={labelName.length > 15}>
+                  15文字以内で入力してください
+                </ValidationMessage>
               </div>
-              <ValidationMessage isError={labelName.length > 15}>
-                15文字以内で入力してください
-              </ValidationMessage>
               <div className="flex flex-row w-96 overflow-x-auto whitespace-nowrap space-x-2">
                 {detailPost?.labels.map((label) => (
                   <CustomTag key={label.id} label={label} />
@@ -166,7 +168,7 @@ export const DetailPost = memo(() => {
                 isError={comment.length > 140}
               />
               <ValidationMessage isError={comment.length > 140}>
-                コメントが長すぎます
+                140文字以内で入力してください
               </ValidationMessage>
               <div className="w-full flex flex-row items-center space-x-2 h-10">
                 <div className="flex items-center justify-center w-44">
