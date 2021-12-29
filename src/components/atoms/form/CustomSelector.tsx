@@ -16,7 +16,7 @@ export const CustomSelector: VFC<Props> = memo(
       <select
         value={value}
         onChange={onChange}
-        className=" p-3 w-full rounded-lg shadow-md text-gray-500 focus:outline-none bg-gray-100 cursor-pointer"
+        className=" p-3 w-full rounded shadow text-gray-500 focus:ring-2 focus:outline-none bg-gray-100 cursor-pointer"
       >
         {arrays.map((array, index) => (
           <option key={index + 1} value={index + 1}>

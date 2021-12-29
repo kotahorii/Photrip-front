@@ -19,6 +19,7 @@ export const Auth = memo(() => {
     isLoadingAuth,
     guestUserLogin,
     isLoadingGuestUser,
+    userData,
   } = useAuth()
   return (
     <div className="h-screen flex font-notoSans">
@@ -65,6 +66,9 @@ export const Auth = memo(() => {
           {isLogin && (
             <div className="flex flex-row space-x-5 justify-center items-center w-full">
               <CustomButton
+                disabled={
+                  userData.email.length > 0 || userData.password.length > 0
+                }
                 onClick={guestUserLogin}
                 text="ゲストユーザーでログイン"
                 loading={isLoadingGuestUser()}
