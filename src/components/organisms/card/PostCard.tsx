@@ -1,4 +1,4 @@
-import { memo, VFC } from 'react'
+import { memo, useCallback, VFC } from 'react'
 import { Post } from 'types/postType'
 import { StarIcon } from '@heroicons/react/solid'
 import { LikeButton } from 'components/atoms/button/LikeButton'
@@ -7,6 +7,7 @@ import { useRates } from 'hooks/useRate'
 import { useMain } from 'hooks/useMain'
 import { XIcon } from '@heroicons/react/outline'
 import { useQueryDetailPost } from 'hooks/queries/useQueryDetailPost'
+import { useApi } from 'hooks/useApi'
 
 type Props = {
   post: Post
@@ -15,13 +16,20 @@ type Props = {
 export const PostCard: VFC<Props> = memo(({ post }) => {
   const { averageRate } = useRates()
   const { formatDate } = useMain()
+  const { closeHotelModal, closeShopModal } = useApi()
   const { openDeletePostModal, currentUser } = useMain()
   const { refetch: refetchDetailPost } = useQueryDetailPost(post.id)
+  const moveToDetailPage = useCallback(() => {
+    refetchDetailPost()
+    closeHotelModal()
+    closeShopModal()
+  }, [closeHotelModal, closeShopModal, refetchDetailPost])
+
   return (
     <div className="flex md:flex-row relative flex-col m-2 items-center md:space-x-5 cursor-pointer md:w-3/5 max-w-2xl w-80 px-5 py-4 shadow hover:shadow-lg transition duration-300 rounded space-y-3">
       {post.image.url !== null || '' ? (
         <Link
-          onClick={() => refetchDetailPost()}
+          onClick={moveToDetailPage}
           to={`/main/${post.id}`}
           className=" w-72 h-52 rounded"
         >
@@ -33,7 +41,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
         </Link>
       ) : (
         <Link
-          onClick={() => refetchDetailPost()}
+          onClick={moveToDetailPage}
           to={`/main/${post.id}`}
           className=" w-72 h-52 relative bg-gray-200 rounded"
         >
@@ -44,7 +52,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
       )}
       <div className="flex flex-col md:h-52 md:w-2/3 w-full py-2 space-y-2">
         <Link
-          onClick={() => refetchDetailPost()}
+          onClick={moveToDetailPage}
           className="flex flex-col space-y-2"
           to={`/main/${post.id}`}
         >
