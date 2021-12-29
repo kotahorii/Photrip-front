@@ -84,7 +84,7 @@ export const DetailPost = memo(() => {
                 >
                   <div className="absolute w-full h-full rounded cursor-pointer transition duration-300 bg-black opacity-0 hover:opacity-20"></div>
                   <img
-                    className="rounded object-cover w-full h-full"
+                    className="rounded object-cover shadow w-full h-full"
                     alt="post detail"
                     src={detailPost?.image.url}
                   />

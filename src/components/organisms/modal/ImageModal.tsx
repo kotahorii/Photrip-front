@@ -44,10 +44,10 @@ export const ImageModal: VFC<Props> = memo(({ post, isOpen, closeModal }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="md:w-192 md:h-128 w-96 h-64 z-30 inline-block fixed top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2 text-gray-500 bg-gray-50 p-6 my-8 overflow-hidden text-left align-middle transition-all shadow-xl rounded-lg">
+              <div className="md:w-192 md:h-128 w-96 h-64 z-30 inline-block fixed top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2 text-gray-500 bg-gray-50 p-6 my-8 overflow-hidden text-left align-middle transition-all shadow-xl rounded">
                 <img
                   src={post?.image.url}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover shadow rounded"
                   alt="detail"
                 />
               </div>
