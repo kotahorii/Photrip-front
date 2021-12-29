@@ -1,4 +1,4 @@
-import { XCircleIcon } from '@heroicons/react/solid'
+import { XIcon } from '@heroicons/react/outline'
 import { useMain } from 'hooks/useMain'
 import { useSearch } from 'hooks/useSearch'
 import { memo, VFC } from 'react'
@@ -14,13 +14,15 @@ export const CustomTag: VFC<Props> = memo(({ label }) => {
   return (
     <div
       key={label.id}
-      className=" flex flex-row justify-between items-center min-w-1/2 truncate overflow-ellipsis mt-2 px-3 py-1 shadow-sm text-blue-800 bg-blue-200 rounded-md"
+      className={`flex flex-row justify-between h-8 items-center truncate overflow-ellipsis px-3 py-2 shadow text-white bg-blue-500 rounded ${
+        label.userId === currentUser?.id && 'hover:bg-blue-600'
+      }`}
     >
-      <p className="text-center w-full">{label.name}</p>
+      <p className="text-center mr-1 w-full">{label.name}</p>
       {label.userId === currentUser?.id && (
-        <XCircleIcon
+        <XIcon
           onClick={deleteLabel(label)}
-          className="cursor-pointer text-blue-500 w-5"
+          className="cursor-pointer text-white w-5"
         />
       )}
     </div>

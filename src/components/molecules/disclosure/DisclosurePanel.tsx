@@ -15,7 +15,7 @@ export const DisclosurePanel: VFC<Props> = ({ children }) => {
       leaveFrom="transform scale-100 opacity-100"
       leaveTo="transform scale-95 opacity-0"
     >
-      <Disclosure.Panel className=" flex flex-col shadow-sm space-y-2 text-gray-500 break-words bg-white rounded-sm p-3">
+      <Disclosure.Panel className=" flex flex-col shadow space-y-2 text-gray-500 break-words bg-white rounded p-3">
         {children}
       </Disclosure.Panel>
     </Transition>

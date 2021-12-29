@@ -14,7 +14,7 @@ export const DisclosureButton: VFC<Props> = ({
   children,
 }) => {
   return (
-    <Disclosure.Button className=" text-blue-600 bg-blue-100 hover:bg-blue-200 w-full rounded-lg border-blue-400 border-2 shadow-sm">
+    <Disclosure.Button className=" text-white bg-blue-500 transition duration-300 hover:bg-blue-600 w-full rounded shadow">
       <div
         onClick={toggleOpen}
         className="flex flex-row justify-center items-center space-x-2 py-2"
@@ -23,7 +23,7 @@ export const DisclosureButton: VFC<Props> = ({
         <ChevronDownIcon
           className={`${
             isOpen ? '' : 'transform rotate-180'
-          } w-5 h-5 text-purple-500`}
+          } w-5 h-5 text-white`}
         />
       </div>
     </Disclosure.Button>

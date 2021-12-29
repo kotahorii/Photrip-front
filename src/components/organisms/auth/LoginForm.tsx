@@ -12,7 +12,7 @@ export const LoginForm = memo(() => {
         <CustomInput
           name="email"
           value={userData.email}
-          placeholder="xxx@xxxx.com"
+          placeholder="example@gmail.com"
           onChange={changeAuthData}
         />
       </div>
@@ -22,7 +22,7 @@ export const LoginForm = memo(() => {
           name="password"
           value={userData.password}
           type="password"
-          placeholder="６文字以上入力してください"
+          placeholder="••••••"
           onChange={changeAuthData}
         />
       </div>
