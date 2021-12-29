@@ -99,7 +99,7 @@ export const useAuth = () => {
   const guestUserLogin = useCallback(
     () =>
       signInMutation.mutate({
-        email: 'test@test.com',
+        email: 'guest@guest.com',
         password: 'aaaaaa',
       }),
     [signInMutation]

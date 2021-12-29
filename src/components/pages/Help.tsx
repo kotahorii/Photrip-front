@@ -40,7 +40,7 @@ export const Help = () => {
               isOpen={isOpenHeaderDisclosure}
               toggleOpen={toggleHeaderDisclosure}
             >
-              ヘッダーの説明
+              ヘッダーの機能一覧
             </DisclosureButton>
             <DisclosurePanel>
               <HelpPageText title="アイコン">
@@ -72,7 +72,7 @@ export const Help = () => {
               isOpen={isOpenMainDisclosure}
               toggleOpen={toggleMainDisclosure}
             >
-              メインページの説明
+              メインページの機能一覧
             </DisclosureButton>
             <DisclosurePanel>
               <HelpPageText title="検索フォーム">
@@ -81,6 +81,10 @@ export const Help = () => {
               </HelpPageText>
               <HelpPageText title="都道府県セレクト">
                 選択した都道府県の投稿だけを表示することができます。
+              </HelpPageText>
+              <HelpPageText title="並び替えボタン">
+                投稿を「投稿された日付が新しい順」、「投稿に対するいいねの多い順」、「投稿に対する評価の平均値が高い順」、「投稿に対する評価の数が多い順」
+                に並び替えることができます。
               </HelpPageText>
               <HelpPageText title="投稿カード">
                 カードをクリックすることで、投稿詳細ページに遷移することができます。
@@ -94,7 +98,7 @@ export const Help = () => {
               isOpen={isOpenMyPageDisclosure}
               toggleOpen={toggleMyPageDisclosure}
             >
-              マイページの説明
+              マイページの機能一覧
             </DisclosureButton>
             <DisclosurePanel>
               <HelpPageText title="タブメニュー">
@@ -107,7 +111,7 @@ export const Help = () => {
               isOpen={isOpenDetailDisclosure}
               toggleOpen={toggleDetailDisclosure}
             >
-              詳細ページの説明
+              詳細ページの機能一覧
             </DisclosureButton>
             <DisclosurePanel>
               <HelpPageText title="表示画像">
@@ -133,6 +137,9 @@ export const Help = () => {
                 投稿の詳細と、投稿したユーザーが表示されます。
                 ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
               </HelpPageText>
+              <HelpPageText title="Google Map">
+                旅先の風景や、周辺の施設をGoogle Mapで確認することができます。
+              </HelpPageText>
             </DisclosurePanel>
           </Disclosure>
           <Disclosure>
@@ -140,20 +147,19 @@ export const Help = () => {
               isOpen={isOpenModalDisclosure}
               toggleOpen={toggleModalDisclosure}
             >
-              モーダルの説明
+              モーダルの機能一覧
             </DisclosureButton>
             <DisclosurePanel>
               <HelpPageText title="新規投稿/投稿編集モーダル">
-                投稿の詳細と、投稿したユーザーが表示されます。
-                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+                情報を入力し、「投稿/編集」ボタンを押すことで、新規投稿、編集ができます。
+                旅行先の住所は、郵便番号を入力し、自動入力のボタンを押すことで自動入力できます。
+                モーダルの外をクリックすることで、モーダルを閉じることができます。
               </HelpPageText>
               <HelpPageText title="ユーザー編集モーダル">
-                投稿の詳細と、投稿したユーザーが表示されます。
-                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+                モーダルの外をクリックすることで、モーダルを閉じることができます。
               </HelpPageText>
               <HelpPageText title="投稿削除モーダル">
-                投稿の詳細と、投稿したユーザーが表示されます。
-                ユーザーのアイコンをホバーすると、そのユーザーの自己紹介と、そのユーザーが今までにもらったいいね、評価の数を確認することができます。
+                モーダルの外か「キャンセル」を押すと、モーダルが閉じます。「削除」を押すことで、投稿を削除することができます。
               </HelpPageText>
             </DisclosurePanel>
           </Disclosure>

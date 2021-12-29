@@ -37,7 +37,7 @@ export const Auth = memo(() => {
             </h1>
           </div>
           <p className="text-white mt-2 text-center text-lg">
-            ログインして素晴らしい体験を共有しましょう
+            最高の体験をここで共有しませんか？
           </p>
         </div>
         <div className="h-full w-full bg-black opacity-20 z-10 absolute"></div>
