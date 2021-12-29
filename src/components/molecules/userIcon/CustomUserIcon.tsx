@@ -13,7 +13,7 @@ export const CustomUserIcon: VFC<Props> = ({ user }) => {
         {user?.image.url !== null ? (
           <>
             <img
-              className="rounded-full object-cover w-14 h-14"
+              className="rounded-full object-cover shadow w-14 h-14"
               src={user?.image.url}
               alt="user icon"
             />

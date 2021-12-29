@@ -26,7 +26,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
           className=" w-72 h-52 rounded"
         >
           <img
-            className="w-full h-full rounded"
+            className="w-full h-full rounded shadow object-cover"
             src={post.image.url}
             alt="post"
           />

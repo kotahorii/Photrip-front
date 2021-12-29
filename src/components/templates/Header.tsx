@@ -17,7 +17,7 @@ export const Header = memo(() => {
   const { currentUser } = useMain()
   const { location, navigate, goToPageTop } = useHeader()
   return (
-    <nav className="flex flex-row z-10 font-merriweather fixed justify-between items-center bg-gray-50 shadow-md px-10 w-screen h-20 text-gray-500 bg-gray-20">
+    <nav className="flex flex-row z-10 font-merriweather fixed justify-between items-center bg-gray-50 shadow px-10 w-screen h-20 text-gray-500 bg-gray-20">
       <div
         onClick={goToPageTop}
         className="text-2xl flex flex-row items-center space-x-2 p-2 transition duration-500 hover:text-blue-400 border-blue-500 cursor-pointer"

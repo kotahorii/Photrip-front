@@ -18,7 +18,7 @@ export const ImagePreview: VFC<Props> = memo(({ onClick }) => {
         <img
           src={preview}
           alt="preview img"
-          className=" object-cover w-20 h-20 cursor-pointer rounded-full shadow-md"
+          className=" object-cover w-20 h-20 cursor-pointer rounded-full shadow"
         />
       </div>
     </div>
