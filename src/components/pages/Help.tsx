@@ -34,7 +34,7 @@ export const Help = () => {
           <span className="font-merriweather">Photrip</span>
           は旅行の体験を共有したいユーザーと、旅行に行きたいと思うユーザーを繋ぐためのサービスです。
         </p>
-        <div className=" flex flex-col space-y-2 p-2 w-full mt-10 bg-gray-100 rounded">
+        <div className=" flex flex-col space-y-2 p-2 w-full mt-10 bg-blue-100 rounded">
           <Disclosure>
             <DisclosureButton
               isOpen={isOpenHeaderDisclosure}

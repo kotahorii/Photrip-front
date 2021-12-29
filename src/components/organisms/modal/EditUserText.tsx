@@ -15,12 +15,15 @@ export const EditUserText = memo(() => {
     useAuth()
   const { updateUser } = useUsers()
   return (
-    <form onSubmit={updateUser} className=" mt-2 flex flex-col space-y-2">
+    <form
+      onSubmit={updateUser}
+      className=" mt-2 flex flex-col items-start space-y-2"
+    >
       <CustomLabel title="名前" />
       <CustomInput
         name="name"
         value={userData.name}
-        placeholder="名前を入力"
+        placeholder="名前"
         onChange={changeAuthData}
         isError={!userData.name || userData.name.length > 20}
       />
@@ -28,10 +31,10 @@ export const EditUserText = memo(() => {
         {!userData.name
           ? '名前は必須です'
           : userData.name.length > 20
-          ? '名前が長すぎます'
+          ? '20文字以内で入力してください'
           : null}
       </ValidationMessage>
-      <div className="flex flex-row w-full justify-center">
+      <div className="flex flex-row justify-center">
         <CustomLabel title="自己紹介" />
         <span className="ml-3 text-sm">
           {userData.introduction !== null ? userData.introduction.length : 0}
@@ -41,7 +44,7 @@ export const EditUserText = memo(() => {
       <div className="flex flex-row items-center space-x-1 w-full">
         <TextArea
           value={userData.introduction}
-          placeholder="自己紹介を入力してください"
+          placeholder="自己紹介"
           onChange={changeIntroduction}
           isError={
             userData.introduction !== null && userData.introduction.length > 140
@@ -55,9 +58,11 @@ export const EditUserText = memo(() => {
       >
         140文字以内で入力してください
       </ValidationMessage>
-      <div className="flex flex-row items-center mb-2 justify-between">
-        <div className="flex flex-col w-36 space-y-2">
-          <CustomLabel title="都道府県" />
+      <div className="flex flex-row w-full items-center mb-2 justify-center space-x-10">
+        <div className="flex flex-col justify-start w-36 space-y-2">
+          <div>
+            <CustomLabel title="都道府県" />
+          </div>
           <CustomSelector
             value={userData.prefecture}
             onChange={prefectureChange}
@@ -65,12 +70,11 @@ export const EditUserText = memo(() => {
           />
         </div>
         <ImageInput />
-        <div></div>
       </div>
       <CustomButton
         disabled={!userData.name || userData.name.length > 20}
         type="submit"
-        text="更新"
+        text="プロフィールを更新"
       />
     </form>
   )

@@ -16,7 +16,7 @@ export const HotelRestaurantCard: VFC<Props> = memo(
       <li className="bg-gray-50 p-3 flex items-center flex-row space-x-3 text-gray-500 border-t border-gray-300 w-full ">
         <div className="w-32 h-24 flex flex-col justify-center items-center">
           <img
-            className="object-cover w-full h-full rounded-lg shadow-md"
+            className="object-cover w-full h-full rounded shadow"
             src={src}
             alt="hotel"
           />
@@ -34,7 +34,7 @@ export const HotelRestaurantCard: VFC<Props> = memo(
             <p className=" h-5 truncate overflow-ellipsis">{special}</p>
             {!genre ? (
               <a
-                className="flex flex-col text-sm justify-center items-center text-center border-b hover:border-b-2 border-gray-300 w-36 px-1 py-1"
+                className="flex flex-col text-sm justify-center items-center text-center border-b hover:border-b-2 hover:border-gray-400 border-gray-300 w-36 px-1 py-1"
                 href={reviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"

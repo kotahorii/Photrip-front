@@ -14,7 +14,9 @@ export const CustomTag: VFC<Props> = memo(({ label }) => {
   return (
     <div
       key={label.id}
-      className=" flex flex-row justify-between h-8 items-center truncate overflow-ellipsis px-3 py-2 shadow-sm text-white bg-blue-500 rounded"
+      className={`flex flex-row justify-between h-8 items-center truncate overflow-ellipsis px-3 py-2 shadow text-white bg-blue-500 rounded ${
+        label.userId === currentUser?.id && 'hover:bg-blue-600'
+      }`}
     >
       <p className="text-center mr-1 w-full">{label.name}</p>
       {label.userId === currentUser?.id && (
