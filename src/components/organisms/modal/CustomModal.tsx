@@ -8,10 +8,19 @@ type Props = {
   closeModal: () => void
   width?: string
   mdWidth?: string
+  border?: boolean
 }
 
 export const CustomModal: VFC<Props> = memo(
-  ({ title, children, isOpen, closeModal, width = 'w-96', mdWidth }) => {
+  ({
+    title,
+    children,
+    isOpen,
+    closeModal,
+    width = 'w-96',
+    mdWidth,
+    border = true,
+  }) => {
     return (
       <div className="fixed">
         <Transition appear show={isOpen} as={Fragment}>
@@ -48,11 +57,13 @@ export const CustomModal: VFC<Props> = memo(
                 leaveTo="opacity-0 scale-95"
               >
                 <div
-                  className={`${width} ${mdWidth} z-30 inline-block fixed top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2 text-gray-500 bg-gray-50 md:p-4 px-4 py-3 my-8 overflow-hidden text-left align-middle transition-all shadow-xl rounded-md`}
+                  className={`${width} ${mdWidth} z-30 inline-block fixed top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2 text-gray-500 bg-gray-50 p-6 my-8 overflow-hidden text-left align-middle transition-all shadow rounded`}
                 >
                   <Dialog.Title
                     as="h3"
-                    className="text-xl text-center font-semibold leading-6 md:mb-5"
+                    className={`text-xl text-center pb-3 ${
+                      border && `border-b-2 border-gray-300`
+                    } leading-6 md:mb-5`}
                   >
                     {title}
                   </Dialog.Title>

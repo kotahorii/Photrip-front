@@ -61,6 +61,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
           isOpen={isOpenDeletePostModal}
           closeModal={closeDeletePostModal}
           title={detailUserPost.title}
+          border={false}
         >
           <DeletePostModal />
         </CustomModal>
