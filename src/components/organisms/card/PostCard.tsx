@@ -76,7 +76,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
           </div>
         </Link>
         <div className="flex flex-row relative mt-5 justify-between items-center px-2">
-          <div className=" flex flex-row items-center w-10 h-8 mt-2 mr-2 rounded-full">
+          <div className=" flex flex-row items-center h-8 mt-2 mr-2 rounded-full">
             <LikeButton post={post} />
             <span>{post.favorites.length}</span>
           </div>
