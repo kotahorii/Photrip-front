@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
+import { toast } from 'react-toastify'
 import { CreatePostFormData, Post, UpdatePostFormData } from 'types/postType'
 
 type UpdateData = {
@@ -62,6 +63,7 @@ export const useMutationPosts = () => {
     (id: number) => client.delete(`posts/${id}`),
     {
       onSuccess: (res, variable) => {
+        toast.success('削除に成功しました')
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         if (previousPosts) {
           queryClient.setQueryData<Post[]>(

@@ -25,6 +25,7 @@ import { TextArea } from 'components/atoms/form/TextArea'
 import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 import { InputButton } from 'components/atoms/button/InputButton'
 import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
+import { DeleteConfirmModal } from 'components/organisms/modal/DeleteConfirmModal'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -43,6 +44,9 @@ export const DetailPost = memo(() => {
     openImageModal,
     closeImageModal,
     openEditPostModal,
+    isOpenDeleteCommentModal,
+    closeDeleteCommentModal,
+    deleteComment,
   } = useDetailPost()
   const {
     isOpenShopModal,
@@ -241,6 +245,14 @@ export const DetailPost = memo(() => {
           closeModal={closeHotelModal}
         >
           <HotelModal />
+        </CustomModal>
+        <CustomModal
+          isOpen={isOpenDeleteCommentModal}
+          closeModal={closeDeleteCommentModal}
+          title={<>コメントを削除</>}
+          border={false}
+        >
+          <DeleteConfirmModal onClick={deleteComment} />
         </CustomModal>
         <ImageModal
           isOpen={isOpenImageModal}

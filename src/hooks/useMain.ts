@@ -155,7 +155,6 @@ export const useMain = () => {
     (id: number) => () => {
       deletePostMutation.mutate(id)
       closeDeletePostModal()
-      toast.success('削除に成功しました')
     },
     [closeDeletePostModal, deletePostMutation]
   )
