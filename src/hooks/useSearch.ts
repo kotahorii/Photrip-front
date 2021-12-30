@@ -86,9 +86,12 @@ export const useSearch = () => {
     []
   )
 
-  const rateAve = (post: Post) =>
-    post.rates.map((rate) => rate.rate).reduce((acc, cur) => acc + cur, 0) /
-    post.rates.length
+  const rateAve = useCallback(
+    (post: Post) =>
+      post.rates.map((rate) => rate.rate).reduce((acc, cur) => acc + cur, 0) /
+      post.rates.length,
+    []
+  )
 
   const rateAvePosts = useCallback(
     (posts: Post[] | undefined) =>
@@ -97,7 +100,7 @@ export const useSearch = () => {
         .sort((a, b) =>
           rateAve(a) > rateAve(b) || rateAve(b).toString() === 'NaN' ? -1 : 1
         ),
-    []
+    [rateAve]
   )
 
   return {

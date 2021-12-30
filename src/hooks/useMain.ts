@@ -36,7 +36,7 @@ export const useMain = () => {
   const postPreview = useAppSelector(selectPostPreview)
   const { closeCreatePostModal } = useHeader()
 
-  const formatDate = (date: string) => {
+  const formatDate = useCallback((date: string) => {
     const formedDate = new Date(date)
     const y = formedDate.getFullYear()
     const M = ('00' + (formedDate.getMonth() + 1)).slice(-2)
@@ -44,7 +44,7 @@ export const useMain = () => {
     const h = ('00' + formedDate.getHours()).slice(-2)
     const m = ('00' + formedDate.getMinutes()).slice(-2)
     return `${y}/${M}/${d} ${h}:${m}`
-  }
+  }, [])
 
   const changePost = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
