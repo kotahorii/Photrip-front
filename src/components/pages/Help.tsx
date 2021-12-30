@@ -3,8 +3,9 @@ import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButt
 import { DisclosurePanel } from 'components/molecules/disclosure/DisclosurePanel'
 import { HelpPageText } from 'components/molecules/disclosure/HelpPageText'
 import { useHelp } from 'hooks/useHelp'
+import { memo } from 'react'
 
-export const Help = () => {
+export const Help = memo(() => {
   const {
     isOpenHeaderDisclosure,
     isOpenMainDisclosure,
@@ -168,4 +169,4 @@ export const Help = () => {
       </div>
     </div>
   )
-}
+})

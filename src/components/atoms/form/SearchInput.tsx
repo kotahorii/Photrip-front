@@ -1,12 +1,12 @@
 import { SearchIcon } from '@heroicons/react/outline'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 
 type Props = {
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const SearchInput: VFC<Props> = ({ value, onChange }) => {
+export const SearchInput: VFC<Props> = memo(({ value, onChange }) => {
   return (
     <>
       <SearchIcon className="absolute w-6 h-6 text-gray-500 ml-2 top-1/4" />
@@ -19,4 +19,4 @@ export const SearchInput: VFC<Props> = ({ value, onChange }) => {
       />
     </>
   )
-}
+})

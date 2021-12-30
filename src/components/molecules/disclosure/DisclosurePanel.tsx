@@ -1,11 +1,11 @@
 import { Disclosure, Transition } from '@headlessui/react'
-import { ReactNode, VFC } from 'react'
+import { memo, ReactNode, VFC } from 'react'
 
 type Props = {
   children: ReactNode
 }
 
-export const DisclosurePanel: VFC<Props> = ({ children }) => {
+export const DisclosurePanel: VFC<Props> = memo(({ children }) => {
   return (
     <Transition
       enter="transition duration-100 ease-out"
@@ -20,4 +20,4 @@ export const DisclosurePanel: VFC<Props> = ({ children }) => {
       </Disclosure.Panel>
     </Transition>
   )
-}
+})

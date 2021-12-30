@@ -1,12 +1,12 @@
 import { UserCircleIcon } from '@heroicons/react/solid'
 import { CustomBadge } from 'components/atoms/CustomBadge'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 import { User } from 'types/userType'
 
 type Props = {
   user: User | undefined
 }
-export const CustomUserIcon: VFC<Props> = ({ user }) => {
+export const CustomUserIcon: VFC<Props> = memo(({ user }) => {
   return (
     <>
       <div className="relative">
@@ -28,4 +28,4 @@ export const CustomUserIcon: VFC<Props> = ({ user }) => {
       </div>
     </>
   )
-}
+})

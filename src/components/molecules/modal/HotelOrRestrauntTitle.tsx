@@ -1,11 +1,11 @@
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 
 type Props = {
   title: string
   length: number | undefined
 }
 
-export const HotelOrRestrauntTitle: VFC<Props> = ({ title, length }) => {
+export const HotelOrRestrauntTitle: VFC<Props> = memo(({ title, length }) => {
   return (
     <div className="flex flex-row justify-between px-3 items-center space-x-5">
       <div className="md:w-24 w-10"></div>
@@ -15,4 +15,4 @@ export const HotelOrRestrauntTitle: VFC<Props> = ({ title, length }) => {
       </p>
     </div>
   )
-}
+})
