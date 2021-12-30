@@ -54,6 +54,7 @@ export const useApi = () => {
     isLoading: isLoadingHotPepperData,
     isRefetching: isRefetchingHotPepperData,
   } = useQueryHotPepper(hotPepperKeyword(detailPost))
+
   const rakutenKeyword = useCallback(
     (post: Post | undefined) =>
       post?.prefecture && post?.city

@@ -1,11 +1,11 @@
-import { ReactNode, VFC } from 'react'
+import { memo, ReactNode, VFC } from 'react'
 
 type Props = {
   title: string
   children: ReactNode
 }
 
-export const HelpPageText: VFC<Props> = ({ title, children }) => {
+export const HelpPageText: VFC<Props> = memo(({ title, children }) => {
   return (
     <p className="text-md font-semibold">
       ・{title}
@@ -13,4 +13,4 @@ export const HelpPageText: VFC<Props> = ({ title, children }) => {
       <span className="text-sm font-medium">{children}</span>
     </p>
   )
-}
+})

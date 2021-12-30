@@ -90,12 +90,12 @@ export const useHeader = () => {
     },
   ]
 
-  const onClickHelpPage = () => navigate('/help')
-  const goToPageTop = () => {
+  const onClickHelpPage = useCallback(() => navigate('/help'), [navigate])
+  const goToPageTop = useCallback(() => {
     window.scrollTo({
       top: 0,
     })
-  }
+  }, [])
 
   return {
     isOpenCreatePostModal,
