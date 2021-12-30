@@ -20,7 +20,7 @@ export const CommentCard: VFC<Props> = memo(({ comment }) => {
           <p className="text-xs">{formatDate(comment.createdAt)}</p>
         </div>
       </div>
-      <p className="break-words">{comment.comment}</p>
+      <p className="break-words whitespace-pre-wrap">{comment.comment}</p>
     </div>
   )
 })

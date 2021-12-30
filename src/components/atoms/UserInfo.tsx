@@ -33,7 +33,7 @@ export const UserInfo: VFC<Props> = memo(({ user, children }) => {
         onMouseLeave={handleMouseLeave}
       >
         <p className="text-lg">{user?.name}</p>
-        <p>{user?.introduction}</p>
+        <p className="whitespace-pre-wrap">{user?.introduction}</p>
         <div className="flex flex-row items-center space-x-3">
           <div className="flex flex-row items-center space-x-1">
             <HeartIcon className="w-5 text-red-500" />

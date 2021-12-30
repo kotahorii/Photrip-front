@@ -60,7 +60,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
             <p className="text-xl truncate overflow-ellipsis">{post.title}</p>
           </div>
           <div className="h-16 md:block hidden rounded max-w-xs">
-            <p className="text-lg text-gray-400 truncate overflow-ellipsis">
+            <p className="text-lg text-gray-400 truncate overflow-ellipsis whitespace-nowrap">
               {post.body}
             </p>
           </div>
