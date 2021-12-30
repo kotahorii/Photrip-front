@@ -2,7 +2,6 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import { Label, Post } from 'types/postType'
 import { useMutationLabels } from './queries/useMutationLabels'
 import { useDetailPost } from './useDetailPost'
-import { useMain } from './useMain'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import {
   selectSearchedLabel,
@@ -12,6 +11,7 @@ import {
   setSearchPrefecture,
   setSelectedOption,
 } from 'slices/postSlice'
+import { useMain } from './useMain'
 
 export const useSearch = () => {
   const { id } = useDetailPost()
@@ -20,9 +20,9 @@ export const useSearch = () => {
   const searchedLabel = useAppSelector(selectSearchedLabel)
   const searchPrefecture = useAppSelector(selectSearchPrefecture)
   const selectedOption = useAppSelector(selectSelectedOption)
-
   const { posts } = useMain()
   const [labelName, setLabelName] = useState('')
+
   const changeLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabelName(e.target.value),
     []
