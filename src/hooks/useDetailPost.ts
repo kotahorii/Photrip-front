@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
-import { toast } from 'react-toastify'
 import { useCommentMutation } from './queries/useMutationComment'
 import { useParams } from 'react-router'
 import { useUsers } from './useUsers'
@@ -53,7 +52,6 @@ export const useDetailPost = () => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       createCommentMutation.mutate({ postId: Number(id), comment: comment })
-      toast.success('コメントを作成しました')
       setComment('')
     },
     [comment, createCommentMutation, id]

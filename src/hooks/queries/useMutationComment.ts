@@ -17,6 +17,7 @@ export const useCommentMutation = () => {
       }),
     {
       onSuccess: (res) => {
+        toast.success('コメントの作成に成功しました')
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         const previousDetailPost = queryClient.getQueryData<Post>('post')
         if (previousPosts) {
@@ -45,7 +46,7 @@ export const useCommentMutation = () => {
       }),
     {
       onSuccess: (res) => {
-        toast.success('削除に成功しました')
+        toast.success('コメントの削除に成功しました')
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         const previousDetailPost = queryClient.getQueryData<Post>('post')
         if (previousPosts) {
@@ -59,6 +60,9 @@ export const useCommentMutation = () => {
         if (previousDetailPost) {
           queryClient.setQueryData<Post>('post', res.data)
         }
+      },
+      onError: () => {
+        toast.error('コメント削除に失敗しました')
       },
     }
   )

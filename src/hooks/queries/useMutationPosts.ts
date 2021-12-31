@@ -22,6 +22,7 @@ export const useMutationPosts = () => {
       }),
     {
       onSuccess: (res) => {
+        toast.success('新規投稿に成功しました')
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         if (previousPosts) {
           queryClient.setQueryData<Post[]>('posts', [
@@ -29,6 +30,9 @@ export const useMutationPosts = () => {
             ...previousPosts,
           ])
         }
+      },
+      onError: () => {
+        toast.error('新規投稿に失敗しました')
       },
     }
   )
@@ -43,6 +47,7 @@ export const useMutationPosts = () => {
       }),
     {
       onSuccess: (res, variable) => {
+        toast.success('投稿の編集に成功しました')
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         const previousDetailPost = queryClient.getQueryData<Post>('post')
         if (previousPosts) {
@@ -56,6 +61,9 @@ export const useMutationPosts = () => {
         if (previousDetailPost) {
           queryClient.setQueryData<Post>('post', res.data)
         }
+      },
+      onError: () => {
+        toast.error('投稿の編集に失敗ました')
       },
     }
   )
@@ -71,6 +79,9 @@ export const useMutationPosts = () => {
             previousPosts.filter((Post) => Post.id !== variable)
           )
         }
+      },
+      onError: () => {
+        toast.error('削除に失敗しました')
       },
     }
   )

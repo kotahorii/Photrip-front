@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { ChangeEvent, FormEvent, useCallback } from 'react'
-import { toast } from 'react-toastify'
 import {
   resetDetailPost,
   resetEditPost,
@@ -111,10 +110,8 @@ export const useMain = () => {
       const data = createFormData()
       if (editedPost.id === 0) {
         createPostMutation.mutate(data)
-        toast.success('投稿に成功しました。')
       } else {
         updatePostMutation.mutate({ id: detailPost?.id, formData: data })
-        toast.success('編集に成功しました')
       }
       closeCreatePostModal()
       dispatch(resetEditPost())

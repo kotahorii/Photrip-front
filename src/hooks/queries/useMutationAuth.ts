@@ -66,6 +66,9 @@ export const useMutationAuth = () => {
         Cookies.remove('_uid')
         navigate('/')
       },
+      onError: () => {
+        toast.error('ログアウトに失敗しました')
+      },
     }
   )
 
