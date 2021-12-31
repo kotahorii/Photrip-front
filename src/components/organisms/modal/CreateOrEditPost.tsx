@@ -28,7 +28,7 @@ export const CreateOrEditPost = memo(() => {
   return (
     <>
       <form onSubmit={submitPost} className="md:p-3">
-        <div className=" flex flex-col space-y-4 mt-2">
+        <div className=" flex flex-col me:space-y-4 space-y-1 mt-2">
           <div className=" flex flex-col space-y-2 items-start">
             <CustomLabel title="タイトル" />
             <CustomInput
@@ -62,8 +62,10 @@ export const CreateOrEditPost = memo(() => {
             140字以内で入力してください
           </ValidationMessage>
           <div className="flex md:flex-row md:space-x-7 flex-col">
-            <div className="md:w-80 h-16 flex flex-col justify-between md:items-start md:mt-0 md:mb-0 mt-3 mb-1">
-              <CustomLabel title="郵便番号" />
+            <div className="md:w-80 h-16 flex flex-col space-y-2 justify-between md:items-start">
+              <div>
+                <CustomLabel title="郵便番号" />
+              </div>
               <div className="flex flex-row items-center">
                 <div className="md:w-40 w-full">
                   <CustomInput
@@ -83,7 +85,7 @@ export const CreateOrEditPost = memo(() => {
                 </div>
               </div>
             </div>
-            <div className="w-full flex flex-col space-y-2 items-start">
+            <div className="w-full flex flex-col space-y-2 md:mt-1 mt-3 items-start">
               <CustomLabel title="旅行先住所" />
               <CustomInput
                 name="prefecture"

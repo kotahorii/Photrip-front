@@ -29,7 +29,7 @@ export const PostDetailDisclosure = memo(() => {
             <p className="font-semibold">{postUser(users)?.name}</p>
           </div>
         </div>
-        <p>{detailPost?.body}</p>
+        <p className="whitespace-pre-wrap">{detailPost?.body}</p>
       </Disclosure.Panel>
     </Transition>
   )

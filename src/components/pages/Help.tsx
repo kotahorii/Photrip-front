@@ -161,7 +161,7 @@ export const Help = memo(() => {
                 モーダルの外をクリックすることで、モーダルを閉じることができます。
               </HelpPageText>
               <HelpPageText title="投稿削除モーダル">
-                モーダルの外か「キャンセル」を押すと、モーダルが閉じます。「削除」を押すことで、投稿を削除することができます。
+                モーダルの外を押すと、モーダルが閉じます。「削除」を押すことで、投稿を削除することができます。
               </HelpPageText>
             </DisclosurePanel>
           </Disclosure>

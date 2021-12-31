@@ -7,7 +7,7 @@ import { useHeader } from 'hooks/useHeader'
 import { VFC, ReactNode, memo, useEffect } from 'react'
 import { Header } from './Header'
 import { CreateOrEditPost } from 'components/organisms/modal/CreateOrEditPost'
-import { DeletePostModal } from 'components/organisms/modal/DeletePostModal'
+import { DeleteConfirmModal } from 'components/organisms/modal/DeleteConfirmModal'
 import { useMain } from 'hooks/useMain'
 import { useAppSelector } from 'app/hooks'
 import { selectEditedPost } from 'slices/postSlice'
@@ -29,8 +29,12 @@ export const Layout: VFC<Props> = memo(({ children }) => {
     isOpenCreatePostModal,
     closeCreatePostModal,
   } = useHeader()
-  const { isOpenDeletePostModal, closeDeletePostModal, detailUserPost } =
-    useMain()
+  const {
+    isOpenDeletePostModal,
+    closeDeletePostModal,
+    detailUserPost,
+    deletePost,
+  } = useMain()
   const editedPost = useAppSelector(selectEditedPost)
   return (
     <Menu>
@@ -63,7 +67,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
           title={<>{detailUserPost.title}</>}
           border={false}
         >
-          <DeletePostModal />
+          <DeleteConfirmModal onClick={deletePost(detailUserPost.id)} />
         </CustomModal>
         <SuccessToast />
       </div>

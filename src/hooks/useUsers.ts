@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { FormEvent, useCallback } from 'react'
 
 import { useQueryUsers } from './queries/useQueryUsers'
-import { toast } from 'react-toastify'
 import { useAuth } from './useAuth'
 import { useMutationUser } from './queries/useMutationUser'
 import {
@@ -50,7 +49,6 @@ export const useUsers = () => {
       }
       updateUserMutation.mutate(data)
       dispatch(setIsOpenEditUserModal(false))
-      toast.success('ユーザーの更新に成功しました')
     },
     [currentUser, createEditFormData, updateUserMutation, dispatch]
   )

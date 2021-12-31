@@ -6,6 +6,7 @@ type StateType = {
   editedPost: UpdatePost
   latAndLng: LatLngType
   detailPost: Post
+  deleteCommentId: number
   postPreview: string
   searchedLabel: string
   searchPrefecture: number
@@ -15,6 +16,7 @@ type StateType = {
   isOpenShopModal: boolean
   isOpenHotelModal: boolean
   isOpenImageModal: boolean
+  isOpenDeleteCommentModal: boolean
 }
 
 const initialState: StateType = {
@@ -52,6 +54,7 @@ const initialState: StateType = {
     labels: [],
     comments: [],
   },
+  deleteCommentId: 0,
   postPreview: '',
   searchedLabel: '',
   searchPrefecture: 1,
@@ -60,6 +63,7 @@ const initialState: StateType = {
   isOpenShopModal: false,
   isOpenHotelModal: false,
   isOpenImageModal: false,
+  isOpenDeleteCommentModal: false,
   selectedOption: '1',
 }
 
@@ -110,6 +114,12 @@ export const postSlice = createSlice({
     setLatAndLng: (state, action: PayloadAction<LatLngType>) => {
       state.latAndLng = action.payload
     },
+    setIsOpenDeleteCommentModal: (state, action: PayloadAction<boolean>) => {
+      state.isOpenDeleteCommentModal = action.payload
+    },
+    setDeleteCommentId: (state, action: PayloadAction<number>) => {
+      state.deleteCommentId = action.payload
+    },
   },
 })
 
@@ -126,7 +136,9 @@ export const {
   setSearchedLabel,
   setSearchPrefecture,
   setSelectedOption,
+  setDeleteCommentId,
   setIsOpenImageModal,
+  setIsOpenDeleteCommentModal,
   setLatAndLng,
 } = postSlice.actions
 export const selectEditedPost = (state: RootState) => state.post.editedPost
@@ -149,4 +161,8 @@ export const selectSelectedOption = (state: RootState) =>
 export const selectIsOpenImageModal = (state: RootState) =>
   state.post.isOpenImageModal
 export const selectLatAndLng = (state: RootState) => state.post.latAndLng
+export const selectIsOpenDeleteCommentModal = (state: RootState) =>
+  state.post.isOpenDeleteCommentModal
+export const selectDeleteCommentId = (state: RootState) =>
+  state.post.deleteCommentId
 export default postSlice.reducer

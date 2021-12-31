@@ -60,7 +60,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
             <p className="text-xl truncate overflow-ellipsis">{post.title}</p>
           </div>
           <div className="h-16 md:block hidden rounded max-w-xs">
-            <p className="text-lg text-gray-400 truncate overflow-ellipsis">
+            <p className="text-lg text-gray-400 truncate overflow-ellipsis whitespace-nowrap">
               {post.body}
             </p>
           </div>
@@ -76,7 +76,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
           </div>
         </Link>
         <div className="flex flex-row relative mt-5 justify-between items-center px-2">
-          <div className=" flex flex-row items-center w-10 h-8 mt-2 mr-2 rounded-full">
+          <div className=" flex flex-row items-center h-8 mt-2 mr-2 rounded-full">
             <LikeButton post={post} />
             <span>{post.favorites.length}</span>
           </div>
@@ -97,7 +97,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
       {post.userId === currentUser?.id && (
         <XIcon
           onClick={openDeletePostModal(post)}
-          className="absolute right-1 top-0 cursor-pointer w-7 h-7 text-gray-400 hover:text-gray-500"
+          className="absolute right-1 top-0 cursor-pointer w-7 h-7 rounded-full p-1 text-gray-400 hover:bg-gray-100"
         />
       )}
     </div>

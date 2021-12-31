@@ -25,6 +25,7 @@ import { TextArea } from 'components/atoms/form/TextArea'
 import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 import { InputButton } from 'components/atoms/button/InputButton'
 import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
+import { DeleteConfirmModal } from 'components/organisms/modal/DeleteConfirmModal'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -43,6 +44,9 @@ export const DetailPost = memo(() => {
     openImageModal,
     closeImageModal,
     openEditPostModal,
+    isOpenDeleteCommentModal,
+    closeDeleteCommentModal,
+    deleteComment,
   } = useDetailPost()
   const {
     isOpenShopModal,
@@ -90,7 +94,7 @@ export const DetailPost = memo(() => {
                   />
                 </div>
               )}
-              <div className="flex flex-row w-full justify-center items-center">
+              <div className="flex flex-row md:w-full w-11/12 justify-center items-center">
                 <div className="h-7 w-12 flex flex-row items-center rounded">
                   {detailPost?.city !== '' && <LikeButton post={detailPost!} />}
                   <span>{detailPost?.favorites.length}</span>
@@ -122,7 +126,7 @@ export const DetailPost = memo(() => {
                 <div className="flex flex-row">
                   {detailPost?.userId === currentUser?.id && (
                     <>
-                      <div className=" w-68">
+                      <div className=" w-68 md:pl-0 pl-4">
                         <CustomInput
                           name="label"
                           value={labelName}
@@ -131,7 +135,7 @@ export const DetailPost = memo(() => {
                           isError={labelName.length > 15}
                         />
                       </div>
-                      <div className="w-28">
+                      <div className="w-28 md:pr-0 pr-4">
                         <InputButton
                           text="タグ追加"
                           onClick={createLabel}
@@ -144,11 +148,13 @@ export const DetailPost = memo(() => {
                     </>
                   )}
                 </div>
-                <ValidationMessage isError={labelName.length > 15}>
-                  15文字以内で入力してください
-                </ValidationMessage>
+                <div className="md:px-0 px-4">
+                  <ValidationMessage isError={labelName.length > 15}>
+                    15文字以内で入力してください
+                  </ValidationMessage>
+                </div>
               </div>
-              <div className="flex flex-row w-96 overflow-x-auto whitespace-nowrap space-x-2">
+              <div className="flex flex-row w-96 md:px-0 px-4 overflow-x-auto whitespace-nowrap space-x-2">
                 {detailPost?.labels.map((label) => (
                   <CustomTag key={label.id} label={label} />
                 ))}
@@ -156,7 +162,7 @@ export const DetailPost = memo(() => {
             </div>
             <form
               onSubmit={submitComment}
-              className=" w-96 flex flex-col space-y-2 rounded"
+              className=" w-96 flex flex-col space-y-2 md:px-0 px-4 rounded"
             >
               <div className="w-full md:h-104 h-80 p-2 space-y-3 bg-blue-50 overflow-auto rounded shadow">
                 {detailPost?.comments.map((comment) => (
@@ -200,7 +206,7 @@ export const DetailPost = memo(() => {
               </div>
             </form>
           </div>
-          <div className="md:w-1/2 w-8/12">
+          <div className="md:w-1/2 w-full md:px-0 px-4">
             <DisclosureButton
               isOpen={openDisclosure}
               toggleOpen={toggleOpenDisclosure}
@@ -208,7 +214,7 @@ export const DetailPost = memo(() => {
               詳細を見る
             </DisclosureButton>
           </div>
-          <div className="md:w-6/12 w-8/12">
+          <div className="md:w-1/2 w-full md:px-0 px-4">
             <PostDetailDisclosure />
           </div>
           {/* <GoogleMapComponent post={detailPost} /> */}
@@ -241,6 +247,14 @@ export const DetailPost = memo(() => {
           closeModal={closeHotelModal}
         >
           <HotelModal />
+        </CustomModal>
+        <CustomModal
+          isOpen={isOpenDeleteCommentModal}
+          closeModal={closeDeleteCommentModal}
+          title={<>コメントを削除</>}
+          border={false}
+        >
+          <DeleteConfirmModal onClick={deleteComment} />
         </CustomModal>
         <ImageModal
           isOpen={isOpenImageModal}

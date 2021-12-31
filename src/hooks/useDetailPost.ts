@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
-import { toast } from 'react-toastify'
 import { useCommentMutation } from './queries/useMutationComment'
 import { useParams } from 'react-router'
 import { useUsers } from './useUsers'
@@ -7,10 +6,14 @@ import { Comment } from 'types/postType'
 import { useQueryDetailPost } from './queries/useQueryDetailPost'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import {
+  selectDeleteCommentId,
   selectEditedPost,
+  selectIsOpenDeleteCommentModal,
   selectIsOpenImageModal,
+  setDeleteCommentId,
   setEditPost,
   setIsOpenCreatePostModal,
+  setIsOpenDeleteCommentModal,
   setIsOpenImageModal,
   setLatAndLng,
 } from 'slices/postSlice'
@@ -19,8 +22,12 @@ import { User } from 'types/userType'
 export const useDetailPost = () => {
   const dispatch = useAppDispatch()
   const isOpenImageModal = useAppSelector(selectIsOpenImageModal)
+  const isOpenDeleteCommentModal = useAppSelector(
+    selectIsOpenDeleteCommentModal
+  )
+  const deleteCommentId = useAppSelector(selectDeleteCommentId)
   const { users } = useUsers()
-  const { createCommentMutation } = useCommentMutation()
+  const { createCommentMutation, deleteCommentMutation } = useCommentMutation()
   const { id } = useParams()
   const {
     data: detailPost,
@@ -45,7 +52,6 @@ export const useDetailPost = () => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       createCommentMutation.mutate({ postId: Number(id), comment: comment })
-      toast.success('コメントを作成しました')
       setComment('')
     },
     [comment, createCommentMutation, id]
@@ -88,6 +94,23 @@ export const useDetailPost = () => {
     }
   }, [dispatch, detailPost, editedPost])
 
+  const openDeleteCommentModal = useCallback(
+    (id: number) => () => {
+      dispatch(setDeleteCommentId(id))
+      dispatch(setIsOpenDeleteCommentModal(true))
+    },
+    [dispatch]
+  )
+
+  const closeDeleteCommentModal = useCallback(() => {
+    dispatch(setIsOpenDeleteCommentModal(false))
+  }, [dispatch])
+
+  const deleteComment = useCallback(() => {
+    deleteCommentMutation.mutate(deleteCommentId)
+    closeDeleteCommentModal()
+  }, [closeDeleteCommentModal, deleteCommentId, deleteCommentMutation])
+
   return {
     comment,
     commentChange,
@@ -104,6 +127,10 @@ export const useDetailPost = () => {
     openImageModal,
     closeImageModal,
     isOpenImageModal,
+    isOpenDeleteCommentModal,
+    openDeleteCommentModal,
+    closeDeleteCommentModal,
     postUser,
+    deleteComment,
   }
 }

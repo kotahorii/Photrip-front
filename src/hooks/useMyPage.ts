@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { prefectures } from 'data/prefecture'
 import { useMain } from 'hooks/useMain'
 import { useCallback, useState } from 'react'
-import { toast } from 'react-toastify'
 import {
   selectIsOpenDeletePostModal,
   setDetailPost,
@@ -65,7 +64,6 @@ export const useMyPage = () => {
     (id: number) => () => {
       deletePostMutation.mutate(id)
       closeDeletePostModal()
-      toast.success('投稿を削除しました')
     },
     [deletePostMutation, closeDeletePostModal]
   )

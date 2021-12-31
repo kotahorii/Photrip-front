@@ -18,7 +18,13 @@ export const CustomTag: VFC<Props> = memo(({ label }) => {
         label.userId === currentUser?.id && 'hover:bg-blue-600'
       }`}
     >
-      <p className="text-center mr-1 w-full">{label.name}</p>
+      <p
+        className={`text-center ${
+          label.userId === currentUser?.id && 'mr-1'
+        } w-full`}
+      >
+        {label.name}
+      </p>
       {label.userId === currentUser?.id && (
         <XIcon
           onClick={deleteLabel(label)}
