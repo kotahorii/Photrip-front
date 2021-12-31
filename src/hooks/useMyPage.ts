@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { prefectures } from 'data/prefecture'
 import { useMain } from 'hooks/useMain'
 import { useCallback, useState } from 'react'
-import { toast } from 'react-toastify'
 import {
   selectIsOpenDeletePostModal,
   setDetailPost,

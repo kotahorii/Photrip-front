@@ -26,7 +26,7 @@ export const CommentCard: VFC<Props> = memo(({ comment }) => {
       {comment.userId === currentUser?.id && (
         <XIcon
           onClick={openDeleteCommentModal(comment.id)}
-          className="absolute right-1 top-0 cursor-pointer w-7 h-7 text-gray-400 hover:text-gray-500"
+          className="absolute right-1 top-0 cursor-pointer w-7 h-7 p-1 rounded-full text-gray-400 hover:bg-gray-100"
         />
       )}
     </div>

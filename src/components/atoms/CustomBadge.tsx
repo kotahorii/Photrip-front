@@ -14,13 +14,13 @@ export const CustomBadge: VFC<Props> = memo(({ user }) => {
   const { isLoadingDetailPost } = useDetailPost()
 
   const color = () =>
-    getAllFav(user)! + getAllRate(user)! >= 1 &&
-    getAllFav(user)! + getAllRate(user)! < 5
-      ? 'text-red-700 bg-red-100'
-      : getAllFav(user)! + getAllRate(user)! >= 5 &&
-        getAllFav(user)! + getAllRate(user)! < 10
-      ? 'text-gray-400 bg-gray-100'
-      : getAllFav(user)! + getAllRate(user)! >= 10
+    getAllFav(user)! + getAllRate(user)! >= 10 &&
+    getAllFav(user)! + getAllRate(user)! < 30
+      ? 'text-red-600 bg-red-100'
+      : getAllFav(user)! + getAllRate(user)! >= 30 &&
+        getAllFav(user)! + getAllRate(user)! < 50
+      ? 'text-gray-300 bg-gray-100'
+      : getAllFav(user)! + getAllRate(user)! >= 50
       ? 'text-yellow-400 bg-yellow-100'
       : 'hidden'
 
