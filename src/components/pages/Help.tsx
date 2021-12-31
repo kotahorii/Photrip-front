@@ -22,7 +22,7 @@ export const Help = memo(() => {
     <div className="w-full min-h-screen font-notoSans flex flex-col text-gray-500 items-center bg-gray-50">
       <div className=" max-w-lg w-full min-h-screen p-1">
         <h1 className="flex flex-row items-center justify-center text-3xl w-full p-8 font-semibold">
-          <div className="h-14 w-14">
+          <div className="h-11 w-11">
             <img
               className="h-full w-full"
               src={`${process.env.PUBLIC_URL}/application_icon.png`}

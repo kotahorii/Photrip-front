@@ -20,9 +20,9 @@ export const Header = memo(() => {
     <nav className="flex flex-row z-10 font-merriweather fixed justify-between items-center bg-gray-50 shadow px-10 w-screen h-20 text-gray-500 bg-gray-20">
       <div
         onClick={goToPageTop}
-        className="text-2xl flex flex-row items-center space-x-2 p-2 transition duration-500 hover:text-blue-400 border-blue-500 cursor-pointer"
+        className="text-2xl flex flex-row items-center p-2 transition duration-500 hover:text-blue-400 border-blue-500 cursor-pointer"
       >
-        <div className="h-14 w-14">
+        <div className=" h-10 w-10">
           <img
             className="h-full w-full"
             src={`${process.env.PUBLIC_URL}/application_icon.png`}
@@ -44,9 +44,9 @@ export const Header = memo(() => {
           }`}
         >
           {location.pathname === '/main' ? (
-            <BookSolidIcon className="w-7 h-7" />
+            <BookSolidIcon className="w-6 h-6 mt-1" />
           ) : (
-            <BookOutLineIcon className="w-6 h-6" />
+            <BookOutLineIcon className="w-6 h-6 mt-1" />
           )}
 
           <span>投稿一覧</span>

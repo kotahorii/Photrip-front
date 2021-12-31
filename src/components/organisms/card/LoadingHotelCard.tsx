@@ -2,7 +2,7 @@ import { memo } from 'react'
 
 export const LoadingHotelCard = memo(() => {
   return (
-    <li className="bg-gray-50 p-3 border-t border-gray-300 flex items-center flex-row space-x-3 w-full ">
+    <li className="bg-gray-50 animate-pulse p-3 border-t border-gray-300 flex items-center flex-row space-x-3 w-full ">
       <div className="w-32 h-24 bg-gray-200 rounded-lg"></div>
       <div className="flex flex-col w-2/3 space-x-1">
         <div className="p-2 h-11 rounded-lg bg-gray-200"></div>

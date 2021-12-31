@@ -61,6 +61,7 @@ export const useMutationAuth = () => {
         if (previousUser) {
           queryClient.removeQueries('user')
         }
+        dispatch(resetUserData())
         Cookies.remove('_access_token')
         Cookies.remove('_client')
         Cookies.remove('_uid')
