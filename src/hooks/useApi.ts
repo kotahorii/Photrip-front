@@ -13,6 +13,7 @@ import {
   setLatAndLng,
 } from 'slices/postSlice'
 import { useQueryHotPepper } from 'hooks/queries/useQueryHotPepper'
+import { toast } from 'react-toastify'
 
 Geocede.setApiKey(`${process.env.REACT_APP_GOOGLE_MAP_API}`)
 Geocede.setLanguage('ja')
@@ -75,9 +76,11 @@ export const useApi = () => {
       (response) => {
         const { lat, lng } = response.results[0].geometry.location
         dispatch(setLatAndLng({ lat: lat, lng: lng }))
+        toast.success('住所の取得に成功しました')
       },
       (err) => {
         console.log(err)
+        toast.error('有効な郵便番号を入力してください')
       }
     )
   }, [address, dispatch])
