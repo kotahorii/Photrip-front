@@ -32,6 +32,9 @@ export const useCommentMutation = () => {
           queryClient.setQueryData<Post>('post', res.data)
         }
       },
+      onError: () => {
+        toast.error('コメントの作成に失敗しました')
+      },
     }
   )
 

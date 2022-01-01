@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
+import { toast } from 'react-toastify'
 import { CreateLabel, Post } from 'types/postType'
 
 export const useMutationLabels = () => {
@@ -19,6 +20,7 @@ export const useMutationLabels = () => {
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         const previousDetailPost = queryClient.getQueryData<Post>('post')
         if (previousPosts) {
+          toast.success('タグの作成に成功しました')
           queryClient.setQueryData<Post[]>(
             'posts',
             previousPosts.map((post) =>
@@ -29,6 +31,9 @@ export const useMutationLabels = () => {
         if (previousDetailPost) {
           queryClient.setQueryData<Post>('post', res.data)
         }
+      },
+      onError: () => {
+        toast.error('タグの作成に失敗しました')
       },
     }
   )
@@ -43,6 +48,7 @@ export const useMutationLabels = () => {
       }),
     {
       onSuccess: (res) => {
+        toast.success('タグの削除に成功しました')
         const previousPosts = queryClient.getQueryData<Post[]>('posts')
         const previousDetailPost = queryClient.getQueryData<Post>('post')
         if (previousPosts) {
@@ -56,6 +62,9 @@ export const useMutationLabels = () => {
         if (previousDetailPost) {
           queryClient.setQueryData<Post>('post', res.data)
         }
+      },
+      onError: () => {
+        toast.error('タグの削除に失敗しました')
       },
     }
   )

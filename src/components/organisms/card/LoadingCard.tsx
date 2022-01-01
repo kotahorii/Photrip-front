@@ -12,7 +12,7 @@ export const LoadingCard = memo(() => {
           <div className="w-10 h-8 mt-2 mr-2 bg-gray-200 rounded-full"></div>
           <div className="h-8 w-14 mt-2 bg-gray-200 rounded-full"></div>
           <div className="w-20"></div>
-          <div className="h-8 w-28 mt-2 bg-gray-200 rounded-full"></div>
+          <div className="h-8 w-28 mt-2"></div>
         </div>
       </div>
     </div>
