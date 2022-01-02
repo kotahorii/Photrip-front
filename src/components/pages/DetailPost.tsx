@@ -70,9 +70,9 @@ export const DetailPost = memo(() => {
     <Layout>
       <Disclosure>
         <div className="flex flex-col space-y-5 items-center w-full min-h-screen">
-          <p className="w-full text-3xl text-center font-semibold">
+          <h1 className="w-full text-3xl text-center font-semibold">
             {detailPost?.title}
-          </p>
+          </h1>
           <div className="flex md:flex-row flex-col justify-center items-center md:items-start md:space-x-3 md:space-y-0 space-y-3 md:w-full w-11/12">
             <div className="flex flex-col justify-between items-center space-y-4 ">
               {detailPost?.image.url === null ? (
