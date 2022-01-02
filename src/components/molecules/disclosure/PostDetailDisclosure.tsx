@@ -25,7 +25,7 @@ export const PostDetailDisclosure = memo(() => {
             <CustomUserIcon user={postUser(users)} />
           </UserInfo>
           <div className="h-14 py-2">
-            <p>投稿者</p>
+            <p className=" text-xs">投稿者</p>
             <p className="font-semibold">{postUser(users)?.name}</p>
           </div>
         </div>
