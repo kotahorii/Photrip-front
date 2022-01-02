@@ -10,12 +10,12 @@ type Props = {
 export const GoogleMapComponent: VFC<Props> = memo(({ post }) => {
   const { containerStyle, options } = useGoogleMapComponent()
   const center = post && {
-    lat: post.lat === null ? 35.69575 : post.lat,
-    lng: post.lng === null ? 139.77521 : post.lng,
+    lat: post.lat === null ? 35.702259 : post.lat,
+    lng: post.lng === null ? 139.774473 : post.lng,
   }
   const position = post && {
-    lat: post.lat === null ? 35.69575 : post.lat,
-    lng: post.lng === null ? 139.77521 : post.lng,
+    lat: post.lat === null ? 35.702259 : post.lat,
+    lng: post.lng === null ? 139.774473 : post.lng,
   }
   return (
     <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API}`}>
