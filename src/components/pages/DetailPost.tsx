@@ -26,7 +26,7 @@ import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButt
 import { InputButton } from 'components/atoms/button/InputButton'
 import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
 import { DeleteConfirmModal } from 'components/organisms/modal/DeleteConfirmModal'
-// import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
+import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
   const { isLoadingUser, currentUser } = useMain()
@@ -217,8 +217,8 @@ export const DetailPost = memo(() => {
           <div className="md:w-1/2 w-full md:px-0 px-4">
             <PostDetailDisclosure />
           </div>
-          {/* <GoogleMapComponent post={detailPost} /> */}
-          <div className="h-96 w-full bg-blue-200 "></div>
+          <GoogleMapComponent post={detailPost} />
+          {/* <div className="h-96 w-full bg-blue-200 "></div> */}
         </div>
         <CustomModal
           width="w-full"
