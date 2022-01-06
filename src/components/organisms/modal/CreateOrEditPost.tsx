@@ -9,6 +9,7 @@ import { useApi } from 'hooks/useApi'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
 
+// 投稿作成、編集用のモーダル
 export const CreateOrEditPost = memo(() => {
   const {
     editedPost,
