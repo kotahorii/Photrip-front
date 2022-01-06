@@ -45,7 +45,7 @@ export const Auth = memo(() => {
         <img
           className="h-full w-full object-cover absolute"
           alt="auth_page_photo"
-          src={`${process.env.PUBLIC_URL}/portfolio_image.jpeg`}
+          src={`${process.env.PUBLIC_URL}/portfolio_image.png`}
         />
       </div>
 
