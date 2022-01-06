@@ -10,6 +10,7 @@ import { CustomButton } from 'components/atoms/button/CustomButton'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
+// 認証画面のコンポーネント
 export const Auth = memo(() => {
   const {
     isLogin,
