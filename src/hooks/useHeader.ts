@@ -16,6 +16,7 @@ import {
 import {
   selectIsOpenEditUserModal,
   setIsOpenEditUserModal,
+  setPreview,
   setUserData,
 } from 'slices/userSlice'
 import { MenuType } from 'types/postType'
@@ -42,6 +43,7 @@ export const useHeader = () => {
           prefecture: currentUser.prefecture,
         })
       )
+      dispatch(setPreview(currentUser.image.url))
       dispatch(setIsOpenEditUserModal(true))
     }
   }, [dispatch, currentUser, userData])
