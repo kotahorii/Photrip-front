@@ -16,6 +16,7 @@ import {
   setIsOpenDeleteCommentModal,
   setIsOpenImageModal,
   setLatAndLng,
+  setPostPreview,
 } from 'slices/postSlice'
 import { User } from 'types/userType'
 
@@ -90,6 +91,7 @@ export const useDetailPost = () => {
           town: detailPost.town,
         })
       )
+      dispatch(setPostPreview(detailPost.image.url))
       dispatch(setLatAndLng({ lat: detailPost.lat, lng: detailPost.lng }))
     }
   }, [dispatch, detailPost, editedPost])
