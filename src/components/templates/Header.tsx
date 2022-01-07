@@ -35,15 +35,15 @@ export const Header = memo(() => {
       <div className="md:flex font-notoSans font-semibold hidden flex-row">
         <div
           onClick={
-            location.pathname === '/main'
+            location.pathname === '/'
               ? goToPageTop
-              : () => navigate('/main')
+              : () => navigate('/')
           }
           className={`flex flex-row cursor-pointer space-x-1 items-center text-lg transition duration-300 hover:bg-blue-100 hover:text-blue-500 rounded px-2 py-2 ${
-            location.pathname === '/main' ? 'text-blue-500' : 'text-gray-500'
+            location.pathname === '/' ? 'text-blue-500' : 'text-gray-500'
           }`}
         >
-          {location.pathname === '/main' ? (
+          {location.pathname === '/' ? (
             <BookSolidIcon className="w-6 h-6 mt-1" />
           ) : (
             <BookOutLineIcon className="w-6 h-6 mt-1" />
