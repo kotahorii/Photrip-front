@@ -26,7 +26,7 @@ export const GoogleMapComponent: VFC<Props> = memo(({ post }) => {
         options={options}
       >
         <InfoWindow position={position}>
-          <div className="bg-white font-semibold text-lg">
+          <div className="bg-white font-semibold h-8 text-lg">
             <h1>{post?.title}</h1>
           </div>
         </InfoWindow>

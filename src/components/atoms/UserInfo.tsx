@@ -27,7 +27,7 @@ export const UserInfo: VFC<Props> = memo(({ user, children }) => {
   return (
     <div className="flex relative">
       <div
-        className="flex flex-col break-words w-64 space-y-2 absolute top-full left-1/2 invisible z-10 py-[2px] p-3 mx-auto my-2 bg-gray-50 text-gray-500 shadow rounded transition-all duration-400 transform -translate-x-1/2"
+        className="flex flex-col break-words w-64 space-y-2 absolute top-full md:left-1/2 left-28 invisible z-10 py-[2px] p-3 mx-auto my-2 bg-gray-50 text-gray-500 shadow rounded transition-all duration-400 transform -translate-x-1/2"
         ref={ref}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
