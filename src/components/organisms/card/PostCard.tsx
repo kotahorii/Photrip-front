@@ -30,7 +30,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
       {post.image.url !== null || '' ? (
         <Link
           onClick={moveToDetailPage}
-          to={`/main/${post.id}`}
+          to={`/${post.id}`}
           className=" w-72 h-52 rounded"
         >
           <img
@@ -42,7 +42,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
       ) : (
         <Link
           onClick={moveToDetailPage}
-          to={`/main/${post.id}`}
+          to={`/${post.id}`}
           className=" w-72 h-52 relative bg-gray-200 rounded"
         >
           <p className=" absolute text-xl font-semibold text-gray-400 transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -54,7 +54,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
         <Link
           onClick={moveToDetailPage}
           className="flex flex-col space-y-2"
-          to={`/main/${post.id}`}
+          to={`/${post.id}`}
         >
           <div className="h-10 rounded max-w-xs">
             <h1 className="text-xl truncate overflow-ellipsis">{post.title}</h1>

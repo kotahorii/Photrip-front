@@ -88,7 +88,7 @@ export const useHeader = () => {
     {
       name: '投稿一覧',
       icon: BookOpenIcon,
-      onClick: () => navigate('/main'),
+      onClick: () => navigate('/'),
     },
   ]
 

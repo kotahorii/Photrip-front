@@ -8,5 +8,5 @@ type Props = {
 
 export const PublicRoute: VFC<Props> = memo(({ children }) => {
   const { data: currentUser } = useQueryCurrentUser()
-  return currentUser?.name ? <Navigate to="/main" replace /> : children
+  return currentUser?.name ? <Navigate to="/" replace /> : children
 })

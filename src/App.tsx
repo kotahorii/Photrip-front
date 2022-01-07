@@ -11,7 +11,7 @@ function App() {
   return (
     <Routes>
       <Route
-        path="/"
+        path="/auth"
         element={
           <PublicRoute>
             <Auth />
@@ -19,7 +19,7 @@ function App() {
         }
       />
       <Route
-        path="/main"
+        path="/"
         element={
           <PrivateRoute>
             <Main />
@@ -27,7 +27,7 @@ function App() {
         }
       />
       <Route
-        path="/main/:id"
+        path="/:id"
         element={
           <PrivateRoute>
             <DetailPost />
@@ -43,7 +43,7 @@ function App() {
         }
       />
       <Route path="/help" element={<Help />} />
-      <Route path="*" element={<Navigate to="/main" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

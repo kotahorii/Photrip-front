@@ -20,7 +20,7 @@ export const useMutationAuth = () => {
         Cookies.set('_access_token', res.headers['access-token'])
         Cookies.set('_client', res.headers['client'])
         Cookies.set('_uid', res.headers['uid'])
-        navigate('/main')
+        navigate('/')
       },
       onError: () => {
         toast.error('ログインに失敗しました')
@@ -37,7 +37,7 @@ export const useMutationAuth = () => {
         Cookies.set('_access_token', res.headers['access-token'])
         Cookies.set('_client', res.headers['client'])
         Cookies.set('_uid', res.headers['uid'])
-        navigate('/main')
+        navigate('/')
       },
       onError: () => {
         toast.error('新規登録に失敗しました')
@@ -65,7 +65,7 @@ export const useMutationAuth = () => {
         Cookies.remove('_access_token')
         Cookies.remove('_client')
         Cookies.remove('_uid')
-        navigate('/')
+        navigate('/auth')
       },
       onError: () => {
         toast.error('ログアウトに失敗しました')

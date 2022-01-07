@@ -15,5 +15,5 @@ export const PrivateRoute: VFC<Props> = memo(({ children }) => {
         <Spinner />
       </div>
     )
-  return data?.email ? children : <Navigate to="/" replace />
+  return data?.email ? children : <Navigate to="/auth" replace />
 })
