@@ -7,6 +7,7 @@ export const useHelp = () => {
   const [isOpenModalDisclosure, setIsOpenModalDisclosure] = useState(false)
   const [isOpenDetailDisclosure, setIsOpenDetailDisclosure] = useState(false)
 
+  // ヘルプページの折りたたみ要素を開閉する処理
   const toggleHeaderDisclosure = useCallback(
     () => setIsOpenHeaderDisclosure(!isOpenHeaderDisclosure),
     [isOpenHeaderDisclosure]

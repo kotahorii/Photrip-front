@@ -8,6 +8,7 @@ export const useLikes = () => {
   const { createLikeMutation, deleteLikeMutation } = useLikeMutation()
   const { currentUser, usersPost } = useMain()
 
+  // いいねしているかどうかをBooleanで返す変数
   const isLiked = useCallback(
     (post: Post | undefined) =>
       !post
@@ -16,6 +17,8 @@ export const useLikes = () => {
             .length > 0,
     [currentUser]
   )
+
+  // いいね、いいね取り消しの処理
   const toggleLike = useCallback(
     (post: Post | undefined) => () => {
       if (isLiked(post)) {
@@ -29,6 +32,8 @@ export const useLikes = () => {
     },
     [createLikeMutation, currentUser?.id, deleteLikeMutation, isLiked]
   )
+
+  // あるユーザーのすべてのいいねを取得する処理
   const getAllFav = useCallback(
     (user: User | undefined) =>
       usersPost(user) === []
