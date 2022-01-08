@@ -8,6 +8,7 @@ import { Navigate, Route, Routes } from 'react-router'
 import { Main } from './components/pages/Main'
 
 function App() {
+  // アプリケーションのルーティングを定義
   return (
     <Routes>
       <Route
@@ -43,6 +44,7 @@ function App() {
         }
       />
       <Route path="/help" element={<Help />} />
+      {/* パスが一致しない場合は一覧ページにリダイレクトされる */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

@@ -1,6 +1,9 @@
 import { comment, favorite, label, postRes, rate } from 'data/response'
 
+// GETメソッドのレスポンスの型
 export type Post = typeof postRes
+
+// POSTメソッドのリクエストの型
 export type CreatePost = {
   body: string
   title: string
@@ -11,23 +14,32 @@ export type CreatePost = {
   lng: number
   image: string
 }
+
+
 export type LatLngType = {
   lat: number
   lng: number
 }
+
+// 画像を投稿するためにFormDataに変換
 export type CreatePostFormData = FormData & {
   append(name: keyof CreatePost, value: String | Blob, fileName?: string): any
 }
+
+// PUTメソッドのリクエストの型
 export type UpdatePost = CreatePost & { id: number }
 export type UpdatePostFormData = FormData & {
   append(name: keyof UpdatePost, value: String | Blob, fileName?: string): any
 }
 
+// コメントのGETメソッドのレスポンスの型
 export type Comment = typeof comment
+// コメントのPOSTメソッドのリクエストの型
 export type CreateComment = {
   postId: number | undefined
   comment: string
 }
+// コメントのDELETEメソッドのリクエストの型
 export type DeleteComment = {
   id: number
   postId: string
@@ -52,6 +64,7 @@ export type CreateLabel = {
   name: string
 }
 
+// メニューコンポーネントのPropsの型
 export type MenuType = {
   name: string
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
