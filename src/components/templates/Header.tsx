@@ -10,9 +10,9 @@ import {
   BookOpenIcon as BookSolidIcon,
   UserIcon as UserSolidIcon,
 } from '@heroicons/react/solid'
-
 import { useHeader } from 'hooks/useHeader'
 
+// ヘッダーのコンポーネント
 export const Header = memo(() => {
   const { currentUser } = useMain()
   const { location, navigate, goToPageTop } = useHeader()
@@ -46,9 +46,9 @@ export const Header = memo(() => {
           ) : (
             <BookOutLineIcon className="w-6 h-6 mt-1" />
           )}
-
           <span>投稿一覧</span>
         </div>
+
         <div
           onClick={
             location.pathname === '/myPage'

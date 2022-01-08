@@ -16,7 +16,9 @@ type Props = {
   children: ReactNode
 }
 
+// アプリケーションのレイアウトコンポーネント
 export const Layout: VFC<Props> = memo(({ children }) => {
+  // ページが読み込まれたときにページトップに戻る処理
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -36,15 +38,19 @@ export const Layout: VFC<Props> = memo(({ children }) => {
     deletePost,
   } = useMain()
   const editedPost = useAppSelector(selectEditedPost)
+
   return (
     <Menu>
       <div className="flex flex-col relative items-center text-gray-500 text-sm font-mono">
         <Header />
         <main className="flex flex-1 flex-col font-notoSans bg-gray-50 min-h-screen absolute top-20 justify-start items-center py-5 w-screen">
           {children}
+
+          {/* アイコン画像クリック時に表示されるメニューのコンポーネント */}
           <CustomMenu />
         </main>
 
+        {/* ユーザー情報編集用のモーダル */}
         <CustomModal
           title={<>プロフィールを編集</>}
           isOpen={isOpenEditUserModal}
@@ -52,6 +58,8 @@ export const Layout: VFC<Props> = memo(({ children }) => {
         >
           <EditUserText />
         </CustomModal>
+
+        {/* 投稿作成・編集用のモーダル */}
         <CustomModal
           width="w-full"
           mdWidth="md:w-192"
@@ -61,6 +69,8 @@ export const Layout: VFC<Props> = memo(({ children }) => {
         >
           <CreateOrEditPost />
         </CustomModal>
+
+        {/* 削除確認用のモーダル */}
         <CustomModal
           isOpen={isOpenDeletePostModal}
           closeModal={closeDeletePostModal}
