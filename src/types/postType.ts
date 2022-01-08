@@ -15,7 +15,6 @@ export type CreatePost = {
   image: string
 }
 
-
 export type LatLngType = {
   lat: number
   lng: number

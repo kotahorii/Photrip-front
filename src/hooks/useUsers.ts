@@ -1,15 +1,12 @@
-import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { useAppDispatch } from 'app/hooks'
 import { FormEvent, useCallback } from 'react'
-
 import { useQueryUsers } from './queries/useQueryUsers'
 import { useAuth } from './useAuth'
 import { useMutationUser } from './queries/useMutationUser'
 import {
-  selectDetailUser,
-  setDetailUser,
   setIsOpenEditUserModal,
 } from 'slices/userSlice'
-import { UpdateUserFormData, User } from 'types/userType'
+import { UpdateUserFormData } from 'types/userType'
 import { useQueryCurrentUser } from './queries/useQueryCurrentUser'
 import { Post } from 'types/postType'
 
@@ -19,16 +16,11 @@ export const useUsers = () => {
   const { data: currentUser } = useQueryCurrentUser()
   const { updateUserMutation } = useMutationUser()
   const { userData } = useAuth()
-  const detailUser = useAppSelector(selectDetailUser)
+
+  // 投稿に対するユーザーを取得
   const postsUser = useCallback(
     (post: Post) => users?.filter((user) => user.id === post.userId)[0],
     [users]
-  )
-  const openUsersPosts = useCallback(
-    (user: User) => () => {
-      dispatch(setDetailUser(user))
-    },
-    [dispatch]
   )
 
   const createEditFormData = useCallback((): UpdateUserFormData => {
@@ -56,8 +48,6 @@ export const useUsers = () => {
   return {
     users,
     postsUser,
-    detailUser,
-    openUsersPosts,
     updateUser,
     isLoadingUsers,
   }

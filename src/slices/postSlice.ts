@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { LatLngType, Post, UpdatePost } from 'types/postType'
 import { RootState } from '../app/store'
 
+// 投稿関連のReduxのSliceを定義
 type StateType = {
   editedPost: UpdatePost
   latAndLng: LatLngType
