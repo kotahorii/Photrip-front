@@ -7,6 +7,7 @@ type Props = {
   children: JSX.Element
 }
 
+// 認証前のページ用のコンポーネント
 export const PrivateRoute: VFC<Props> = memo(({ children }) => {
   const { data, isLoading } = useQueryCurrentUser()
   if (isLoading)
@@ -15,5 +16,6 @@ export const PrivateRoute: VFC<Props> = memo(({ children }) => {
         <Spinner />
       </div>
     )
+  // ログインしていないときにページに飛ぼうとすると認証ページにリダイレクトされる
   return data?.email ? children : <Navigate to="/auth" replace />
 })

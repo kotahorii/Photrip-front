@@ -33,6 +33,7 @@ export const Header = memo(() => {
       </div>
 
       <div className="md:flex font-notoSans font-semibold hidden flex-row">
+        {/* 現在のページが一覧ページならページトップに戻り、その他のページなら一覧ページに遷移する */}
         <div
           onClick={
             location.pathname === '/' ? goToPageTop : () => navigate('/')
@@ -41,6 +42,7 @@ export const Header = memo(() => {
             location.pathname === '/' ? 'text-blue-500' : 'text-gray-500'
           }`}
         >
+          {/* 現在のページが一覧ページの場合アイコンが変化する */}
           {location.pathname === '/' ? (
             <BookSolidIcon className="w-6 h-6 mt-1" />
           ) : (
@@ -49,6 +51,7 @@ export const Header = memo(() => {
           <span>投稿一覧</span>
         </div>
 
+        {/* 現在のページがマイページならページトップに戻り、その他のページならマイページに遷移する */}
         <div
           onClick={
             location.pathname === '/myPage'
@@ -59,6 +62,7 @@ export const Header = memo(() => {
             location.pathname === '/myPage' ? 'text-blue-500' : 'text-gray-500'
           }`}
         >
+          {/* 現在のページがマイページの場合アイコンが変化する */}
           {location.pathname === '/myPage' ? (
             <UserSolidIcon className="w-6 h-6" />
           ) : (
