@@ -3,9 +3,7 @@ import { FormEvent, useCallback } from 'react'
 import { useQueryUsers } from './queries/useQueryUsers'
 import { useAuth } from './useAuth'
 import { useMutationUser } from './queries/useMutationUser'
-import {
-  setIsOpenEditUserModal,
-} from 'slices/userSlice'
+import { setIsOpenEditUserModal } from 'slices/userSlice'
 import { UpdateUserFormData } from 'types/userType'
 import { useQueryCurrentUser } from './queries/useQueryCurrentUser'
 import { Post } from 'types/postType'
@@ -23,6 +21,7 @@ export const useUsers = () => {
     [users]
   )
 
+  // 画像を投稿するためにFormDataに変換
   const createEditFormData = useCallback((): UpdateUserFormData => {
     const formData = new FormData()
     formData.append('name', userData.name || '')
@@ -32,6 +31,7 @@ export const useUsers = () => {
     return formData
   }, [userData])
 
+  // ユーザーを編集する処理
   const updateUser = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()

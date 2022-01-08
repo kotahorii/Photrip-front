@@ -10,6 +10,7 @@ export const useRates = () => {
   const { currentUser, usersPost } = useMain()
   const { detailPost } = useDetailPost()
 
+  // ある投稿に対して自分がした評価を取得
   const myRate = useCallback(
     (post: Post | undefined) =>
       post?.rates.filter((rate) => rate.userId === currentUser?.id)[0],
@@ -18,6 +19,7 @@ export const useRates = () => {
 
   const [rate, setRate] = useState<number | undefined>(myRate(detailPost)?.rate)
 
+  // 新規に評価する処理
   const rateCreate = useCallback(
     (num: number) => () => {
       setRate(num)
@@ -25,6 +27,8 @@ export const useRates = () => {
     },
     [createRateMutation, detailPost?.id]
   )
+
+  // 評価を更新する処理
   const rateUpdate = useCallback(
     (num: number) => () => {
       setRate(num)
@@ -37,6 +41,7 @@ export const useRates = () => {
     [detailPost, updateRateMutation, myRate]
   )
 
+  // 評価の平均値を求める処理
   const averageRate = useCallback(
     (post: Post | undefined) =>
       !post
@@ -48,6 +53,8 @@ export const useRates = () => {
           ).toFixed(1),
     []
   )
+
+  // あるユーザーの全ての評価の合計を取得
   const getAllRate = useCallback(
     (user: User | undefined) =>
       usersPost(user) === []

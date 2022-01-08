@@ -11,7 +11,6 @@ import {
   setSearchPrefecture,
   setSelectedOption,
 } from 'slices/postSlice'
-import { useMain } from './useMain'
 
 export const useSearch = () => {
   const { id } = useDetailPost()
@@ -20,25 +19,22 @@ export const useSearch = () => {
   const searchedLabel = useAppSelector(selectSearchedLabel)
   const searchPrefecture = useAppSelector(selectSearchPrefecture)
   const selectedOption = useAppSelector(selectSelectedOption)
-  const { posts } = useMain()
   const [labelName, setLabelName] = useState('')
 
   const changeLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabelName(e.target.value),
     []
   )
+
+  // ラベル作成処理
   const createLabel = useCallback(() => {
     createLabelMutation.mutate({ postId: Number(id), name: labelName })
     setLabelName('')
   }, [id, labelName, createLabelMutation])
+  // ラベル削除処理
   const deleteLabel = useCallback(
     (label: Label) => () => deleteLabelMutation.mutate(label.id),
     [deleteLabelMutation]
-  )
-
-  const labelsPosts = useCallback(
-    (label: Label) => posts?.filter((post) => post.id === label.postId),
-    [posts]
   )
   const changeSearchedLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) =>
@@ -46,6 +42,7 @@ export const useSearch = () => {
     [dispatch]
   )
 
+  // 投稿のタイトルとラベル名で検索するための処理
   const filteredPosts = useCallback(
     (posts: Post[] | undefined) =>
       searchedLabel.length > 0
@@ -58,34 +55,41 @@ export const useSearch = () => {
     [searchedLabel]
   )
 
+  // 都道府県のSelectを変更するための処理
   const changeSearchPrefecture = useCallback(
     (e: ChangeEvent<{ value: unknown }>) =>
       dispatch(setSearchPrefecture(e.target.value as number)),
     [dispatch]
   )
 
+  // どのラジオボタンを選択しているかを表す変数
   const handleOptionChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) =>
       dispatch(setSelectedOption(e.target.value)),
     [dispatch]
   )
+
+  // ラベル投稿中のローディング処理のための変数を定義
   const labelPostLoading = useCallback(
     () => createLabelMutation.isLoading,
     [createLabelMutation]
   )
 
+  // 投稿をいいねが多い順に並び替える処理
   const favPosts = useCallback(
     (posts: Post[] | undefined) =>
       posts?.slice().sort((a, b) => b.favorites.length - a.favorites.length),
     []
   )
 
+  // 投稿を評価数が多い順に並び替える処理
   const ratePosts = useCallback(
     (posts: Post[] | undefined) =>
       posts?.slice().sort((a, b) => b.rates.length - a.rates.length),
     []
   )
 
+  // 評価の平均値を求める処理
   const rateAve = useCallback(
     (post: Post) =>
       post.rates.map((rate) => rate.rate).reduce((acc, cur) => acc + cur, 0) /
@@ -93,6 +97,7 @@ export const useSearch = () => {
     []
   )
 
+  // 投稿を評価の平均値が高い順に並び替える処理
   const rateAvePosts = useCallback(
     (posts: Post[] | undefined) =>
       posts
@@ -112,7 +117,6 @@ export const useSearch = () => {
     changeSearchedLabel,
     searchedLabel,
     deleteLabel,
-    labelsPosts,
     filteredPosts,
     searchPrefecture,
     changeSearchPrefecture,
