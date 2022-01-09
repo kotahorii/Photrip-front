@@ -1,3 +1,4 @@
+// TypeScriptで型を作成するためにRails APIのレスポンスを記述しています。
 export const userRes = {
   id: 2,
   name: 'takashi4 update',

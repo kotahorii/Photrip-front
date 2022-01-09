@@ -1,3 +1,4 @@
+// TypeScriptで型を作成するために郵便番号APIのレスポンスを記述しています。
 export const addressData = {
   message: null,
   results: [

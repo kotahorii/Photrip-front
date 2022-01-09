@@ -1,3 +1,4 @@
+// TypeScriptで型を作成するためにホットペッパーグルメAPIのレスポンスを記述しています。
 export const hotPepperData = {
   results: {
     api_version: '1.26',

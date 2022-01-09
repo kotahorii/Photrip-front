@@ -1,3 +1,4 @@
+// TypeScriptで型を作成するために楽天トラベルAPIのレスポンスを記述しています。
 export const rakutenData = {
   pagingInfo: {
     recordCount: 8,

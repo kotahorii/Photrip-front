@@ -1,3 +1,4 @@
+// ラジオボタンで使用するデータを定義
 export const RadioData = [
   {
     name: '新着順',
