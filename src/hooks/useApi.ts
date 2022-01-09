@@ -15,6 +15,7 @@ import {
 import { useQueryHotPepper } from 'hooks/queries/useQueryHotPepper'
 import { toast } from 'react-toastify'
 
+// Geocoding APIの設定
 Geocede.setApiKey(`${process.env.REACT_APP_GOOGLE_MAP_API}`)
 Geocede.setLanguage('ja')
 Geocede.setRegion('ja')
@@ -29,6 +30,8 @@ export const useApi = () => {
   const changeAddress = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setAddress(e.target.value)
   }, [])
+
+  // 入力された数字が全角の場合半角に変換する
   const validatedAddress = address
     .replace(/\s+/g, '')
     .replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0))
@@ -41,6 +44,7 @@ export const useApi = () => {
     refetch: refetchAddress,
   } = useQueryAddress(validatedAddress)
 
+  // 住所をUTF-8にエンコードする関数
   const hotPepperKeyword = useCallback(
     (post: Post | undefined) =>
       post?.prefecture && post?.city && post?.town
@@ -56,6 +60,7 @@ export const useApi = () => {
     isRefetching: isRefetchingHotPepperData,
   } = useQueryHotPepper(hotPepperKeyword(detailPost))
 
+  // 住所をUTF-8にエンコードする関数
   const rakutenKeyword = useCallback(
     (post: Post | undefined) =>
       post?.prefecture && post?.city
@@ -71,6 +76,7 @@ export const useApi = () => {
     isError,
   } = useQueryRakutenData(rakutenKeyword(detailPost))
 
+  // Geocoding APIのレスポンスをReduxの変数に格納しています
   const geocode = useCallback(() => {
     Geocede.fromAddress(address).then(
       (response) => {
@@ -85,17 +91,20 @@ export const useApi = () => {
     )
   }, [address, dispatch])
 
+  // 郵便番号自動入力ボタンを押したときの処理
   const setAddressData = useCallback(() => {
     refetchAddress()
     geocode()
   }, [refetchAddress, geocode])
 
+  // 入力された郵便番号が有効化をBooleanで返す関数
   const isNotValidData = useCallback(() => {
     const pattern1 = /^[0-9]{3}-[0-9]{4}$/
     const pattern2 = /^[0-9]{7}$/
     return !pattern1.test(validatedAddress) && !pattern2.test(validatedAddress)
   }, [validatedAddress])
 
+  // 店舗情報モーダルを開閉する処理
   const openShopModal = useCallback(() => {
     dispatch(setIsOpenShopModal(true))
     refetchHotPepperData()

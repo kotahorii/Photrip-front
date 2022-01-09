@@ -32,6 +32,7 @@ export const useHeader = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
+  // ユーザー編集モーダルを開く処理
   const openEditUserModal = useCallback(() => {
     if (currentUser) {
       dispatch(
@@ -52,6 +53,7 @@ export const useHeader = () => {
     dispatch(setIsOpenEditUserModal(false))
   }, [dispatch])
 
+  // 新規投稿モーダルを開く処理
   const openCreatePostModal = useCallback(() => {
     dispatch(setIsOpenCreatePostModal(true))
   }, [dispatch])
@@ -62,10 +64,12 @@ export const useHeader = () => {
     dispatch(setPostPreview(''))
   }, [dispatch])
 
+  // マイページに遷移する処理
   const myPageNavigate = useCallback(() => {
     navigate('/myPage')
   }, [navigate])
 
+  // ヘッダーのアイコンをクリックしたときに表示されるメニューを連想配列で定義
   const menuItems: MenuType = [
     {
       name: 'プロフィール編集',
@@ -79,6 +83,7 @@ export const useHeader = () => {
     },
   ]
 
+  // スマホサイズのとき追加で表示されるメニューを定義
   const responsiveItems: MenuType = [
     {
       name: 'マイページへ移動',
@@ -93,6 +98,7 @@ export const useHeader = () => {
   ]
 
   const onClickHelpPage = useCallback(() => navigate('/help'), [navigate])
+  // ページトップに戻る処理
   const goToPageTop = useCallback(() => {
     window.scrollTo({
       top: 0,
@@ -106,7 +112,6 @@ export const useHeader = () => {
     closeEditedUserModal,
     openCreatePostModal,
     closeCreatePostModal,
-    myPageNavigate,
     menuItems,
     responsiveItems,
     onClickHelpPage,

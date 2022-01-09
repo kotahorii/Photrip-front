@@ -27,6 +27,7 @@ export const useAuth = () => {
     },
     [dispatch, userData]
   )
+
   const changeIntroduction = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) =>
       dispatch(setUserData({ ...userData, introduction: e.target.value })),
@@ -67,6 +68,7 @@ export const useAuth = () => {
 
   const resetPreview = useCallback(() => dispatch(setPreview('')), [dispatch])
 
+  // 画像を投稿するためにFormDataに変換
   const createFormData = useCallback((): SignUpFormData => {
     const formData = new FormData()
     formData.append('name', userData.name)
@@ -79,6 +81,7 @@ export const useAuth = () => {
     return formData
   }, [userData])
 
+  // isLoginによってログインするか新規登録するかの処理を切り替え
   const authUser = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -96,6 +99,7 @@ export const useAuth = () => {
     [isLogin, createFormData, signInMutation, signUpMutation, userData]
   )
 
+  // ゲストユーザーのログインボタンを押したときの処理
   const guestUserLogin = useCallback(
     () =>
       signInMutation.mutate({
@@ -105,6 +109,7 @@ export const useAuth = () => {
     [signInMutation]
   )
 
+  // ゲストユーザーのログインボタンのスピナーを動かすための変数
   const isLoadingGuestUser = useCallback(
     () => signInMutation.isLoading,
     [signInMutation]
@@ -112,6 +117,7 @@ export const useAuth = () => {
 
   const signOut = useCallback(() => signOutMutation.mutate(), [signOutMutation])
 
+  // 入力された情報が有効化をBooleanで返す処理
   const isValidAuth = isLogin
     ? !userData.email || userData.password.length < 6
     : !userData.name ||
@@ -120,6 +126,7 @@ export const useAuth = () => {
       userData.password.length < 6 ||
       userData.passwordConfirmation !== userData.password
 
+  // ローディング中かどうかを表す処理
   const isLoadingAuth = useCallback(
     () => (isLogin ? signInMutation.isLoading : signUpMutation.isLoading),
     [isLogin, signInMutation.isLoading, signUpMutation.isLoading]

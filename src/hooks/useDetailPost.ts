@@ -43,7 +43,7 @@ export const useDetailPost = () => {
     (e: ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value),
     []
   )
-
+  // 折りたたみ要素を開閉する処理
   const toggleOpenDisclosure = useCallback(
     () => setOpenDisClosure(!openDisclosure),
     [openDisclosure]
@@ -58,12 +58,14 @@ export const useDetailPost = () => {
     [comment, createCommentMutation, id]
   )
 
+  // あるコメントをしたユーザーを取得する処理
   const commentsUser = useCallback(
     (comment: Comment) =>
       users?.filter((user) => user.id === comment.userId)[0],
     [users]
   )
 
+  // 画像を拡大表示するモーダルを開閉する処理
   const openImageModal = useCallback(() => {
     dispatch(setIsOpenImageModal(true))
   }, [dispatch])
@@ -72,11 +74,14 @@ export const useDetailPost = () => {
     dispatch(setIsOpenImageModal(false))
   }, [dispatch])
 
+  // 投稿したユーザーを取得
   const postUser = useCallback(
     (users: User[] | undefined) =>
       users?.filter((user) => user.id === detailPost?.userId)[0],
     [detailPost]
   )
+
+  // 投稿編集モーダルを開く処理
   const openEditPostModal = useCallback(() => {
     dispatch(setIsOpenCreatePostModal(true))
     if (detailPost) {
@@ -96,6 +101,7 @@ export const useDetailPost = () => {
     }
   }, [dispatch, detailPost, editedPost])
 
+  // コメント削除モーダル開閉する処理
   const openDeleteCommentModal = useCallback(
     (id: number) => () => {
       dispatch(setDeleteCommentId(id))
@@ -108,6 +114,7 @@ export const useDetailPost = () => {
     dispatch(setIsOpenDeleteCommentModal(false))
   }, [dispatch])
 
+  // コメントを削除する処理
   const deleteComment = useCallback(() => {
     deleteCommentMutation.mutate(deleteCommentId)
     closeDeleteCommentModal()
