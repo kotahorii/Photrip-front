@@ -11,6 +11,8 @@ type UpdateData = {
 
 export const useMutationPosts = () => {
   const queryClient = useQueryClient()
+
+  // 新規投稿をする処理。成功時にレスポンスで帰ってきた情報をReact Queryの投稿一覧のキャッシュに追加する。
   const createPostMutation = useMutation(
     (data: CreatePostFormData) =>
       client.post<Post>('posts', data, {
@@ -36,6 +38,8 @@ export const useMutationPosts = () => {
       },
     }
   )
+
+  // 投稿を更新する処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧のキャッシュを更新する。
   const updatePostMutation = useMutation(
     (data: UpdateData) =>
       client.put<Post>(`posts/${data.id}`, data.formData, {
@@ -67,6 +71,8 @@ export const useMutationPosts = () => {
       },
     }
   )
+
+  // 投稿を削除する処理。成功時にレスポンスで帰ってきたidをつかって、React Queryの投稿一覧のキャッシュを削除する。
   const deletePostMutation = useMutation(
     (id: number) => client.delete(`posts/${id}`),
     {

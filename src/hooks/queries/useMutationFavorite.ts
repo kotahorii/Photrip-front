@@ -5,6 +5,8 @@ import { CreateFavorite, Post } from 'types/postType'
 
 export const useLikeMutation = () => {
   const queryClient = useQueryClient()
+
+  // いいねをする処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧、投稿詳細のキャッシュを更新する。
   const createLikeMutation = useMutation(
     (data: CreateFavorite) =>
       client.post<Post>('favorites', data, {
@@ -32,6 +34,8 @@ export const useLikeMutation = () => {
       },
     }
   )
+
+  // いいねを取り消す処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧、投稿詳細のキャッシュを更新する。
   const deleteLikeMutation = useMutation(
     (id: number | undefined) =>
       client.delete<Post>(`favorites/${id}`, {

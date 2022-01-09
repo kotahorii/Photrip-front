@@ -5,6 +5,8 @@ import { CreateRate, Post, UpdateRate } from 'types/postType'
 
 export const useRateMutate = () => {
   const queryClient = useQueryClient()
+
+  // 新規に評価する処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧、投稿詳細のキャッシュを更新する。
   const createRateMutation = useMutation(
     (data: CreateRate) =>
       client.post<Post>('rates', data, {
@@ -32,6 +34,8 @@ export const useRateMutate = () => {
       },
     }
   )
+
+  // 評価を更新する処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧、投稿詳細のキャッシュを更新する。
   const updateRateMutation = useMutation(
     (data: UpdateRate) =>
       client.put<Post>(`rates/${data.id}`, data, {

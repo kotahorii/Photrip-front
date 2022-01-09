@@ -6,6 +6,8 @@ import { CreateLabel, Post } from 'types/postType'
 
 export const useMutationLabels = () => {
   const queryClient = useQueryClient()
+
+  // ラベルを新規作成する処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧のキャッシュを更新する。
   const createLabelMutation = useMutation(
     (data: CreateLabel) =>
       client.post<Post>('labels', data, {
@@ -37,6 +39,8 @@ export const useMutationLabels = () => {
       },
     }
   )
+
+  // ラベルを削除する処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧のキャッシュを更新する。
   const deleteLabelMutation = useMutation(
     (id: number) =>
       client.delete<Post>(`labels/${id}`, {

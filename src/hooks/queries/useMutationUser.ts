@@ -11,13 +11,14 @@ type Data = {
 export const useMutationUser = () => {
   const queryClient = useQueryClient()
 
+  // ユーザーの情報を編集する処理。成功時にレスポンスで帰ってきた情報でReact Queryのログイン中のユーザーとユーザー一覧のキャッシュを更新する。
   const updateUserMutation = useMutation(
     (data: Data) => client.put<User>(`users/${data.id}`, data.formData),
     {
       onSuccess: (res, variable) => {
         toast.success('ユーザーの更新に成功しました')
-        const previousUsers = queryClient.getQueryData<User[]>('users')
         queryClient.setQueryData<User>('user', res.data)
+        const previousUsers = queryClient.getQueryData<User[]>('users')
         if (previousUsers) {
           queryClient.setQueryData<User[]>(
             'users',

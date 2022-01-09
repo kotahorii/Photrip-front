@@ -7,11 +7,13 @@ import { toast } from 'react-toastify'
 import { resetUserData } from 'slices/userSlice'
 import { SignInData, AuthRes, User, SignUpFormData } from 'types/userType'
 
+// 認証データのPOST, PUT, DELETEメソッドを定義
 export const useMutationAuth = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   const dispatch = useAppDispatch()
 
+  // ログインの処理。POSTメソッドでアクセスし、Headerの情報をCookieに格納する処理
   const signInMutation = useMutation(
     (data: SignInData) => client.post<AuthRes>('auth/sign_in', data),
     {
@@ -29,6 +31,7 @@ export const useMutationAuth = () => {
     }
   )
 
+  // 新規登録の処理。POSTメソッドでアクセスし、Headerの情報をCookieに格納する
   const signUpMutation = useMutation(
     (data: SignUpFormData) => client.post<AuthRes>('auth', data),
     {
@@ -46,6 +49,7 @@ export const useMutationAuth = () => {
     }
   )
 
+  // ログアウトの処理。成功時にCookieに保存されているHeaderの情報を削除して認証画面に遷移する
   const signOutMutation = useMutation(
     () =>
       client.delete('auth/sign_out', {

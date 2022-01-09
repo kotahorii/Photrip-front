@@ -6,6 +6,8 @@ import { CreateComment, Post } from 'types/postType'
 
 export const useCommentMutation = () => {
   const queryClient = useQueryClient()
+
+  // コメントをする処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧、投稿詳細のキャッシュを更新する。
   const createCommentMutation = useMutation(
     (data: CreateComment) =>
       client.post<Post>('comments', data, {
@@ -38,6 +40,7 @@ export const useCommentMutation = () => {
     }
   )
 
+  // コメントを削除する処理。成功時にレスポンスで帰ってきた情報で、React Queryの投稿一覧、投稿詳細のキャッシュを更新する。
   const deleteCommentMutation = useMutation(
     (id: number) =>
       client.delete<Post>(`comments/${id}`, {
