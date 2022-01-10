@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+// 投稿情報を取得中に表示するコンポーネント
 export const LoadingCard = memo(() => {
   return (
     <div className="flex md:flex-row animate-pulse flex-col m-2 items-center md:space-x-5 cursor-pointer md:w-3/5 max-w-2xl w-80 px-5 py-4 shadow-md hover:shadow-lg rounded-lg space-y-3">

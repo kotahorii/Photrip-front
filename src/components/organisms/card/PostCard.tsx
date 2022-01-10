@@ -25,6 +25,7 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
     closeShopModal()
   }, [closeHotelModal, closeShopModal, refetchDetailPost])
 
+  // 投稿カードのコンポーネント
   return (
     <div className="flex md:flex-row relative flex-col m-2 items-center md:space-x-5 cursor-pointer md:w-3/5 max-w-2xl w-80 px-5 py-4 shadow hover:shadow-lg transition duration-300 rounded space-y-3">
       {post.image.url !== null || '' ? (
@@ -75,11 +76,15 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
             </p>
           </div>
         </Link>
+
+        {/* いいねボタンといいね数を表示 */}
         <div className="flex flex-row relative mt-5 justify-between items-center px-2">
           <div className=" flex flex-row items-center h-8 mt-2 mr-2 rounded-full">
             <LikeButton post={post} />
             <span>{post.favorites.length}</span>
           </div>
+
+          {/* 評価の平均値を表示 */}
           <div className="h-8 w-24 mt-2 flex flex-row justify-between items-center">
             <StarIcon className="w-6 text-yellow-500" />
             <p className="flex flex-row">
@@ -91,9 +96,12 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
               </span>
             </p>
           </div>
+
           <div className="w-16"></div>
         </div>
       </div>
+
+      {/* 投稿したユーザーだけが削除できる処理 */}
       {post.userId === currentUser?.id && (
         <XIcon
           onClick={openDeletePostModal(post)}

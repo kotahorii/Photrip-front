@@ -10,6 +10,7 @@ type Props = {
   address: string | undefined
 }
 
+// ホテルとレストランの情報を表示するコンポーネント
 export const HotelRestaurantCard: VFC<Props> = memo(
   ({ src, href, title, genre, reviewUrl, special, address }) => {
     return (

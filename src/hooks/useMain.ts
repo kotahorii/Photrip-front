@@ -35,6 +35,7 @@ export const useMain = () => {
   const postPreview = useAppSelector(selectPostPreview)
   const { closeCreatePostModal } = useHeader()
 
+  // Railsから取得した日付を変換する関数
   const formatDate = useCallback((date: string) => {
     const formedDate = new Date(date)
     const y = formedDate.getFullYear()
@@ -89,6 +90,7 @@ export const useMain = () => {
     [dispatch]
   )
 
+  // 画像を投稿するためにFormDataに変換
   const createFormData = useCallback((): CreatePostFormData => {
     const formData = new FormData()
     formData.append('id', String(editedPost.id))
@@ -104,6 +106,7 @@ export const useMain = () => {
     return formData
   }, [editedPost, latAndLng])
 
+  // idがないときは新規投稿、idがあるときは編集なのでif文で場合分け
   const submitPost = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -129,6 +132,7 @@ export const useMain = () => {
     ]
   )
 
+  // あるユーザーの全ての投稿を取得
   const usersPost = useCallback(
     (user: User | undefined) =>
       posts?.filter((post) => post.userId === user?.id),
@@ -148,6 +152,7 @@ export const useMain = () => {
     [dispatch]
   )
 
+  // 投稿を削除する処理
   const deletePost = useCallback(
     (id: number) => () => {
       deletePostMutation.mutate(id)
@@ -155,6 +160,8 @@ export const useMain = () => {
     },
     [closeDeletePostModal, deletePostMutation]
   )
+
+  // 入力された情報が必要十分かをBooleanで返す変数
   const validationCreatePost = useCallback(
     () =>
       !editedPost.title ||

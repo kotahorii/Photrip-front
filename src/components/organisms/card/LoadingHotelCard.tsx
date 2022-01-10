@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+// 施設情報を取得しているときに表示するコンポーネント
 export const LoadingHotelCard = memo(() => {
   return (
     <li className="bg-gray-50 animate-pulse p-3 border-t border-gray-300 flex items-center flex-row space-x-3 w-full ">

@@ -3,16 +3,19 @@ import { useMain } from 'hooks/useMain'
 import { useSearch } from 'hooks/useSearch'
 import { memo, VFC } from 'react'
 import { Post } from 'types/postType'
-import { LoadingCard } from '../card/LoadingCard'
-import { PostCard } from '../card/PostCard'
+import { LoadingCard } from '../../organisms/card/LoadingCard'
+import { PostCard } from '../../organisms/card/PostCard'
 
 type Props = {
   posts: Post[] | undefined
 }
 
+// 投稿一覧を表示するコンポーネント
 export const PostsList: VFC<Props> = memo(({ posts }) => {
   const { filteredPosts, searchPrefecture } = useSearch()
   const { isLoadingPosts } = useMain()
+
+  // バックエンドからデータを取得する間はロード用のコンポーネントを表示
   if (isLoadingPosts)
     return (
       <>
@@ -25,6 +28,7 @@ export const PostsList: VFC<Props> = memo(({ posts }) => {
     )
   return (
     <>
+      {/* 都道府県でフィルターをかけて残ったものだけを表示 */}
       {filteredPosts(posts)
         ?.map((post) =>
           post?.prefecture === prefectures[searchPrefecture - 1] ||

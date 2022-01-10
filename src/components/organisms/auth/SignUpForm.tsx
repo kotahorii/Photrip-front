@@ -7,6 +7,7 @@ import { prefectures } from 'data/prefecture'
 import { useAuth } from 'hooks/useAuth'
 import { memo } from 'react'
 
+// 新規登録フォームのコンポーネント
 export const SignUpForm = memo(() => {
   const { userData, changeAuthData, prefectureChange } = useAuth()
   return (

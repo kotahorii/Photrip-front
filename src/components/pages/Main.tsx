@@ -6,7 +6,7 @@ import { memo } from 'react'
 import { CustomSelector } from 'components/atoms/form/CustomSelector'
 import { prefectures } from 'data/prefecture'
 import { RadioButton } from 'components/atoms/button/RadioButton'
-import { PostsList } from 'components/organisms/main/PostsList'
+import { PostsList } from 'components/templates/main/PostsList'
 import { RadioData } from 'data/radioData'
 import { SearchInput } from 'components/atoms/form/SearchInput'
 

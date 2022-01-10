@@ -9,6 +9,7 @@ type Props = {
   comment: Comment
 }
 
+// コメントを表示するコンポーネント
 export const CommentCard: VFC<Props> = memo(({ comment }) => {
   const { commentsUser } = useDetailPost()
   const { formatDate, currentUser } = useMain()
@@ -23,6 +24,8 @@ export const CommentCard: VFC<Props> = memo(({ comment }) => {
         </div>
       </div>
       <p className="break-words whitespace-pre-wrap">{comment.comment}</p>
+
+      {/* 投稿したユーザーだけが削除確認用のモーダルを開くことができる */}
       {comment.userId === currentUser?.id && (
         <XIcon
           onClick={openDeleteCommentModal(comment.id)}
