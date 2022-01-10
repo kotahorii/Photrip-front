@@ -3,6 +3,7 @@ import { memo } from 'react'
 import { HotelRestaurantCard } from '../../organisms/card/HotelRestaurantCard'
 import { LoadingHotelCard } from '../../organisms/card/LoadingHotelCard'
 
+// ホテルの情報を表示するコンポーネント
 export const HotelModal = memo(() => {
   const { rakutenData, isLoadingRakuten, isRefetchingRakuten } = useApi()
   return (

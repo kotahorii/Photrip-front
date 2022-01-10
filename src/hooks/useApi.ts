@@ -7,9 +7,9 @@ import { useAppDispatch, useAppSelector } from 'app/hooks'
 import Geocede from 'react-geocode'
 import {
   selectIsOpenHotelModal,
-  selectIsOpenShopModal,
+  selectIsOpenRestaurantModal,
   setIsOpenHotelModal,
-  setIsOpenShopModal,
+  setIsOpenRestaurantModal,
   setLatAndLng,
 } from 'slices/postSlice'
 import { useQueryHotPepper } from 'hooks/queries/useQueryHotPepper'
@@ -24,7 +24,7 @@ export const useApi = () => {
   const [address, setAddress] = useState('')
   const { detailPost } = useDetailPost()
   const dispatch = useAppDispatch()
-  const isOpenShopModal = useAppSelector(selectIsOpenShopModal)
+  const isOpenRestaurantModal = useAppSelector(selectIsOpenRestaurantModal)
   const isOpenHotelModal = useAppSelector(selectIsOpenHotelModal)
 
   const changeAddress = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -105,13 +105,13 @@ export const useApi = () => {
   }, [validatedAddress])
 
   // 店舗情報モーダルを開閉する処理
-  const openShopModal = useCallback(() => {
-    dispatch(setIsOpenShopModal(true))
+  const openRestaurantModal = useCallback(() => {
+    dispatch(setIsOpenRestaurantModal(true))
     refetchHotPepperData()
   }, [dispatch, refetchHotPepperData])
 
-  const closeShopModal = useCallback(() => {
-    dispatch(setIsOpenShopModal(false))
+  const closeRestaurantModal = useCallback(() => {
+    dispatch(setIsOpenRestaurantModal(false))
   }, [dispatch])
 
   const openHotelModal = useCallback(() => {
@@ -124,9 +124,9 @@ export const useApi = () => {
   }, [dispatch])
 
   return {
-    isOpenShopModal,
-    openShopModal,
-    closeShopModal,
+    isOpenRestaurantModal,
+    openRestaurantModal,
+    closeRestaurantModal,
     isOpenHotelModal,
     openHotelModal,
     closeHotelModal,

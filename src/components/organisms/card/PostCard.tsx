@@ -16,14 +16,14 @@ type Props = {
 export const PostCard: VFC<Props> = memo(({ post }) => {
   const { averageRate } = useRates()
   const { formatDate } = useMain()
-  const { closeHotelModal, closeShopModal } = useApi()
+  const { closeHotelModal, closeRestaurantModal } = useApi()
   const { openDeletePostModal, currentUser } = useMain()
   const { refetch: refetchDetailPost } = useQueryDetailPost(post.id)
   const moveToDetailPage = useCallback(() => {
     refetchDetailPost()
     closeHotelModal()
-    closeShopModal()
-  }, [closeHotelModal, closeShopModal, refetchDetailPost])
+    closeRestaurantModal()
+  }, [closeHotelModal, closeRestaurantModal, refetchDetailPost])
 
   // 投稿カードのコンポーネント
   return (

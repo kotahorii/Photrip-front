@@ -5,6 +5,7 @@ type Props = {
   length: number | undefined
 }
 
+// 施設のタイトル(ホテルかレストランか)と施設の検索数を表示するコンポーネント
 export const HotelOrRestrauntTitle: VFC<Props> = memo(({ title, length }) => {
   return (
     <div className="flex flex-row justify-between px-3 items-center space-x-5">

@@ -5,6 +5,7 @@ type Props = {
   onClick: () => void
 }
 
+// 削除確認用のモーダル
 export const DeleteConfirmModal: VFC<Props> = memo(({ onClick }) => {
   return (
     <div className="flex flex-row items-center justify-between">

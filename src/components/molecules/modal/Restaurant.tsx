@@ -4,7 +4,8 @@ import { memo } from 'react'
 import { HotelRestaurantCard } from '../../organisms/card/HotelRestaurantCard'
 import { LoadingHotelCard } from '../../organisms/card/LoadingHotelCard'
 
-export const ShopModal = memo(() => {
+// レストランの情報を表示するコンポーネント
+export const RestaurantModal = memo(() => {
   const { isRefetchingHotPepperData, isLoadingHotPepperData, hotpepperData } =
     useApi()
 

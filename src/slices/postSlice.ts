@@ -14,7 +14,7 @@ type StateType = {
   selectedOption: string
   isOpenCreatePostModal: boolean
   isOpenDeletePostModal: boolean
-  isOpenShopModal: boolean
+  isOpenRestaurantModal: boolean
   isOpenHotelModal: boolean
   isOpenImageModal: boolean
   isOpenDeleteCommentModal: boolean
@@ -61,7 +61,7 @@ const initialState: StateType = {
   searchPrefecture: 1,
   isOpenCreatePostModal: false,
   isOpenDeletePostModal: false,
-  isOpenShopModal: false,
+  isOpenRestaurantModal: false,
   isOpenHotelModal: false,
   isOpenImageModal: false,
   isOpenDeleteCommentModal: false,
@@ -94,8 +94,8 @@ export const postSlice = createSlice({
     setIsOpenDeletePostModal: (state, action: PayloadAction<boolean>) => {
       state.isOpenDeletePostModal = action.payload
     },
-    setIsOpenShopModal: (state, action: PayloadAction<boolean>) => {
-      state.isOpenShopModal = action.payload
+    setIsOpenRestaurantModal: (state, action: PayloadAction<boolean>) => {
+      state.isOpenRestaurantModal = action.payload
     },
     setIsOpenHotelModal: (state, action: PayloadAction<boolean>) => {
       state.isOpenHotelModal = action.payload
@@ -130,7 +130,7 @@ export const {
   setDetailPost,
   resetDetailPost,
   setPostPreview,
-  setIsOpenShopModal,
+  setIsOpenRestaurantModal,
   setIsOpenHotelModal,
   setIsOpenCreatePostModal,
   setIsOpenDeletePostModal,
@@ -145,8 +145,8 @@ export const {
 export const selectEditedPost = (state: RootState) => state.post.editedPost
 export const selectDetailPost = (state: RootState) => state.post.detailPost
 export const selectPostPreview = (state: RootState) => state.post.postPreview
-export const selectIsOpenShopModal = (state: RootState) =>
-  state.post.isOpenShopModal
+export const selectIsOpenRestaurantModal = (state: RootState) =>
+  state.post.isOpenRestaurantModal
 export const selectIsOpenHotelModal = (state: RootState) =>
   state.post.isOpenHotelModal
 export const selectIsOpenCreatePostModal = (state: RootState) =>

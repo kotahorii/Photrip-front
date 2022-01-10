@@ -10,6 +10,7 @@ import { useAuth } from 'hooks/useAuth'
 import { useUsers } from 'hooks/useUsers'
 import { memo } from 'react'
 
+// プロフィール編集用のモーダル
 export const EditUserText = memo(() => {
   const { userData, changeAuthData, changeIntroduction, prefectureChange } =
     useAuth()

@@ -10,7 +10,7 @@ import { useApi } from 'hooks/useApi'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
-import { ShopModal } from 'components/molecules/modal/ShopModal'
+import { RestaurantModal } from 'components/molecules/modal/Restaurant'
 import { HotelModal } from 'components/molecules/modal/HotelModal'
 import { RateInput } from 'components/molecules/rate/RateInput'
 import { useRates } from 'hooks/useRate'
@@ -22,7 +22,7 @@ import { PaperAirplaneIcon } from '@heroicons/react/solid'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
 import { TextArea } from 'components/atoms/form/TextArea'
-import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
+import { DisclosureButton } from 'components/atoms/button/DisclosureButton'
 import { InputButton } from 'components/atoms/button/InputButton'
 import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
 import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
@@ -49,9 +49,9 @@ export const DetailPost = memo(() => {
     deleteComment,
   } = useDetailPost()
   const {
-    isOpenShopModal,
-    closeShopModal,
-    openShopModal,
+    isOpenRestaurantModal,
+    closeRestaurantModal,
+    openRestaurantModal,
     isOpenHotelModal,
     openHotelModal,
     closeHotelModal,
@@ -116,7 +116,7 @@ export const DetailPost = memo(() => {
               </div>
               <ShopSearchButton
                 title="周辺のレストランを検索"
-                onClick={openShopModal}
+                onClick={openRestaurantModal}
               />
               <ShopSearchButton
                 title="周辺のホテルを検索"
@@ -229,10 +229,10 @@ export const DetailPost = memo(() => {
               length={hotpepperData?.length}
             />
           }
-          isOpen={isOpenShopModal}
-          closeModal={closeShopModal}
+          isOpen={isOpenRestaurantModal}
+          closeModal={closeRestaurantModal}
         >
-          <ShopModal />
+          <RestaurantModal />
         </ModalTemplate>
         <ModalTemplate
           width="w-full"

@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react'
-import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
+import { DisclosureButton } from 'components/atoms/button/DisclosureButton'
 import { DisclosurePanel } from 'components/molecules/disclosure/DisclosurePanel'
 import { HelpPageText } from 'components/molecules/disclosure/HelpPageText'
 import { useHelp } from 'hooks/useHelp'
