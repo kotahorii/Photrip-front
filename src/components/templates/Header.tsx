@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
-import { CustomUserIcon } from 'components/molecules/userIcon/CustomUserIcon'
+import { UserProfileIcon } from 'components/molecules/userIcon/UserProfileIcon'
 import {
   BookOpenIcon as BookOutLineIcon,
   UserIcon as UserOutLineIcon,
@@ -73,7 +73,7 @@ export const Header = memo(() => {
       </div>
 
       <Menu.Button>
-        <CustomUserIcon user={currentUser} />
+        <UserProfileIcon user={currentUser} />
       </Menu.Button>
     </nav>
   )

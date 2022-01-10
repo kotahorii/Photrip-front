@@ -3,7 +3,7 @@ import { StarIcon as OutLineStar } from '@heroicons/react/outline'
 import { memo } from 'react'
 import { useRates } from 'hooks/useRate'
 
-export const CustomRateInput = memo(() => {
+export const RateInput = memo(() => {
   const { rate, rateCreate, rateUpdate } = useRates()
   return (
     <div className="flex flex-row">

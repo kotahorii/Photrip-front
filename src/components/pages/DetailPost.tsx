@@ -12,7 +12,7 @@ import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
 import { ShopModal } from 'components/molecules/modal/ShopModal'
 import { HotelModal } from 'components/molecules/modal/HotelModal'
-import { CustomRateInput } from 'components/molecules/rate/CustomRateInput'
+import { RateInput } from 'components/molecules/rate/RateInput'
 import { useRates } from 'hooks/useRate'
 import { Disclosure } from '@headlessui/react'
 import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
@@ -187,7 +187,7 @@ export const DetailPost = memo(() => {
                     />
                   )}
                 </div>
-                <CustomRateInput />
+                <RateInput />
                 <p>{comment.length}/140</p>
                 <div className="w-8">
                   <button

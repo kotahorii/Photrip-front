@@ -4,7 +4,7 @@ import { CustomLabel } from 'components/atoms/form/CustomLabel'
 import { CustomSelector } from 'components/atoms/form/CustomSelector'
 import { TextArea } from 'components/atoms/form/TextArea'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
-import { ImageInput } from 'components/molecules/userIcon/ImageInput'
+import { ProfileImageInput } from 'components/molecules/userIcon/ProfileImageInput'
 import { prefectures } from 'data/prefecture'
 import { useAuth } from 'hooks/useAuth'
 import { useUsers } from 'hooks/useUsers'
@@ -69,7 +69,7 @@ export const EditUserText = memo(() => {
             arrays={prefectures}
           />
         </div>
-        <ImageInput />
+        <ProfileImageInput />
       </div>
       <CustomButton
         disabled={!userData.name || userData.name.length > 20}

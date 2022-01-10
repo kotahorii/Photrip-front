@@ -2,7 +2,7 @@ import { CustomInput } from 'components/atoms/form/CustomInput'
 import { CustomLabel } from 'components/atoms/form/CustomLabel'
 import { CustomSelector } from 'components/atoms/form/CustomSelector'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
-import { ImageInput } from 'components/molecules/userIcon/ImageInput'
+import { ProfileImageInput } from 'components/molecules/userIcon/ProfileImageInput'
 import { prefectures } from 'data/prefecture'
 import { useAuth } from 'hooks/useAuth'
 import { memo } from 'react'
@@ -76,7 +76,7 @@ export const SignUpForm = memo(() => {
           />
         </div>
         <div className="flex flex-row justify-center">
-          <ImageInput />
+          <ProfileImageInput />
         </div>
       </div>
     </>

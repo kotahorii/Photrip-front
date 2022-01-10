@@ -7,6 +7,7 @@ type Props = {
   onClick: () => void
 }
 
+// 投稿画像のプレビューを表示するコンポーネント
 export const PostImagePreview: VFC<Props> = memo(({ onClick }) => {
   const { postPreview, resetPostPreview } = useMain()
   return postPreview ? (

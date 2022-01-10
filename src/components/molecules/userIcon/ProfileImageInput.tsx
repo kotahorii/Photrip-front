@@ -1,8 +1,9 @@
-import { ImagePreview } from './ImagePreview'
+import { ProfileImagePreview } from './ProfileImagePreview'
 import { useAuth } from 'hooks/useAuth'
 import { memo, useRef } from 'react'
 
-export const ImageInput = memo(() => {
+// プロフィール画像の入力フォームコンポーネント
+export const ProfileImageInput = memo(() => {
   const { imageChange } = useAuth()
   const inputRef = useRef<any>(null)
 
@@ -11,7 +12,8 @@ export const ImageInput = memo(() => {
   }
   return (
     <>
-      <ImagePreview onClick={fileUpload} />
+      {/* プレビューをクリックしてインプットに画像をセットできる */}
+      <ProfileImagePreview onClick={fileUpload} />
       <input
         hidden
         ref={inputRef}

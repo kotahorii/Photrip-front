@@ -6,7 +6,8 @@ type Props = {
   onClick: () => void
 }
 
-export const ImagePreview: VFC<Props> = memo(({ onClick }) => {
+// プロフィール画像投稿のときのプレビューを表すコンポーネント
+export const ProfileImagePreview: VFC<Props> = memo(({ onClick }) => {
   const { preview, resetPreview } = useAuth()
   return preview ? (
     <div className="relative w-28 h-28 px-2 py-2 ">

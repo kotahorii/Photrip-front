@@ -1,5 +1,5 @@
 import { XIcon } from '@heroicons/react/outline'
-import { CustomUserIcon } from 'components/molecules/userIcon/CustomUserIcon'
+import { UserProfileIcon } from 'components/molecules/userIcon/UserProfileIcon'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useMain } from 'hooks/useMain'
 import { memo, VFC } from 'react'
@@ -17,7 +17,7 @@ export const CommentCard: VFC<Props> = memo(({ comment }) => {
   return (
     <div className="w-full relative p-2 flex flex-col space-y-2 shadow bg-gray-50 rounded">
       <div className="flex flex-row items-center space-x-3">
-        <CustomUserIcon user={commentsUser(comment)} />
+        <UserProfileIcon user={commentsUser(comment)} />
         <div className="flex flex-col space-y-1">
           <p className="font-semibold">{commentsUser(comment)?.name}</p>
           <p className="text-xs">{formatDate(comment.createdAt)}</p>

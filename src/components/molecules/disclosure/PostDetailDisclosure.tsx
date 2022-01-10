@@ -3,7 +3,7 @@ import { UserInfo } from 'components/atoms/UserInfo'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useUsers } from 'hooks/useUsers'
 import { memo } from 'react'
-import { CustomUserIcon } from '../userIcon/CustomUserIcon'
+import { UserProfileIcon } from '../userIcon/UserProfileIcon'
 
 export const PostDetailDisclosure = memo(() => {
   const { detailPost, postUser, isLoadingDetailPost } = useDetailPost()
@@ -22,7 +22,7 @@ export const PostDetailDisclosure = memo(() => {
       <Disclosure.Panel className=" flex flex-col shadow space-y-2 break-words bg-white rounded p-3">
         <div className="flex flex-row space-x-2">
           <UserInfo user={postUser(users)}>
-            <CustomUserIcon user={postUser(users)} />
+            <UserProfileIcon user={postUser(users)} />
           </UserInfo>
           <div className="h-14 py-2">
             <p className=" text-xs">投稿者</p>

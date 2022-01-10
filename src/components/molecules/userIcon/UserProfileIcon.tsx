@@ -6,7 +6,9 @@ import { User } from 'types/userType'
 type Props = {
   user: User | undefined
 }
-export const CustomUserIcon: VFC<Props> = memo(({ user }) => {
+
+// ヘッダーなどのユーザーアイコンのコンポーネント
+export const UserProfileIcon: VFC<Props> = memo(({ user }) => {
   return (
     <>
       <div className="relative">
