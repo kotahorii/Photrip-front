@@ -8,6 +8,7 @@ type Props = {
   closeModal: () => void
 }
 
+// 詳細画面で画像クリック時に拡大表示されるモーダルのコンポーネント
 export const ImageModal: VFC<Props> = memo(({ post, isOpen, closeModal }) => {
   return (
     <div className="fixed">

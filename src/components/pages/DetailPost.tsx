@@ -4,20 +4,20 @@ import { LikeButton } from 'components/atoms/button/LikeButton'
 import { ShopSearchButton } from 'components/atoms/button/ShopSearchButton'
 import { CustomInput } from 'components/atoms/form/CustomInput'
 import { CommentCard } from 'components/organisms/card/CommentCard'
-import { CustomModal } from 'components/organisms/modal/CustomModal'
+import { ModalTemplate } from 'components/organisms/modal/ModalTemplate'
 import { Layout } from 'components/templates/Layout'
 import { useApi } from 'hooks/useApi'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
-import { ShopModal } from 'components/organisms/modal/ShopModal'
-import { HotelModal } from 'components/organisms/modal/HotelModal'
+import { ShopModal } from 'components/molecules/modal/ShopModal'
+import { HotelModal } from 'components/molecules/modal/HotelModal'
 import { CustomRateInput } from 'components/molecules/rate/CustomRateInput'
 import { useRates } from 'hooks/useRate'
 import { Disclosure } from '@headlessui/react'
 import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
 import { useSearch } from 'hooks/useSearch'
-import { CustomTag } from 'components/atoms/button/CustomTag'
+import { CustomTag } from 'components/atoms/label/CustomTag'
 import { PaperAirplaneIcon } from '@heroicons/react/solid'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
@@ -25,7 +25,7 @@ import { TextArea } from 'components/atoms/form/TextArea'
 import { DisclosureButton } from 'components/molecules/disclosure/DisclosureButton'
 import { InputButton } from 'components/atoms/button/InputButton'
 import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
-import { DeleteConfirmModal } from 'components/organisms/modal/DeleteConfirmModal'
+import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -220,7 +220,7 @@ export const DetailPost = memo(() => {
           {/* <GoogleMapComponent post={detailPost} /> */}
           <div className="h-96 w-full bg-blue-200 "></div>
         </div>
-        <CustomModal
+        <ModalTemplate
           width="w-full"
           mdWidth="md:w-192"
           title={
@@ -233,8 +233,8 @@ export const DetailPost = memo(() => {
           closeModal={closeShopModal}
         >
           <ShopModal />
-        </CustomModal>
-        <CustomModal
+        </ModalTemplate>
+        <ModalTemplate
           width="w-full"
           mdWidth="md:w-192"
           title={
@@ -247,15 +247,15 @@ export const DetailPost = memo(() => {
           closeModal={closeHotelModal}
         >
           <HotelModal />
-        </CustomModal>
-        <CustomModal
+        </ModalTemplate>
+        <ModalTemplate
           isOpen={isOpenDeleteCommentModal}
           closeModal={closeDeleteCommentModal}
           title={<>コメントを削除</>}
           border={false}
         >
           <DeleteConfirmModal onClick={deleteComment} />
-        </CustomModal>
+        </ModalTemplate>
         <ImageModal
           isOpen={isOpenImageModal}
           closeModal={closeImageModal}

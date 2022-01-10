@@ -7,6 +7,7 @@ type Props = {
   post: Post | undefined
 }
 
+// Google Mapのコンポーネント
 export const GoogleMapComponent: VFC<Props> = memo(({ post }) => {
   const { containerStyle, options } = useGoogleMapComponent()
   const center = post && {

@@ -4,7 +4,7 @@ import { InformationCircleIcon, LogoutIcon } from '@heroicons/react/outline'
 import { useAuth } from 'hooks/useAuth'
 import { useHeader } from 'hooks/useHeader'
 
-export const CustomMenu = memo(() => {
+export const MenuList = memo(() => {
   const { signOut } = useAuth()
   const { menuItems, responsiveItems, onClickHelpPage } = useHeader()
   return (
@@ -31,6 +31,8 @@ export const CustomMenu = memo(() => {
             </Menu.Item>
           ))}
         </div>
+
+        {/* スマホサイズのときのみ表示されるメニュー */}
         <div className="p-1 md:hidden block">
           {responsiveItems.map((item) => (
             <Menu.Item key={item.name}>
@@ -44,6 +46,7 @@ export const CustomMenu = memo(() => {
             </Menu.Item>
           ))}
         </div>
+
         <div className="p-1">
           <Menu.Item>
             <button

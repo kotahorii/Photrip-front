@@ -1,13 +1,13 @@
 import { Menu } from '@headlessui/react'
 import { SuccessToast } from 'components/molecules/SuccessToast'
-import { CustomMenu } from 'components/organisms/menu/CustomMenu'
-import { CustomModal } from 'components/organisms/modal/CustomModal'
-import { EditUserText } from 'components/organisms/modal/EditUserText'
+import { MenuList } from 'components/organisms/menu/MenuList'
+import { ModalTemplate } from 'components/organisms/modal/ModalTemplate'
+import { EditUserText } from 'components/molecules/modal/EditUserText'
 import { useHeader } from 'hooks/useHeader'
 import { VFC, ReactNode, memo, useEffect } from 'react'
 import { Header } from './Header'
-import { CreateOrEditPost } from 'components/organisms/modal/CreateOrEditPost'
-import { DeleteConfirmModal } from 'components/organisms/modal/DeleteConfirmModal'
+import { CreateOrEditPost } from 'components/molecules/modal/CreateOrEditPost'
+import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
 import { useMain } from 'hooks/useMain'
 import { useAppSelector } from 'app/hooks'
 import { selectEditedPost } from 'slices/postSlice'
@@ -47,20 +47,20 @@ export const Layout: VFC<Props> = memo(({ children }) => {
           {children}
 
           {/* アイコン画像クリック時に表示されるメニューのコンポーネント */}
-          <CustomMenu />
+          <MenuList />
         </main>
 
         {/* ユーザー情報編集用のモーダル */}
-        <CustomModal
+        <ModalTemplate
           title={<>プロフィールを編集</>}
           isOpen={isOpenEditUserModal}
           closeModal={closeEditedUserModal}
         >
           <EditUserText />
-        </CustomModal>
+        </ModalTemplate>
 
         {/* 投稿作成・編集用のモーダル */}
-        <CustomModal
+        <ModalTemplate
           width="w-full"
           mdWidth="md:w-192"
           title={editedPost.id === 0 ? <>新規投稿</> : <>投稿を編集</>}
@@ -68,17 +68,17 @@ export const Layout: VFC<Props> = memo(({ children }) => {
           closeModal={closeCreatePostModal}
         >
           <CreateOrEditPost />
-        </CustomModal>
+        </ModalTemplate>
 
         {/* 削除確認用のモーダル */}
-        <CustomModal
+        <ModalTemplate
           isOpen={isOpenDeletePostModal}
           closeModal={closeDeletePostModal}
           title={<>{detailUserPost.title}</>}
           border={false}
         >
           <DeleteConfirmModal onClick={deletePost(detailUserPost.id)} />
-        </CustomModal>
+        </ModalTemplate>
         <SuccessToast />
       </div>
     </Menu>

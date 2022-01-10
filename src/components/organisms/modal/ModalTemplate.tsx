@@ -12,7 +12,8 @@ type Props = {
   border?: boolean
 }
 
-export const CustomModal: VFC<Props> = memo(
+// モーダルのレイアウト用のコンポーネント
+export const ModalTemplate: VFC<Props> = memo(
   ({
     title,
     children,
@@ -67,7 +68,10 @@ export const CustomModal: VFC<Props> = memo(
                     } leading-6 md:mb-5`}
                   >
                     {title}
-                    <XIcon onClick={closeModal} className="absolute md:hidden -right-5 -top-5 text-gray-400 w-8 h-8 hover:bg-gray-100 rounded-full p-1" />
+                    <XIcon
+                      onClick={closeModal}
+                      className="absolute md:hidden -right-5 -top-5 text-gray-400 w-8 h-8 hover:bg-gray-100 rounded-full p-1"
+                    />
                   </Dialog.Title>
                   {children}
                 </div>

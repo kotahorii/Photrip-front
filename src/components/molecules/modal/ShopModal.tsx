@@ -1,8 +1,8 @@
 import { useApi } from 'hooks/useApi'
 import { memo } from 'react'
 
-import { HotelRestaurantCard } from '../card/HotelRestaurantCard'
-import { LoadingHotelCard } from '../card/LoadingHotelCard'
+import { HotelRestaurantCard } from '../../organisms/card/HotelRestaurantCard'
+import { LoadingHotelCard } from '../../organisms/card/LoadingHotelCard'
 
 export const ShopModal = memo(() => {
   const { isRefetchingHotPepperData, isLoadingHotPepperData, hotpepperData } =
