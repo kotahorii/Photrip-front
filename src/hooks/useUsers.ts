@@ -8,6 +8,7 @@ import { UpdateUserFormData } from 'types/userType'
 import { useQueryCurrentUser } from './queries/useQueryCurrentUser'
 import { Post } from 'types/postType'
 
+// ユーザー編集等で使用されている関数をまとめたカスタムフック
 export const useUsers = () => {
   const dispatch = useAppDispatch()
   const { data: users, isLoading: isLoadingUsers } = useQueryUsers()

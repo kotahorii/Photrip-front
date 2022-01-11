@@ -14,6 +14,7 @@ import {
   setPostPreview,
 } from 'slices/postSlice'
 import {
+  resetUserData,
   selectIsOpenEditUserModal,
   setIsOpenEditUserModal,
   setPreview,
@@ -23,6 +24,7 @@ import { MenuType } from 'types/postType'
 import { useQueryCurrentUser } from './queries/useQueryCurrentUser'
 import { useAuth } from './useAuth'
 
+// ヘッダーで使用されている関数をまとめたカスタムフック
 export const useHeader = () => {
   const dispatch = useAppDispatch()
   const { data: currentUser } = useQueryCurrentUser()
@@ -51,6 +53,8 @@ export const useHeader = () => {
 
   const closeEditedUserModal = useCallback(() => {
     dispatch(setIsOpenEditUserModal(false))
+    dispatch(resetUserData())
+    dispatch(setPreview(''))
   }, [dispatch])
 
   // 新規投稿モーダルを開く処理

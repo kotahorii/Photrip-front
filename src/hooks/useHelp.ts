@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 
+// ヘルプページで使用されている関数をまとめたカスタムフック
 export const useHelp = () => {
   const [isOpenHeaderDisclosure, setIsOpenHeaderDisclosure] = useState(false)
   const [isOpenMainDisclosure, setIsOpenMainDisclosure] = useState(false)

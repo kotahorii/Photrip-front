@@ -20,6 +20,7 @@ Geocede.setApiKey(`${process.env.REACT_APP_GOOGLE_MAP_API}`)
 Geocede.setLanguage('ja')
 Geocede.setRegion('ja')
 
+// 外部APIで使用されている関数をまとめたカスタムフック
 export const useApi = () => {
   const [address, setAddress] = useState('')
   const { detailPost } = useDetailPost()

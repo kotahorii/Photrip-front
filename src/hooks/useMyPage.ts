@@ -11,6 +11,7 @@ import { Post } from 'types/postType'
 import { useMutationPosts } from './queries/useMutationPosts'
 export type ModeType = 'myPosts' | 'likedPosts' | 'myPrefecturePosts'
 
+// マイページで使用されている関数をまとめたカスタムフック
 export const useMyPage = () => {
   const { currentUser, posts } = useMain()
   const { deletePostMutation } = useMutationPosts()

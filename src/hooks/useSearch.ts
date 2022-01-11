@@ -12,6 +12,7 @@ import {
   setSelectedOption,
 } from 'slices/postSlice'
 
+// 検索フォームで使用されている関数をまとめたカスタムフック
 export const useSearch = () => {
   const { id } = useDetailPost()
   const { createLabelMutation, deleteLabelMutation } = useMutationLabels()

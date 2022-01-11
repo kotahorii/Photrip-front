@@ -9,16 +9,14 @@ import {
 import { SignUpFormData } from 'types/userType'
 import { useMutationAuth } from './queries/useMutationAuth'
 
+// 認証ページで使用されている関数をまとめたカスタムフック
 export const useAuth = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector(selectUserData)
   const preview = useAppSelector(selectPreview)
   const [isLogin, setIsLogin] = useState(true)
-
   const { signInMutation, signUpMutation, signOutMutation } = useMutationAuth()
-
   const toggleIsLogin = useCallback(() => setIsLogin(!isLogin), [isLogin])
-
   const changeAuthData = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value

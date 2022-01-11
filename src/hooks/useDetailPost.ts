@@ -20,6 +20,7 @@ import {
 } from 'slices/postSlice'
 import { User } from 'types/userType'
 
+// 投稿詳細画面で使用されている関数をまとめたカスタムフック
 export const useDetailPost = () => {
   const dispatch = useAppDispatch()
   const isOpenImageModal = useAppSelector(selectIsOpenImageModal)

@@ -5,6 +5,7 @@ import { useRateMutate } from './queries/useMutationRate'
 import { useDetailPost } from './useDetailPost'
 import { useMain } from './useMain'
 
+// 評価ボタンで使用されている関数をまとめたカスタムフック
 export const useRates = () => {
   const { createRateMutation, updateRateMutation } = useRateMutate()
   const { currentUser, usersPost } = useMain()

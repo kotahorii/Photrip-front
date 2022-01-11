@@ -4,6 +4,7 @@ import { User } from 'types/userType'
 import { useLikeMutation } from './queries/useMutationFavorite'
 import { useMain } from './useMain'
 
+// いいねボタンで使用されている関数をまとめたカスタムフック
 export const useLikes = () => {
   const { createLikeMutation, deleteLikeMutation } = useLikeMutation()
   const { currentUser, usersPost } = useMain()

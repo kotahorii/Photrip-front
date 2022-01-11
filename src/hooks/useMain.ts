@@ -21,6 +21,7 @@ import { useQueryPosts } from './queries/useQueryPosts'
 import { useDetailPost } from './useDetailPost'
 import { useHeader } from './useHeader'
 
+// メインページで使用されている関数をまとめたカスタムフック
 export const useMain = () => {
   const { data: currentUser, isLoading: isLoadingUser } = useQueryCurrentUser()
   const { data: posts, isLoading: isLoadingPosts } = useQueryPosts()
