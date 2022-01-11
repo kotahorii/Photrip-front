@@ -5,6 +5,7 @@ import { useUsers } from 'hooks/useUsers'
 import { memo } from 'react'
 import { UserProfileIcon } from '../userIcon/UserProfileIcon'
 
+// 投稿の詳細の折りたたみ要素のコンポーネント
 export const PostDetailDisclosure = memo(() => {
   const { detailPost, postUser, isLoadingDetailPost } = useDetailPost()
   const { isLoadingUsers, users } = useUsers()

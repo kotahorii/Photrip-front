@@ -8,11 +8,13 @@ import { User } from 'types/userType'
 type Props = {
   user?: User
 }
-export const CustomBadge: VFC<Props> = memo(({ user }) => {
+
+// プロフィールについているバッジのコンポーネント
+export const ProfileBadge: VFC<Props> = memo(({ user }) => {
   const { getAllRate } = useRates()
   const { getAllFav } = useLikes()
   const { isLoadingDetailPost } = useDetailPost()
-
+  // いいねと評価の合計で色が変化する処理
   const color = () =>
     getAllFav(user)! + getAllRate(user)! >= 10 &&
     getAllFav(user)! + getAllRate(user)! < 30

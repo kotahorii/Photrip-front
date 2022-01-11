@@ -9,15 +9,20 @@ type Props = {
   children: ReactNode
 }
 
+// 詳細画面でユーザーアイコンホバー時に表示されるユーザー情報のコンポーネント
 export const UserInfo: VFC<Props> = memo(({ user, children }) => {
   const { getAllFav } = useLikes()
   const { getAllRate } = useRates()
   const ref = useRef<HTMLDivElement>(null)
+
+  // ホバー時の処理
   const handleMouseEnter = () => {
     if (!ref.current) return
     ref.current.style.opacity = '1'
     ref.current.style.visibility = 'visible'
   }
+
+  // ホバーを外したときの処理
   const handleMouseLeave = () => {
     if (!ref.current) return
     ref.current.style.opacity = '0'

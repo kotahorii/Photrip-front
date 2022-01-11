@@ -101,13 +101,14 @@ export const PostCard: VFC<Props> = memo(({ post }) => {
         </div>
       </div>
 
-      {/* 投稿したユーザーだけが削除できる処理 */}
-      {post.userId === currentUser?.id && (
-        <XIcon
-          onClick={openDeletePostModal(post)}
-          className="absolute right-1 top-0 cursor-pointer w-7 h-7 rounded-full p-1 text-gray-400 hover:bg-gray-100"
-        />
-      )}
+      {/* 投稿したユーザーと管理者だけが削除できる処理 */}
+      {post.userId === currentUser?.id ||
+        (currentUser?.email === 'adminuser@admin.com' && (
+          <XIcon
+            onClick={openDeletePostModal(post)}
+            className="absolute right-1 top-0 cursor-pointer w-7 h-7 rounded-full p-1 text-gray-400 hover:bg-gray-100"
+          />
+        ))}
     </div>
   )
 })

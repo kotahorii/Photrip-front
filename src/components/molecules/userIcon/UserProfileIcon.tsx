@@ -1,5 +1,5 @@
 import { UserCircleIcon } from '@heroicons/react/solid'
-import { CustomBadge } from 'components/atoms/CustomBadge'
+import { ProfileBadge } from 'components/atoms/ProfileBadge'
 import { memo, VFC } from 'react'
 import { User } from 'types/userType'
 
@@ -19,7 +19,7 @@ export const UserProfileIcon: VFC<Props> = memo(({ user }) => {
               src={user?.image.url}
               alt="user icon"
             />
-            <CustomBadge user={user} />
+            <ProfileBadge user={user} />
             <div className="absolute cursor-pointer bg-black w-14 h-14 top-0 rounded-full opacity-0 transition duration-300 hover:opacity-10"></div>
           </>
         ) : (

@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode
 }
 
+// ヘルプページの折りたたみ要素の本文のコンポーネント
 export const HelpPageText: VFC<Props> = memo(({ title, children }) => {
   return (
     <p className="text-md font-semibold">

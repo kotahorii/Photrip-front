@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode
 }
 
+// ヘルプページの折りたたみ要素の本文
 export const DisclosurePanel: VFC<Props> = memo(({ children }) => {
   return (
     <Transition

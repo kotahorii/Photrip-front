@@ -10,14 +10,14 @@ import { useApi } from 'hooks/useApi'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
-import { RestaurantModal } from 'components/molecules/modal/Restaurant'
+import { RestaurantModal } from 'components/molecules/modal/RestaurantModal'
 import { HotelModal } from 'components/molecules/modal/HotelModal'
 import { RateInput } from 'components/molecules/rate/RateInput'
 import { useRates } from 'hooks/useRate'
 import { Disclosure } from '@headlessui/react'
 import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
 import { useSearch } from 'hooks/useSearch'
-import { CustomTag } from 'components/atoms/label/CustomTag'
+import { PostLabel } from 'components/atoms/label/PostLabel'
 import { PaperAirplaneIcon } from '@heroicons/react/solid'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
@@ -156,7 +156,7 @@ export const DetailPost = memo(() => {
               </div>
               <div className="flex flex-row w-96 md:px-0 px-4 overflow-x-auto whitespace-nowrap space-x-2">
                 {detailPost?.labels.map((label) => (
-                  <CustomTag key={label.id} label={label} />
+                  <PostLabel key={label.id} label={label} />
                 ))}
               </div>
             </div>

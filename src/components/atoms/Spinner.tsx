@@ -5,6 +5,7 @@ type Props = {
   color?: string
 }
 
+// ロード中に表示されるスピナー
 export const Spinner: VFC<Props> = memo(
   ({ width = 'w-32', color = '#879aee' }) => {
     return (

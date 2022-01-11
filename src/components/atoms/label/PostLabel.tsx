@@ -8,12 +8,14 @@ type Props = {
   label: Label
 }
 
-export const CustomTag: VFC<Props> = memo(({ label }) => {
+// 投稿につけるタグのコンポーネント
+export const PostLabel: VFC<Props> = memo(({ label }) => {
   const { deleteLabel } = useSearch()
   const { currentUser } = useMain()
   return (
     <div className="flex flex-row justify-between items-center space-x-1 p-2 pl-3 shadow text-white bg-blue-500 rounded">
       <p className="text-center mr-1">{label.name}</p>
+      {/* 現在のユーザーは削除することができる */}
       {label.userId === currentUser?.id && (
         <XIcon
           onClick={deleteLabel(label)}
