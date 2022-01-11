@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode
 }
 
-export const ValidationMessage: VFC<Props> = memo(({ isError, children }) => {
+// 入力フォームエラー時のメッセージ
+export const ErrorMessage: VFC<Props> = memo(({ isError, children }) => {
   return <>{isError && <p className="text-xs text-pink-500">{children}</p>}</>
 })

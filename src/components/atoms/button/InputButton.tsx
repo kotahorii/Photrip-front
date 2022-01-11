@@ -10,6 +10,7 @@ type Props = {
   loading?: boolean
 }
 
+// 入力フォームのとなりにあるボタンのコンポーネント
 export const InputButton: VFC<Props> = memo(
   ({ onClick, text, type = 'button', disabled, loading = false }) => {
     return (

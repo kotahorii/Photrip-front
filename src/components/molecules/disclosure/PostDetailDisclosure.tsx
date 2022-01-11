@@ -1,5 +1,5 @@
 import { Disclosure, Transition } from '@headlessui/react'
-import { UserInfo } from 'components/atoms/UserInfo'
+import { UserInfo } from 'components/molecules/userIcon/UserInfo'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useUsers } from 'hooks/useUsers'
 import { memo } from 'react'

@@ -6,6 +6,8 @@ type Props = {
   placeholder: string
   isError?: boolean
 }
+
+// テキストエリアのコンポーネント
 export const TextArea: VFC<Props> = memo(
   ({ value, onChange, placeholder, isError }) => {
     return (
@@ -13,6 +15,7 @@ export const TextArea: VFC<Props> = memo(
         value={value}
         onChange={onChange}
         className={`focus:outline-none w-full shadow bg-transparent focus:ring-2 ${
+          // エラーのとき色が変化する
           isError ? 'ring-pink-400' : 'ring-blue-400'
         } rounded-md resize-none px-3 py-1`}
         placeholder={placeholder}

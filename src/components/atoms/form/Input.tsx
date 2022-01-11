@@ -10,7 +10,8 @@ type Props = {
   isError?: boolean
 }
 
-export const CustomInput: VFC<Props> = memo(
+// 入力フォームのコンポーネント
+export const Input: VFC<Props> = memo(
   ({
     name,
     value,

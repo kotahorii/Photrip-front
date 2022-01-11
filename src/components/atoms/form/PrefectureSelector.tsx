@@ -10,7 +10,8 @@ type Props = {
   arrays: string[]
 }
 
-export const CustomSelector: VFC<Props> = memo(
+// 都道府県選択のコンポーネント
+export const PrefectureSelector: VFC<Props> = memo(
   ({ value, onChange, arrays }) => {
     return (
       <select

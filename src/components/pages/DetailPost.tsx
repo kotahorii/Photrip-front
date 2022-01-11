@@ -1,8 +1,8 @@
 import { StarIcon } from '@heroicons/react/solid'
-import { CustomButton } from 'components/atoms/button/CustomButton'
+import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
 import { LikeButton } from 'components/atoms/button/LikeButton'
 import { ShopSearchButton } from 'components/atoms/button/ShopSearchButton'
-import { CustomInput } from 'components/atoms/form/CustomInput'
+import { Input } from 'components/atoms/form/Input'
 import { CommentCard } from 'components/organisms/card/CommentCard'
 import { ModalTemplate } from 'components/organisms/modal/ModalTemplate'
 import { Layout } from 'components/templates/Layout'
@@ -20,7 +20,7 @@ import { useSearch } from 'hooks/useSearch'
 import { PostLabel } from 'components/atoms/label/PostLabel'
 import { PaperAirplaneIcon } from '@heroicons/react/solid'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
-import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
+import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
 import { TextArea } from 'components/atoms/form/TextArea'
 import { DisclosureButton } from 'components/atoms/button/DisclosureButton'
 import { InputButton } from 'components/atoms/button/InputButton'
@@ -127,7 +127,7 @@ export const DetailPost = memo(() => {
                   {detailPost?.userId === currentUser?.id && (
                     <>
                       <div className=" w-68 md:pl-0 pl-4">
-                        <CustomInput
+                        <Input
                           name="label"
                           value={labelName}
                           placeholder="タグ"
@@ -149,9 +149,9 @@ export const DetailPost = memo(() => {
                   )}
                 </div>
                 <div className="md:px-0 px-4">
-                  <ValidationMessage isError={labelName.length > 15}>
+                  <ErrorMessage isError={labelName.length > 15}>
                     15文字以内で入力してください
-                  </ValidationMessage>
+                  </ErrorMessage>
                 </div>
               </div>
               <div className="flex flex-row w-96 md:px-0 px-4 overflow-x-auto whitespace-nowrap space-x-2">
@@ -175,13 +175,13 @@ export const DetailPost = memo(() => {
                 onChange={commentChange}
                 isError={comment.length > 140}
               />
-              <ValidationMessage isError={comment.length > 140}>
+              <ErrorMessage isError={comment.length > 140}>
                 140文字以内で入力してください
-              </ValidationMessage>
+              </ErrorMessage>
               <div className="w-full flex flex-row items-center space-x-2 h-10">
                 <div className="flex items-center justify-center w-44">
                   {detailPost?.userId === currentUser?.id && (
-                    <CustomButton
+                    <PrimaryButton
                       text="投稿を編集"
                       onClick={openEditPostModal}
                     />

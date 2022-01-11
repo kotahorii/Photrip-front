@@ -4,6 +4,8 @@ type Props = {
   onClick: () => void
   title: string
 }
+
+// ホテル、レストランを検索するボタン
 export const ShopSearchButton: VFC<Props> = memo(({ onClick, title }) => {
   return (
     <button

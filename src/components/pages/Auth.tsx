@@ -6,7 +6,7 @@ import {
 import { SuccessToast } from 'components/molecules/SuccessToast'
 import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
-import { CustomButton } from 'components/atoms/button/CustomButton'
+import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -57,7 +57,7 @@ export const Auth = memo(() => {
         >
           {isLogin ? <LoginForm /> : <SignUpForm />}
           <div className="flex flex-row space-x-5 justify-center items-center w-full">
-            <CustomButton
+            <PrimaryButton
               disabled={isValidAuth}
               type="submit"
               text={isLogin ? 'ログイン' : '新規登録'}
@@ -66,7 +66,7 @@ export const Auth = memo(() => {
           </div>
           {isLogin && (
             <div className="flex flex-row space-x-5 justify-center items-center w-full">
-              <CustomButton
+              <PrimaryButton
                 disabled={
                   userData.email.length > 0 || userData.password.length > 0
                 }

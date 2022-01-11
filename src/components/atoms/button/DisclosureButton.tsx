@@ -8,6 +8,7 @@ type Props = {
   children: ReactNode
 }
 
+// 隠し要素を開くボタン
 export const DisclosureButton: VFC<Props> = memo(
   ({ isOpen, toggleOpen, children }) => {
     return (
@@ -19,6 +20,7 @@ export const DisclosureButton: VFC<Props> = memo(
           <span>{children}</span>
           <ChevronDownIcon
             className={`${
+              // 矢印の向きを開いているときと開いていないときで180度変換する
               isOpen ? '' : 'transform rotate-180'
             } w-5 h-5 text-white`}
           />

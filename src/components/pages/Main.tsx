@@ -3,7 +3,7 @@ import { Layout } from 'components/templates/Layout'
 import { useSearch } from 'hooks/useSearch'
 import { useMain } from 'hooks/useMain'
 import { memo } from 'react'
-import { CustomSelector } from 'components/atoms/form/CustomSelector'
+import { PrefectureSelector } from 'components/atoms/form/PrefectureSelector'
 import { prefectures } from 'data/prefecture'
 import { RadioButton } from 'components/atoms/button/RadioButton'
 import { PostsList } from 'components/templates/main/PostsList'
@@ -43,7 +43,7 @@ export const Main = memo(() => {
             <SearchInput value={searchedLabel} onChange={changeSearchedLabel} />
           </div>
           <div className=" w-56">
-            <CustomSelector
+            <PrefectureSelector
               value={searchPrefecture}
               onChange={changeSearchPrefecture}
               arrays={prefectures}

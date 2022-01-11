@@ -1,9 +1,9 @@
-import { CustomButton } from 'components/atoms/button/CustomButton'
+import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
 import { InputButton } from 'components/atoms/button/InputButton'
-import { CustomInput } from 'components/atoms/form/CustomInput'
-import { CustomLabel } from 'components/atoms/form/CustomLabel'
+import { Input } from 'components/atoms/form/Input'
+import { InputLabel } from 'components/atoms/form/InputLabel'
 import { TextArea } from 'components/atoms/form/TextArea'
-import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
+import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
 import { PostImageInput } from 'components/molecules/postImage/PostImageInput'
 import { useApi } from 'hooks/useApi'
 import { useMain } from 'hooks/useMain'
@@ -31,21 +31,21 @@ export const CreateOrEditPost = memo(() => {
       <form onSubmit={submitPost} className="md:p-3">
         <div className=" flex flex-col me:space-y-4 space-y-1 mt-2">
           <div className=" flex flex-col space-y-2 items-start">
-            <CustomLabel title="タイトル" />
-            <CustomInput
+            <InputLabel title="タイトル" />
+            <Input
               name="title"
               value={editedPost.title}
               placeholder="タイトル"
               onChange={changePost}
               isError={editedPost.title.length > 30}
             />
-            <ValidationMessage isError={editedPost.title.length > 30}>
+            <ErrorMessage isError={editedPost.title.length > 30}>
               {editedPost.title.length > 30 && '30文字以内で入力してください'}
-            </ValidationMessage>
+            </ErrorMessage>
           </div>
           <div className="flex flex-col w-full space-y-2">
             <div className="flex flex-row">
-              <CustomLabel title="本文" />
+              <InputLabel title="本文" />
               <p className="ml-3 text-sm">
                 {editedPost.body !== null ? editedPost.body.length : 0}/140
               </p>
@@ -57,19 +57,19 @@ export const CreateOrEditPost = memo(() => {
               isError={editedPost.body !== null && editedPost.body.length > 140}
             />
           </div>
-          <ValidationMessage
+          <ErrorMessage
             isError={editedPost.body !== null && editedPost.body.length > 140}
           >
             140字以内で入力してください
-          </ValidationMessage>
+          </ErrorMessage>
           <div className="flex md:flex-row md:space-x-7 flex-col">
             <div className="md:w-80 h-16 flex flex-col space-y-2 justify-between md:items-start">
               <div>
-                <CustomLabel title="郵便番号" />
+                <InputLabel title="郵便番号" />
               </div>
               <div className="flex flex-row items-center">
                 <div className="md:w-40 w-full">
-                  <CustomInput
+                  <Input
                     name="address"
                     value={address}
                     onChange={changeAddress}
@@ -87,8 +87,8 @@ export const CreateOrEditPost = memo(() => {
               </div>
             </div>
             <div className="w-full flex flex-col space-y-2 md:mt-1 mt-3 items-start">
-              <CustomLabel title="旅行先住所" />
-              <CustomInput
+              <InputLabel title="旅行先住所" />
+              <Input
                 name="prefecture"
                 value={
                   editedPost.prefecture + editedPost.city + editedPost.town
@@ -102,7 +102,7 @@ export const CreateOrEditPost = memo(() => {
         </div>
         <div className="w-full h-64 flex flex-col md:space-y-4 space-y-2 md:mt-3 mt-2 items-center">
           <PostImageInput />
-          <CustomButton
+          <PrimaryButton
             disabled={validationCreatePost()}
             type="submit"
             text={`${editedPost.id === 0 ? '投稿' : '編集'}`}

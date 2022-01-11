@@ -6,6 +6,7 @@ type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+// 検索フォームのコンポーネント
 export const SearchInput: VFC<Props> = memo(({ value, onChange }) => {
   return (
     <>

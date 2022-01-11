@@ -8,6 +8,7 @@ type Props = {
   post: Post
 }
 
+// いいねボタンのコンポーネント
 export const LikeButton: VFC<Props> = memo(({ post }) => {
   const { isLiked, toggleLike } = useLikes()
   return (

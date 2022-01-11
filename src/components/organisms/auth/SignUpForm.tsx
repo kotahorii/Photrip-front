@@ -1,7 +1,7 @@
-import { CustomInput } from 'components/atoms/form/CustomInput'
-import { CustomLabel } from 'components/atoms/form/CustomLabel'
-import { CustomSelector } from 'components/atoms/form/CustomSelector'
-import { ValidationMessage } from 'components/atoms/form/ValidationMessage'
+import { Input } from 'components/atoms/form/Input'
+import { InputLabel } from 'components/atoms/form/InputLabel'
+import { PrefectureSelector } from 'components/atoms/form/PrefectureSelector'
+import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
 import { ProfileImageInput } from 'components/molecules/userIcon/ProfileImageInput'
 import { prefectures } from 'data/prefecture'
 import { useAuth } from 'hooks/useAuth'
@@ -13,21 +13,21 @@ export const SignUpForm = memo(() => {
   return (
     <>
       <div className=" flex flex-col space-y-1 w-full">
-        <CustomLabel title="名前" />
-        <CustomInput
+        <InputLabel title="名前" />
+        <Input
           name="name"
           value={userData.name}
           placeholder="名前"
           onChange={changeAuthData}
           isError={userData.name.length > 20}
         />
-        <ValidationMessage isError={userData.name.length > 20}>
+        <ErrorMessage isError={userData.name.length > 20}>
           20文字以内で入力してください
-        </ValidationMessage>
+        </ErrorMessage>
       </div>
       <div className=" flex flex-col space-y-1 w-full">
-        <CustomLabel title="メールアドレス" />
-        <CustomInput
+        <InputLabel title="メールアドレス" />
+        <Input
           name="email"
           value={userData.email}
           placeholder="example@test.com"
@@ -35,8 +35,8 @@ export const SignUpForm = memo(() => {
         />
       </div>
       <div className=" flex flex-col space-y-1 w-full">
-        <CustomLabel title="パスワード" />
-        <CustomInput
+        <InputLabel title="パスワード" />
+        <Input
           name="password"
           value={userData.password}
           placeholder="••••••"
@@ -45,8 +45,8 @@ export const SignUpForm = memo(() => {
         />
       </div>
       <div className=" flex flex-col space-y-1 w-full">
-        <CustomLabel title="パスワード（確認用）" />
-        <CustomInput
+        <InputLabel title="パスワード（確認用）" />
+        <Input
           name="passwordConfirmation"
           value={userData.passwordConfirmation}
           placeholder="••••••"
@@ -57,19 +57,19 @@ export const SignUpForm = memo(() => {
             userData.passwordConfirmation !== userData.password
           }
         />
-        <ValidationMessage
+        <ErrorMessage
           isError={
             userData.passwordConfirmation.length >= 6 &&
             userData.passwordConfirmation !== userData.password
           }
         >
           パスワードが一致しません
-        </ValidationMessage>
+        </ErrorMessage>
       </div>
       <div className="flex flex-row justify-between items-center space-x-3">
         <div className="flex flex-col w-44 space-y-3">
-          <CustomLabel title="都道府県" />
-          <CustomSelector
+          <InputLabel title="都道府県" />
+          <PrefectureSelector
             value={userData.prefecture}
             onChange={prefectureChange}
             arrays={prefectures}

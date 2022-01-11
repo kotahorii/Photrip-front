@@ -10,7 +10,8 @@ type Props = {
   loading?: boolean
 }
 
-export const CustomButton: VFC<Props> = memo(
+// メインで使うボタンのコンポーネント
+export const PrimaryButton: VFC<Props> = memo(
   ({ onClick, text, type = 'button', disabled, loading = false }) => {
     return (
       <button
