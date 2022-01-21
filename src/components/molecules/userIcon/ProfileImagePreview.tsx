@@ -1,6 +1,6 @@
-import { memo, VFC } from 'react'
-import { XCircleIcon, UserCircleIcon } from '@heroicons/react/solid'
+import { UserCircleIcon, XCircleIcon } from '@heroicons/react/solid'
 import { useAuth } from 'hooks/useAuth'
+import { memo, VFC } from 'react'
 
 type Props = {
   onClick: () => void

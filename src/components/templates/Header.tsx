@@ -1,7 +1,4 @@
 import { Menu } from '@headlessui/react'
-import { useMain } from 'hooks/useMain'
-import { memo } from 'react'
-import { UserProfileIcon } from 'components/molecules/userIcon/UserProfileIcon'
 import {
   BookOpenIcon as BookOutLineIcon,
   UserIcon as UserOutLineIcon,
@@ -10,7 +7,10 @@ import {
   BookOpenIcon as BookSolidIcon,
   UserIcon as UserSolidIcon,
 } from '@heroicons/react/solid'
+import { UserProfileIcon } from 'components/molecules/userIcon/UserProfileIcon'
 import { useHeader } from 'hooks/useHeader'
+import { useMain } from 'hooks/useMain'
+import { memo } from 'react'
 
 // ヘッダーのコンポーネント
 export const Header = memo(() => {

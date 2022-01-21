@@ -1,10 +1,6 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
-import { useCommentMutation } from './queries/useMutationComment'
-import { useParams } from 'react-router'
-import { useUsers } from './useUsers'
-import { Comment } from 'types/postType'
-import { useQueryDetailPost } from './queries/useQueryDetailPost'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
+import { useParams } from 'react-router'
 import {
   selectDeleteCommentId,
   selectEditedPost,
@@ -18,7 +14,11 @@ import {
   setLatAndLng,
   setPostPreview,
 } from 'slices/postSlice'
+import { Comment } from 'types/postType'
 import { User } from 'types/userType'
+import { useCommentMutation } from './queries/useMutationComment'
+import { useQueryDetailPost } from './queries/useQueryDetailPost'
+import { useUsers } from './useUsers'
 
 // 投稿詳細画面で使用されている関数をまとめたカスタムフック
 export const useDetailPost = () => {

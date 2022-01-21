@@ -1,7 +1,7 @@
+import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
 import { Input } from 'components/atoms/form/Input'
 import { InputLabel } from 'components/atoms/form/InputLabel'
 import { PrefectureSelector } from 'components/atoms/form/PrefectureSelector'
-import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
 import { ProfileImageInput } from 'components/molecules/userIcon/ProfileImageInput'
 import { prefectures } from 'data/prefecture'
 import { useAuth } from 'hooks/useAuth'

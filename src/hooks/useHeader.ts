@@ -1,8 +1,8 @@
 import {
+  BookOpenIcon,
   PencilAltIcon,
   PlusSmIcon,
   UserIcon,
-  BookOpenIcon,
 } from '@heroicons/react/outline'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { useCallback } from 'react'

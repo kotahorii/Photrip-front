@@ -1,7 +1,7 @@
-import { StarIcon as SolidStar } from '@heroicons/react/solid'
 import { StarIcon as OutLineStar } from '@heroicons/react/outline'
-import { memo } from 'react'
+import { StarIcon as SolidStar } from '@heroicons/react/solid'
 import { useRates } from 'hooks/useRate'
+import { memo } from 'react'
 
 export const RateInput = memo(() => {
   const { rate, rateCreate, rateUpdate } = useRates()

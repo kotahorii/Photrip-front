@@ -1,5 +1,5 @@
-import { memo, VFC } from 'react'
 import { RefreshIcon } from '@heroicons/react/outline'
+import { memo, VFC } from 'react'
 
 type Props = {
   onClick?: () => void

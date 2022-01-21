@@ -1,12 +1,12 @@
 import { useAppDispatch } from 'app/hooks'
 import { FormEvent, useCallback } from 'react'
+import { setIsOpenEditUserModal } from 'slices/userSlice'
+import { Post } from 'types/postType'
+import { UpdateUserFormData } from 'types/userType'
+import { useMutationUser } from './queries/useMutationUser'
+import { useQueryCurrentUser } from './queries/useQueryCurrentUser'
 import { useQueryUsers } from './queries/useQueryUsers'
 import { useAuth } from './useAuth'
-import { useMutationUser } from './queries/useMutationUser'
-import { setIsOpenEditUserModal } from 'slices/userSlice'
-import { UpdateUserFormData } from 'types/userType'
-import { useQueryCurrentUser } from './queries/useQueryCurrentUser'
-import { Post } from 'types/postType'
 
 // ユーザー編集等で使用されている関数をまとめたカスタムフック
 export const useUsers = () => {

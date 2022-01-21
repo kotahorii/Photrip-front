@@ -1,13 +1,13 @@
-import { memo, useCallback, VFC } from 'react'
-import { Post } from 'types/postType'
+import { XIcon } from '@heroicons/react/outline'
 import { StarIcon } from '@heroicons/react/solid'
 import { LikeButton } from 'components/atoms/button/LikeButton'
-import { Link } from 'react-router-dom'
-import { useRates } from 'hooks/useRate'
-import { useMain } from 'hooks/useMain'
-import { XIcon } from '@heroicons/react/outline'
 import { useQueryDetailPost } from 'hooks/queries/useQueryDetailPost'
 import { useApi } from 'hooks/useApi'
+import { useMain } from 'hooks/useMain'
+import { useRates } from 'hooks/useRate'
+import { memo, useCallback, VFC } from 'react'
+import { Link } from 'react-router-dom'
+import { Post } from 'types/postType'
 
 type Props = {
   post: Post

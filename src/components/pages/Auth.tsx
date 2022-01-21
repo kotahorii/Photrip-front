@@ -1,12 +1,12 @@
-import { useAuth } from 'hooks/useAuth'
 import {
   InformationCircleIcon,
   SwitchVerticalIcon,
 } from '@heroicons/react/outline'
+import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
 import { SuccessToast } from 'components/molecules/SuccessToast'
 import { LoginForm } from 'components/organisms/auth/LoginForm'
 import { SignUpForm } from 'components/organisms/auth/SignUpForm'
-import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
+import { useAuth } from 'hooks/useAuth'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 

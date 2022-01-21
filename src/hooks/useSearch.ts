@@ -1,8 +1,5 @@
-import { ChangeEvent, useCallback, useState } from 'react'
-import { Label, Post } from 'types/postType'
-import { useMutationLabels } from './queries/useMutationLabels'
-import { useDetailPost } from './useDetailPost'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { ChangeEvent, useCallback, useState } from 'react'
 import {
   selectSearchedLabel,
   selectSearchPrefecture,
@@ -11,6 +8,9 @@ import {
   setSearchPrefecture,
   setSelectedOption,
 } from 'slices/postSlice'
+import { Label, Post } from 'types/postType'
+import { useMutationLabels } from './queries/useMutationLabels'
+import { useDetailPost } from './useDetailPost'
 
 // 検索フォームで使用されている関数をまとめたカスタムフック
 export const useSearch = () => {

@@ -1,7 +1,7 @@
-import { memo, VFC } from 'react'
-import { HeartIcon as SolidLike } from '@heroicons/react/solid'
 import { HeartIcon as OutLineLike } from '@heroicons/react/outline'
+import { HeartIcon as SolidLike } from '@heroicons/react/solid'
 import { useLikes } from 'hooks/useLikes'
+import { memo, VFC } from 'react'
 import { Post } from 'types/postType'
 
 type Props = {

@@ -1,6 +1,5 @@
 import { useApi } from 'hooks/useApi'
 import { memo } from 'react'
-
 import { HotelRestaurantCard } from '../../organisms/card/HotelRestaurantCard'
 import { LoadingHotelCard } from '../../organisms/card/LoadingHotelCard'
 

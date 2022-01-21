@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
 import { resetUserData } from 'slices/userSlice'
-import { SignInData, AuthRes, User, SignUpFormData } from 'types/userType'
+import { AuthRes, SignInData, SignUpFormData, User } from 'types/userType'
 
 // 認証データのPOST, PUT, DELETEメソッドを定義
 export const useMutationAuth = () => {

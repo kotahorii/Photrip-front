@@ -1,8 +1,8 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, memo } from 'react'
 import { InformationCircleIcon, LogoutIcon } from '@heroicons/react/outline'
 import { useAuth } from 'hooks/useAuth'
 import { useHeader } from 'hooks/useHeader'
+import { Fragment, memo } from 'react'
 
 export const MenuList = memo(() => {
   const { signOut } = useAuth()
