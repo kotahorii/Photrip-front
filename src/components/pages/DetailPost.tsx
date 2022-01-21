@@ -1,31 +1,30 @@
-import { StarIcon } from '@heroicons/react/solid'
-import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
+import { Disclosure } from '@headlessui/react'
+import { PaperAirplaneIcon, StarIcon } from '@heroicons/react/solid'
+import { DisclosureButton } from 'components/atoms/button/DisclosureButton'
+import { InputButton } from 'components/atoms/button/InputButton'
 import { LikeButton } from 'components/atoms/button/LikeButton'
+import { PrimaryButton } from 'components/atoms/button/PrimaryButton'
 import { ShopSearchButton } from 'components/atoms/button/ShopSearchButton'
+import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
 import { Input } from 'components/atoms/form/Input'
+import { TextArea } from 'components/atoms/form/TextArea'
+import { PostLabel } from 'components/atoms/label/PostLabel'
+import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
+import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
+import { HotelModal } from 'components/molecules/modal/HotelModal'
+import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
+import { RestaurantModal } from 'components/molecules/modal/RestaurantModal'
+import { RateInput } from 'components/molecules/rate/RateInput'
 import { CommentCard } from 'components/organisms/card/CommentCard'
+import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ModalTemplate } from 'components/organisms/modal/ModalTemplate'
 import { Layout } from 'components/templates/Layout'
 import { useApi } from 'hooks/useApi'
 import { useDetailPost } from 'hooks/useDetailPost'
 import { useMain } from 'hooks/useMain'
-import { memo } from 'react'
-import { RestaurantModal } from 'components/molecules/modal/RestaurantModal'
-import { HotelModal } from 'components/molecules/modal/HotelModal'
-import { RateInput } from 'components/molecules/rate/RateInput'
 import { useRates } from 'hooks/useRate'
-import { Disclosure } from '@headlessui/react'
-import { PostDetailDisclosure } from 'components/molecules/disclosure/PostDetailDisclosure'
 import { useSearch } from 'hooks/useSearch'
-import { PostLabel } from 'components/atoms/label/PostLabel'
-import { PaperAirplaneIcon } from '@heroicons/react/solid'
-import { ImageModal } from 'components/organisms/modal/ImageModal'
-import { ErrorMessage } from 'components/atoms/form/ErrorMessage'
-import { TextArea } from 'components/atoms/form/TextArea'
-import { DisclosureButton } from 'components/atoms/button/DisclosureButton'
-import { InputButton } from 'components/atoms/button/InputButton'
-import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrauntTitle'
-import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
+import { memo } from 'react'
 // import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
@@ -252,7 +251,7 @@ export const DetailPost = memo(() => {
           isOpen={isOpenDeleteCommentModal}
           closeModal={closeDeleteCommentModal}
           title={<>コメントを削除</>}
-          border={false}
+          line={false}
         >
           <DeleteConfirmModal onClick={deleteComment} />
         </ModalTemplate>

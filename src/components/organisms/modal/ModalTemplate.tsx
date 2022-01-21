@@ -9,7 +9,7 @@ type Props = {
   closeModal: () => void
   width?: string
   mdWidth?: string
-  border?: boolean
+  line?: boolean
 }
 
 // モーダルのレイアウト用のコンポーネント
@@ -21,7 +21,7 @@ export const ModalTemplate: VFC<Props> = memo(
     closeModal,
     width = 'w-96',
     mdWidth,
-    border = true,
+    line = true,
   }) => {
     return (
       <div className="fixed">
@@ -63,11 +63,16 @@ export const ModalTemplate: VFC<Props> = memo(
                 >
                   <Dialog.Title
                     as="h3"
-                    className={`text-xl relative text-center pb-3 ${
-                      border && `border-b-2 border-gray-300`
-                    } leading-6 md:mb-5`}
+                    className={`text-xl relative flex flex-row items-center justify-center text-center pb-3 leading-6 md:mb-5`}
                   >
+                    {/* lineがtrueのときのみ青色のラインを表示する。 */}
+                    {line ? (
+                      <div className="h-1 flex-1 mr-3 rounded-l-full bg-blue-300"></div>
+                    ) : null}
                     {title}
+                    {line ? (
+                      <div className="h-1 flex-1 ml-3 rounded-r-full bg-blue-300"></div>
+                    ) : null}
                     <XIcon
                       onClick={closeModal}
                       className="absolute md:hidden -right-5 -top-5 text-gray-400 w-8 h-8 hover:bg-gray-100 rounded-full p-1"

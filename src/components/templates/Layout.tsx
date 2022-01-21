@@ -1,16 +1,16 @@
 import { Menu } from '@headlessui/react'
+import { useAppSelector } from 'app/hooks'
+import { CreateOrEditPost } from 'components/molecules/modal/CreateOrEditPost'
+import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
+import { EditUserText } from 'components/molecules/modal/EditUserText'
 import { SuccessToast } from 'components/molecules/SuccessToast'
 import { MenuList } from 'components/organisms/menu/MenuList'
 import { ModalTemplate } from 'components/organisms/modal/ModalTemplate'
-import { EditUserText } from 'components/molecules/modal/EditUserText'
 import { useHeader } from 'hooks/useHeader'
-import { VFC, ReactNode, memo, useEffect } from 'react'
-import { Header } from './Header'
-import { CreateOrEditPost } from 'components/molecules/modal/CreateOrEditPost'
-import { DeleteConfirmModal } from 'components/molecules/modal/DeleteConfirmModal'
 import { useMain } from 'hooks/useMain'
-import { useAppSelector } from 'app/hooks'
+import { memo, ReactNode, useEffect, VFC } from 'react'
 import { selectEditedPost } from 'slices/postSlice'
+import { Header } from './Header'
 
 type Props = {
   children: ReactNode
@@ -52,7 +52,11 @@ export const Layout: VFC<Props> = memo(({ children }) => {
 
         {/* ユーザー情報編集用のモーダル */}
         <ModalTemplate
-          title={<>プロフィールを編集</>}
+          title={
+            <>
+              <p>プロフィールを編集</p>
+            </>
+          }
           isOpen={isOpenEditUserModal}
           closeModal={closeEditedUserModal}
         >
@@ -63,7 +67,17 @@ export const Layout: VFC<Props> = memo(({ children }) => {
         <ModalTemplate
           width="w-full"
           mdWidth="md:w-192"
-          title={editedPost.id === 0 ? <>新規投稿</> : <>投稿を編集</>}
+          title={
+            editedPost.id === 0 ? (
+              <>
+                <p>新規投稿</p>
+              </>
+            ) : (
+              <>
+                <p>投稿を編集</p>
+              </>
+            )
+          }
           isOpen={isOpenCreatePostModal}
           closeModal={closeCreatePostModal}
         >
@@ -75,7 +89,7 @@ export const Layout: VFC<Props> = memo(({ children }) => {
           isOpen={isOpenDeletePostModal}
           closeModal={closeDeletePostModal}
           title={<>{detailUserPost.title}</>}
-          border={false}
+          line={false}
         >
           <DeleteConfirmModal onClick={deletePost(detailUserPost.id)} />
         </ModalTemplate>
