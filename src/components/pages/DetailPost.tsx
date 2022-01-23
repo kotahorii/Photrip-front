@@ -16,6 +16,7 @@ import { HotelOrRestrauntTitle } from 'components/molecules/modal/HotelOrRestrau
 import { RestaurantModal } from 'components/molecules/modal/RestaurantModal'
 import { RateInput } from 'components/molecules/rate/RateInput'
 import { CommentCard } from 'components/organisms/card/CommentCard'
+import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 import { ImageModal } from 'components/organisms/modal/ImageModal'
 import { ModalTemplate } from 'components/organisms/modal/ModalTemplate'
 import { Layout } from 'components/templates/Layout'
@@ -25,7 +26,6 @@ import { useMain } from 'hooks/useMain'
 import { useRates } from 'hooks/useRate'
 import { useSearch } from 'hooks/useSearch'
 import { memo } from 'react'
-// import { GoogleMapComponent } from 'components/organisms/map/GoogleMapComponent'
 
 export const DetailPost = memo(() => {
   const { isLoadingUser, currentUser } = useMain()
@@ -216,8 +216,8 @@ export const DetailPost = memo(() => {
           <div className="md:w-1/2 w-full md:px-0 px-4">
             <PostDetailDisclosure />
           </div>
-          {/* <GoogleMapComponent post={detailPost} /> */}
-          <div className="h-96 w-full bg-blue-200 "></div>
+          <GoogleMapComponent post={detailPost} />
+          {/* <div className="h-96 w-full bg-blue-200 "></div> */}
         </div>
         <ModalTemplate
           width="w-full"
