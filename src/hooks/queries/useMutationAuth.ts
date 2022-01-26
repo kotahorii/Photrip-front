@@ -4,7 +4,7 @@ import client from 'lib/client'
 import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
-import { resetUserData } from 'slices/userSlice'
+import { resetUserData, setPreview } from 'slices/userSlice'
 import { AuthRes, SignInData, SignUpFormData, User } from 'types/userType'
 
 // 認証データのPOST, PUT, DELETEメソッドを定義
@@ -66,6 +66,7 @@ export const useMutationAuth = () => {
           queryClient.removeQueries('user')
         }
         dispatch(resetUserData())
+        dispatch(setPreview(''))
         Cookies.remove('_access_token')
         Cookies.remove('_client')
         Cookies.remove('_uid')
