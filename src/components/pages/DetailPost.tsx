@@ -205,15 +205,13 @@ export const DetailPost = memo(() => {
               </div>
             </form>
           </div>
-          <div className="md:w-1/2 w-full md:px-0 px-4">
+          <div className="flex flex-col space-y-2 md:w-196 w-96 md:px-0 px-4">
             <DisclosureButton
               isOpen={openDisclosure}
               toggleOpen={toggleOpenDisclosure}
             >
               詳細を見る
             </DisclosureButton>
-          </div>
-          <div className="md:w-1/2 w-full md:px-0 px-4">
             <PostDetailDisclosure />
           </div>
           <GoogleMapComponent post={detailPost} />
